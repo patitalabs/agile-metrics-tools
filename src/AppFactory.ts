@@ -10,7 +10,7 @@ export class AppFactory {
   }
 
   static metricsService(appContext: AppContext): MetricsService {
-    const elasticSearchService = ElasticSearch.justLogEsService(
+    const elasticSearchService = ElasticSearch.esService(
       appContext.appConfig.indexPrefix
     );
     return new MetricsService(
