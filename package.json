@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "compile & node dist/",
+    "build": "compile",
     "compile": "tsc",
     "dev": "tsc & nodemon dist",
     "test": "jest --coverage",
