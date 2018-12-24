@@ -1,4 +1,4 @@
-## Team Metrics Tools
+## Agile Metrics Tools
 
 Pulls data from:
 - Jira
