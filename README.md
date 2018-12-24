@@ -9,7 +9,7 @@ Pulls data from:
 
 And pushes it to ElasticSearch so that it can be further analyzed in order to find patterns.
 
-Inspired by `Agile metrics in action` book and https://github.com/cwhd/measurementor project    
+Inspired by `Agile Metrics in Action` book and https://github.com/cwhd/measurementor project    
 
 ### Env conigurations
 ````
