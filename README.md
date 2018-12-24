@@ -13,7 +13,9 @@ Pulls data from:
 
 And pushes it to ElasticSearch so that it can be further analyzed in order to find patterns.
 
-Inspired by `Agile Metrics in Action` book and https://github.com/cwhd/measurementor project    
+Inspired by `Agile Metrics in Action` book and https://github.com/cwhd/measurementor project   
+
+![alt tag](https://raw.githubusercontent.com/ferzerkerx/agile-metrics-tools/master/screenshots/agile-metrics-tools-1.png) 
 
 ### Env configurations
 ````
