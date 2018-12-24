@@ -1,4 +1,7 @@
 ## Agile Metrics Tools
+[![Build Status](https://travis-ci.org/ferzerkerx/agile-metrics-tools.svg?branch=master)](https://travis-ci.org/ferzerkerx/lego-work-stream-slack)
+![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=agile-metrics-tools&metric=alert_status)
+
 
 Pulls data from:
 - Jira
