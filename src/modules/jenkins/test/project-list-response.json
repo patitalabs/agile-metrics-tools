@@ -1,0 +1,60 @@
+{
+  "_class": "jenkins.branch.OrganizationFolder",
+  "actions": [
+    {},
+    {},
+    {
+      "_class": "jenkins.scm.api.metadata.ObjectMetadataAction"
+    },
+    {
+      "_class": "org.jenkinsci.plugins.github_branch_source.GitHubOrgMetadataAction"
+    },
+    {},
+    {},
+    {},
+    {},
+    {},
+    {
+      "_class": "com.cloudbees.plugins.credentials.ViewCredentialsAction"
+    }
+  ],
+  "description": null,
+  "displayName": "org-name",
+  "displayNameOrNull": null,
+  "fullDisplayName": "org-name",
+  "fullName": "org-name",
+  "name": "org-name",
+  "url": "http://jenkins.url/job/org-name/",
+  "healthReport": [
+    {
+      "description": "Worst health: org-name » project-name-2: Worst health: org-name » project-name-2 » add-webpack-analyzer: Build stability: All recent builds failed.",
+      "iconClassName": "icon-health-00to19",
+      "iconUrl": "health-00to19.png",
+      "score": 0
+    }
+  ],
+  "jobs": [
+    {
+      "_class": "org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject",
+      "name": "project-name",
+      "url": "http://jenkins.url/job/org-name/job/project-name/"
+    },
+    {
+      "_class": "org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject",
+      "name": "project-name-2",
+      "url": "http://jenkins.url/job/org-name/job/project-name-2/"
+    }
+  ],
+  "primaryView": {
+    "_class": "jenkins.branch.OrganizationFolderViewHolder$ViewImpl",
+    "name": "default",
+    "url": "http://jenkins.url/job/org-name/"
+  },
+  "views": [
+    {
+      "_class": "jenkins.branch.OrganizationFolderViewHolder$ViewImpl",
+      "name": "default",
+      "url": "http://jenkins.url/job/org-name/"
+    }
+  ]
+}

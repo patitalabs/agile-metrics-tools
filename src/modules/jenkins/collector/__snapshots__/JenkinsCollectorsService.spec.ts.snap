@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JenkinsCollectorsService should fetch jenkinsMetrics 1`] = `
+Array [
+  Object {
+    "buildName": "jenkins job",
+    "buildNumber": "50",
+    "causedBy": "someone",
+    "createdAt": 2018-12-06T00:00:00.000Z,
+    "dataType": "CI",
+    "durationInSeconds": 2,
+    "id": "c98207bf100109f4109cc33b99b467a6ce42299ff4f1fc8d33784ca262550a6d",
+    "jenkinsUrl": "someUrl",
+    "projectName": "projectName",
+    "result": "SUCCESS",
+    "revision": "someVersion",
+    "revisionDescription": "some description",
+  },
+]
+`;

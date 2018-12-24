@@ -1,0 +1,123 @@
+{
+  "_class": "org.jenkinsci.plugins.workflow.job.WorkflowJob",
+  "actions": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {
+      "_class": "jenkins.scm.api.metadata.ObjectMetadataAction"
+    },
+    {},
+    {},
+    {
+      "_class": "org.jenkinsci.plugins.DependencyCheck.DependencyCheckProjectAction"
+    },
+    {},
+    {},
+    {},
+    {
+      "_class": "com.cloudbees.plugins.credentials.ViewCredentialsAction"
+    }
+  ],
+  "description": null,
+  "displayName": "master",
+  "displayNameOrNull": null,
+  "fullDisplayName": "org » project-name » master",
+  "fullName": "org/project-name/master",
+  "name": "master",
+  "url": "http://jenkins-server/job/org/job/project-name/job/master/",
+  "buildable": true,
+  "builds": [
+    {
+      "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+      "number": 44,
+      "url": "http://jenkins-server/job/org/job/project-name/job/master/44/"
+    },
+    {
+      "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+      "number": 43,
+      "url": "http://jenkins-server/job/org/job/project-name/job/master/43/"
+    },
+    {
+      "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+      "number": 42,
+      "url": "http://jenkins-server/job/org/job/project-name/job/master/42/"
+    },
+    {
+      "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+      "number": 41,
+      "url": "http://jenkins-server/job/org/job/project-name/job/master/41/"
+    },
+    {
+      "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+      "number": 40,
+      "url": "http://jenkins-server/job/org/job/project-name/job/master/40/"
+    }
+  ],
+  "color": "blue",
+  "firstBuild": {
+    "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+    "number": 40,
+    "url": "http://jenkins-server/job/org/job/project-name/job/master/40/"
+  },
+  "healthReport": [
+    {
+      "description": "Build-Stabilität: 1 der letzten 5 Builds schlug fehl.",
+      "iconClassName": "icon-health-60to79",
+      "iconUrl": "health-60to79.png",
+      "score": 80
+    }
+  ],
+  "inQueue": false,
+  "keepDependencies": false,
+  "lastBuild": {
+    "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+    "number": 44,
+    "url": "http://jenkins-server/job/org/job/project-name/job/master/44/"
+  },
+  "lastCompletedBuild": {
+    "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+    "number": 44,
+    "url": "http://jenkins-server/job/org/job/project-name/job/master/44/"
+  },
+  "lastFailedBuild": {
+    "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+    "number": 42,
+    "url": "http://jenkins-server/job/org/job/project-name/job/master/42/"
+  },
+  "lastStableBuild": {
+    "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+    "number": 44,
+    "url": "http://jenkins-server/job/org/job/project-name/job/master/44/"
+  },
+  "lastSuccessfulBuild": {
+    "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+    "number": 44,
+    "url": "http://jenkins-server/job/org/job/project-name/job/master/44/"
+  },
+  "lastUnstableBuild": null,
+  "lastUnsuccessfulBuild": {
+    "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+    "number": 42,
+    "url": "http://jenkins-server/job/org/job/project-name/job/master/42/"
+  },
+  "nextBuildNumber": 45,
+  "property": [
+    {
+      "_class": "org.jenkinsci.plugins.workflow.multibranch.BranchJobProperty",
+      "branch": {}
+    },
+    {
+      "_class": "jenkins.model.BuildDiscarderProperty"
+    },
+    {
+      "_class": "org.jenkinsci.plugins.workflow.job.properties.DisableConcurrentBuildsJobProperty"
+    }
+  ],
+  "queueItem": null,
+  "concurrentBuild": false,
+  "resumeBlocked": false
+}

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExternalCollectorsService should fetch githubMetrics 1`] = `
+Array [
+  Object {
+    "createdAt": 2018-12-06T00:00:00.000Z,
+    "dataType": "EXT-someType",
+    "field1": "someAdditionalData",
+    "field2": 4,
+    "field3": 2018-12-07T00:00:00.000Z,
+    "id": "849a58cc9c1ef0094e94483ebf0b0fd601d4e7cfef66ad3bb0ba30d7df693832",
+  },
+]
+`;

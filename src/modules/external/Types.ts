@@ -1,0 +1,15 @@
+export interface ExternalConfig {
+  since: Date;
+  type: string;
+  srcType: string;
+  srcPath: string;
+}
+
+export class ExternalData {
+  createdAt: Date;
+  [type: string]: any;
+}
+
+export interface ExternalService {
+  fetchExternalInfo(externalConfig: ExternalConfig): Promise<ExternalData[]>;
+}

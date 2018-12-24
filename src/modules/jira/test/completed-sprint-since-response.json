@@ -1,0 +1,18 @@
+{
+  "maxResults": 50,
+  "startAt": 0,
+  "isLast": true,
+  "values": [
+    {
+      "id": 171,
+      "self": "https://jira-host/rest/agile/1.0/sprint/171",
+      "state": "closed",
+      "name": "17/11/14 Somename",
+      "startDate": "2018-12-14T11:59:08.967Z",
+      "endDate": "2018-12-22T12:59:00.000Z",
+      "completeDate": "2018-12-21T10:47:29.639Z",
+      "originBoardId": 51,
+      "goal": "Important goal"
+    }
+  ]
+}

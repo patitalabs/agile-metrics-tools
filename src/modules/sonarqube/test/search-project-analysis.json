@@ -1,0 +1,20 @@
+{
+  "paging": {
+    "pageIndex": 1,
+    "pageSize": 100,
+    "total": 1
+  },
+  "analyses": [
+    {
+      "key": "AWeshfOeqyja0h_XLG70",
+      "date": "2018-12-14T11:41:48+0000",
+      "events": [
+        {
+          "key": "AWeshfp9qyja0h_XLG71",
+          "category": "VERSION",
+          "name": "1.0"
+        }
+      ]
+    }
+  ]
+}

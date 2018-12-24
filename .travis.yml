@@ -1,0 +1,27 @@
+language: node_js
+node_js:
+  - "lts/Carbon"
+
+addons:
+  sonarcloud:
+    organization: "ferzerkerx-github"
+    token:
+      secure: "sonar-token"
+env:
+  secure: "snyk-token"
+
+cache:
+  directories:
+    - "node_modules"
+
+install:
+  - "yarn install"
+  - "npm install -g snyk"
+
+script:
+  - "yarn build"
+  - "yarn test"
+  - "sonar-scanner"
+
+after_success:
+  - "snyk monitor"

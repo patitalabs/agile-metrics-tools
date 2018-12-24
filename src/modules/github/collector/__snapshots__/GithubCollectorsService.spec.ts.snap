@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GithubCollectorsService should fetch githubMetrics 1`] = `
+Array [
+  Object {
+    "author": "someAuthor",
+    "createdAt": 2018-12-06T00:00:00.000Z,
+    "dataType": "SCM",
+    "id": "someSha",
+    "linesAdded": 30,
+    "linesRemoved": 6,
+    "message": "someMessage",
+    "repositoryName": "someRepoName",
+    "sha": "someSha",
+  },
+]
+`;

@@ -1,0 +1,40 @@
+{
+  "name": "metrics-tools",
+  "version": "1.0.0",
+  "description": "",
+  "author": "ferzerkerx",
+  "license": "MIT",
+  "scripts": {
+    "start": "compile & node dist/",
+    "compile": "tsc",
+    "dev": "tsc & nodemon dist",
+    "test": "jest --coverage",
+    "typescript": "typescript",
+    "prettier": "prettier --write \"src/**/*.[tj]s\"",
+    "tsc": "tsc",
+    "postinstall": "yarn compile"
+  },
+  "dependencies": {
+    "@octokit/rest": "^15.17.0",
+    "csvtojson": "^2.0.8",
+    "elasticsearch": "^15.2.0",
+    "node-env-file": "^0.1.8",
+    "node-fetch": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.3",
+    "@types/node": "7.0.22",
+    "jest": "^23.6.0",
+    "prettier": "^1.15.2",
+    "ts-jest": "^23.10.4",
+    "ts-loader": "^5.2.1",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.6"
+  },
+  "jest": {
+    "coverageReporters": [
+      "lcov"
+    ]
+  }
+}
