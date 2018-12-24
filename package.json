@@ -5,8 +5,8 @@
   "author": "ferzerkerx",
   "license": "MIT",
   "scripts": {
-    "start": "compile & node dist/",
-    "build": "compile",
+    "start": "yarn install & node dist/",
+    "build": "yarn compile",
     "compile": "tsc",
     "dev": "tsc & nodemon dist",
     "test": "jest --coverage",
