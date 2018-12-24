@@ -3,9 +3,9 @@ import { toBase64 } from "../../metrics/Utils";
 import { JenkinsClient } from "./Types";
 
 export class JenkinsClientImpl implements JenkinsClient {
-  private readonly host: String;
-  private readonly apiToken: String;
-  private readonly apiUser: String;
+  private readonly host: string;
+  private readonly apiToken: string;
+  private readonly apiUser: string;
 
   constructor({ host, apiToken, apiUser }) {
     this.apiUser = apiUser;
