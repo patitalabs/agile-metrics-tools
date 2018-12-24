@@ -15,7 +15,7 @@ And pushes it to ElasticSearch so that it can be further analyzed in order to fi
 
 Inspired by `Agile Metrics in Action` book and https://github.com/cwhd/measurementor project    
 
-### Env conigurations
+### Env configurations
 ````
 JIRA_HOST=
 JIRA_API_TOKEN=
@@ -123,4 +123,13 @@ ES_HOST=
      "since": "2018-12-03"
   }
 ]
+````
+
+### To use a Dockerized ELK
+
+Please refer to https://elk-docker.readthedocs.io/ , mainly the only thing needed is:
+````
+sysctl -w vm.max_map_count=262144
+docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk sebp/elk
+ grep vm.max_map_count /etc/sysctl.conf
 ````
