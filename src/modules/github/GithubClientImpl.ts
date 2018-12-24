@@ -41,6 +41,7 @@ export class GithubClientImpl implements GithubClient {
       since: githubConfig.since
     };
 
+    //TODO pagination
     const { data } = await this.octokit.repos.getCommits(reposGetCommitsParams);
     return data;
   }

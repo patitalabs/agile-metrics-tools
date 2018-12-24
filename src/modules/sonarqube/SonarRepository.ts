@@ -10,7 +10,7 @@ export class SonarRepository {
     }&metrics=alert_status,quality_gate_details,bugs,new_bugs,reliability_rating,new_reliability_rating,vulnerabilities,new_vulnerabilities,security_rating,new_security_rating,code_smells,new_code_smells,sqale_rating,new_maintainability_rating,sqale_index,new_technical_debt,coverage,new_coverage,new_lines_to_cover,tests,duplicated_lines_density,new_duplicated_lines_density,duplicated_blocks,ncloc,ncloc_language_distribution,projects,new_lines&from=${
       sonarConfig.since
     }`;
-
+    //TODO pagination
     const measures = await this.sonarClient.getData(searchHistoryUrl);
 
     const analysisHistoryUrl = `/api/project_analyses/search?category=VERSION&project=${
