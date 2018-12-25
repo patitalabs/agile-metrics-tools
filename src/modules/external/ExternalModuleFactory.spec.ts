@@ -1,4 +1,4 @@
-import { ExternalModuleFactory } from "./external";
+import {ExternalModuleFactory} from "./ExternalModuleFactory";
 
 describe("ExternalModuleFactory", () => {
   const externalModuleFactory: ExternalModuleFactory = new ExternalModuleFactory();
