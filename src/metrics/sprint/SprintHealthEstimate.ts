@@ -29,9 +29,8 @@ export class SprintHealthEstimate {
     if (this.currentEstimateIndex() == 0) {
       return 0;
     }
-    const previousEstimateIndex = this.estimationValues.indexOf(
-      this.estimate - 1
-    );
+    const previousEstimateIndex =
+      this.estimationValues.indexOf(this.estimate) - 1;
     const previousEstimateRatio = this.estimationValues[
       previousEstimateIndex * this.timeEstimateRatio()
     ];
