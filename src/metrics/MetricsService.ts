@@ -9,7 +9,10 @@ export class MetricsService {
   ) {}
 
   async start(metricsConfig: MetricsConfig): Promise<void> {
-    for (const collectorConfig of metricsConfig.collectorConfigs) {
+    if (!metricsConfig) {
+      return;
+    }
+    for (const collectorConfig of metricsConfig.collectorConfigs || []) {
       for (const collector of this.collectors) {
         if (collector.supports(collectorConfig)) {
           try {
