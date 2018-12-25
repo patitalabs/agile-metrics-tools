@@ -1,4 +1,4 @@
-import { flatMap } from "../../metrics/Utils";
+import { flatMap } from "../Utils";
 
 export class Utils {
   static enrichWith<T>(

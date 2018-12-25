@@ -16,7 +16,11 @@ export class MetricsService {
             const metricItems = await collector.fetch(collectorConfig);
             await this.processMetrics(metricItems);
           } catch (error) {
-            console.warn(`There was a problem collecting metrics for: ${JSON.stringify(collectorConfig)}, error:${JSON.stringify(error)}`)
+            console.warn(
+              `There was a problem collecting metrics for: ${JSON.stringify(
+                collectorConfig
+              )}, error:${JSON.stringify(error)}`
+            );
           }
         }
       }

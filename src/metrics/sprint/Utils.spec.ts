@@ -1,7 +1,6 @@
-import { JiraRepository } from "./JiraRepository";
 import { Utils } from "./Utils";
 
-describe("JiraRepository", () => {
+describe("Utils", () => {
   it("daysBetween", () => {
     const dateOne = new Date("2018-12-03");
     const dateTwo = new Date("2018-12-05");
@@ -11,8 +10,8 @@ describe("JiraRepository", () => {
   });
 
   it("enrichWith", async () => {
-    let someArray = [{}];
-    let testEnricher = item => {
+    const someArray = [{}];
+    const testEnricher = item => {
       item.name = "enriched";
     };
     const result = await Utils.enrichWith(someArray, [testEnricher]);
