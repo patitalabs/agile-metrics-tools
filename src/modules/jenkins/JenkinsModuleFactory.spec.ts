@@ -1,4 +1,4 @@
-import {JenkinsModuleFactory} from "./JenkinsModuleFactory";
+import { JenkinsModuleFactory } from "./JenkinsModuleFactory";
 
 describe("JenkinsModuleFactory", () => {
   const jenkinsModuleFactory: JenkinsModuleFactory = new JenkinsModuleFactory();
@@ -11,9 +11,9 @@ describe("JenkinsModuleFactory", () => {
   });
 
   it("should create collector", () => {
-     process.env.JENKINS_HOST = "SOME_TOKEN";
-     process.env.JENKINS_API_TOKEN= "SOME_TOKEN";
-     process.env.JENKINS_USER= "SOME_TOKEN";
+    process.env.JENKINS_HOST = "SOME_TOKEN";
+    process.env.JENKINS_API_TOKEN = "SOME_TOKEN";
+    process.env.JENKINS_USER = "SOME_TOKEN";
     const collectorInstance = jenkinsModuleFactory.collectorInstance();
     expect(collectorInstance).not.toBeNull();
   });
