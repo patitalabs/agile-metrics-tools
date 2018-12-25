@@ -37,10 +37,10 @@ describe("SprintUtils", () => {
 
   it("estimateHealth exact estimate", () => {
     const estimateHealth = SprintUtils.estimateHealth({
-      estimate: 2,
-      actualTime: 2,
-      maxTime: 8,
-      estimationValues: [1, 2, 3, 5, 8]
+      estimate: 5,
+      actualTime: 5,
+      maxTime: 13,
+      estimationValues: [1, 2, 3, 5, 8, 13]
     });
     expect(estimateHealth).toBe(0);
   });
