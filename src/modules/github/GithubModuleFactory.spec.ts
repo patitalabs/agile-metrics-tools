@@ -4,7 +4,7 @@ describe("GithubModuleFactory", () => {
   const githubModuleFactory: GithubModuleFactory = new GithubModuleFactory();
 
   beforeEach(() => {
-    jest.resetModules(); // this is important
+    jest.resetModules();
     delete process.env.GITHUB_TOKEN;
   });
 
