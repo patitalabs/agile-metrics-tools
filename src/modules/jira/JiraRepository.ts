@@ -26,7 +26,7 @@ export class JiraRepository {
 
     const { issues: issuesResponse } = await this.jiraClient.getData(url);
 
-    let sprintTaskPromises: Promise<SprintTask>[] = issuesResponse
+    const sprintTaskPromises: Promise<SprintTask>[] = issuesResponse
       .filter(issue => issue.fields.issuetype.name !== "Sub-task")
       .map(async issue => {
         const issueDetails = await this.issueDetailsWithChangelog(issue.key);

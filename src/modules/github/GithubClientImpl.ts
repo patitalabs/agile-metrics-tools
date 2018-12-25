@@ -35,6 +35,7 @@ export class GithubClientImpl implements GithubClient {
 
   async commits(githubConfig: GithubConfig): Promise<ReposGetCommitsResponse> {
     this.authenticate();
+    const searchResult = await this.searchIssues();
     const reposGetCommitsParams: ReposGetCommitsParams = {
       owner: githubConfig.orgName,
       repo: githubConfig.repositoryName,
@@ -58,6 +59,12 @@ export class GithubClientImpl implements GithubClient {
     };
     const { data } = await this.octokit.repos.getCommit(commitConfig);
     return data;
+  }
+
+  //TODO maybe pr time to close?
+  async searchIssues() : Promise<any> {
+    //TODO use search to get number of comments
+    return await this.octokit.search.issues({q:"gitcommitsha&is=merged&type=pr"})
   }
 
   async allPullRequests(
