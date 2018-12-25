@@ -1,13 +1,24 @@
 import { AppContextFactory } from "./AppContextFactory";
 import { AppConfig, AppContext } from "./Types";
 
-async function assertInvalidConfigs(appConfig: AppConfig) {
-  const appContext: AppContext = await AppContextFactory.appContext(appConfig);
+function assertInvalidConfigs(appContext: AppContext) {
   expect(appContext.collectorsServices).not.toBeNull();
   expect(appContext.collectorsServices.length).toBe(1);
 
   expect(appContext.collectorConfigs).not.toBeNull();
   expect(appContext.collectorConfigs.length).toBe(0);
+}
+
+function givenAppConfig({ type, configFile }): AppConfig {
+  return {
+    indexPrefix: "someIndexName",
+    modules: [
+      {
+        type: type,
+        configFile: configFile
+      }
+    ]
+  };
 }
 
 describe("AppContextFactory", () => {
@@ -32,10 +43,10 @@ describe("AppContextFactory", () => {
   });
 
   it("should create appContext without unsupported modules", async () => {
-    const appConfig: AppConfig = {
-      indexPrefix: "someIndexName",
-      modules: [{ type: "some", configFile: "/some/test-external-config.json" }]
-    };
+    const appConfig: AppConfig = givenAppConfig({
+      type: "some",
+      configFile: "/some/test-external-config.json"
+    });
     const appContext: AppContext = await AppContextFactory.appContext(
       appConfig
     );
@@ -43,28 +54,24 @@ describe("AppContextFactory", () => {
   });
 
   it("should create appContext without unsupported configs", async () => {
-    const appConfig: AppConfig = {
-      indexPrefix: "someIndexName",
-      modules: [
-        {
-          type: "external",
-          configFile: __dirname + "/test/test-invalid-external-config.json"
-        }
-      ]
-    };
-    await assertInvalidConfigs(appConfig);
+    const appConfig: AppConfig = givenAppConfig({
+      type: "external",
+      configFile: __dirname + "/test/test-invalid-external-config.json"
+    });
+    const appContext: AppContext = await AppContextFactory.appContext(
+      appConfig
+    );
+    assertInvalidConfigs(appContext);
   });
 
   it("should create appContext with not existent files", async () => {
-    const appConfig: AppConfig = {
-      indexPrefix: "someIndexName",
-      modules: [
-        {
-          type: "external",
-          configFile: __dirname + "/test/non-existent-file.json"
-        }
-      ]
-    };
-    await assertInvalidConfigs(appConfig);
+    const appConfig = givenAppConfig({
+      type: "external",
+      configFile: "/test/non-existent-file.json"
+    });
+    const appContext: AppContext = await AppContextFactory.appContext(
+      appConfig
+    );
+    assertInvalidConfigs(appContext);
   });
 });
