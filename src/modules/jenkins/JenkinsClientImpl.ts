@@ -1,5 +1,5 @@
 import * as fetch from "node-fetch";
-import { toBase64 } from "../../metrics/Utils";
+import { toBase64 } from "../../metrics";
 import { JenkinsClient } from "./Types";
 
 export class JenkinsClientImpl implements JenkinsClient {

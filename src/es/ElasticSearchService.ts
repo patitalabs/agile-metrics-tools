@@ -1,4 +1,4 @@
-import { MetricItem } from "../metrics/Types";
+import { MetricItem } from "../metrics";
 import { ElasticSearchService } from "./Types";
 import { ElasticSearchRepository } from "./ElasticSearchRepository";
 

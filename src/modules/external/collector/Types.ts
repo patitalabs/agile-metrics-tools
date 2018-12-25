@@ -1,4 +1,4 @@
-import { CollectorConfig, MetricItem } from "../../../metrics/Types";
+import { CollectorConfig, MetricItem } from "../../../metrics";
 
 export interface ExternalMetricItem extends MetricItem {}
 

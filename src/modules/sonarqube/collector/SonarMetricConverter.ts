@@ -1,6 +1,6 @@
 import { ProjectMetrics } from "../Types";
 import { SonarMetricItem } from "./Types";
-import { toHash } from "../../../metrics/Utils";
+import { toHash } from "../../../metrics";
 
 export class SonarMetricConverter {
   static toMetricItem(projectMetrics: ProjectMetrics): SonarMetricItem {

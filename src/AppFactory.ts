@@ -1,4 +1,4 @@
-import { MetricsService } from "./metrics/MetricsService";
+import { MetricsService } from "./metrics";
 import { AppContext } from "./Types";
 import { ElasticSearch } from "./es";
 import { AppContextFactory } from "./AppContextFactory";

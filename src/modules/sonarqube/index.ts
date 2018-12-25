@@ -3,8 +3,7 @@ import { SonarClientImpl } from "./SonarClientImpl";
 import { SonarRepository } from "./SonarRepository";
 import { SonarServiceImpl } from "./SonarServiceImpl";
 import { SonarCollectorsService } from "./collector/SonarCollectorsService";
-import { checkEnvVar } from "../../metrics/Utils";
-import { CollectorModuleFactory } from "../../metrics/Types";
+import { CollectorModuleFactory, checkEnvVar } from "../../metrics";
 import { SonarCollectorConfig, SonarMetricItem } from "./collector/Types";
 
 export { SonarCollectorsService } from "./collector/SonarCollectorsService";

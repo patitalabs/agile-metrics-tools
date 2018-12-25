@@ -7,7 +7,7 @@ import {
   SprintSubtask,
   SprintTask
 } from "./Types";
-import { Utils } from "../../metrics/sprint/Utils";
+import { Utils } from "../../metrics";
 
 export class Converters {
   static toSubtask(issue: any): SprintSubtask {

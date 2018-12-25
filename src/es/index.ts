@@ -1,7 +1,7 @@
 import { ElasticSearchService } from "./Types";
 import { ElasticSearchServiceImpl } from "./ElasticSearchService";
 import { ElasticSearchRepository } from "./ElasticSearchRepository";
-import { checkEnvVar } from "../metrics/Utils";
+import { checkEnvVar } from "../metrics";
 
 export { ElasticSearchServiceImpl } from "./ElasticSearchService";
 export { ElasticSearchService } from "./Types";

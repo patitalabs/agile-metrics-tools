@@ -1,5 +1,5 @@
 import { JenkinsBuild, JenkinsJob } from "./Types";
-import { flatMap } from "../../metrics/Utils";
+import { flatMap } from "../../metrics";
 
 export class Converters {
   static toJenkinsJob(jobDetails, builds): JenkinsJob {

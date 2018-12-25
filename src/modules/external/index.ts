@@ -2,7 +2,7 @@ import { ExternalCollectorService } from "./collector/ExternalCollectorService";
 import { ExternalService } from "./Types";
 import { ExternalRepository } from "./ExternalRepository";
 import { ExternalServiceImpl } from "./ExternalServiceImpl";
-import { CollectorModuleFactory } from "../../metrics/Types";
+import { CollectorModuleFactory } from "../../metrics";
 import { ExternalCollectorConfig, ExternalMetricItem } from "./collector/Types";
 
 export { ExternalCollectorService } from "./collector/ExternalCollectorService";

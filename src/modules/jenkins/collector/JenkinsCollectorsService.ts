@@ -1,5 +1,5 @@
 import { JenkinsMetricConverter } from "./JenkinsMetricConverter";
-import { CollectorService } from "../../../metrics/Types";
+import { CollectorService } from "../../../metrics";
 import { JenkinsCollectorConfig, JenkinsMetricItem } from "./Types";
 import { JenkinsService } from "../Types";
 

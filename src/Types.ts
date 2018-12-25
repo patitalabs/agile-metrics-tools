@@ -1,4 +1,4 @@
-import { CollectorConfig, CollectorService } from "./metrics/Types";
+import { CollectorConfig, CollectorService } from "./metrics";
 
 export interface MetricsConfig {
   collectorConfigs: CollectorConfig[];

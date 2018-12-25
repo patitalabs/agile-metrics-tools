@@ -1,8 +1,7 @@
 import { JiraConfig, JiraService, Sprint, SprintTask } from "../Types";
 import { JiraMetricConverter } from "./JiraMetricConverter";
-import { CollectorService } from "../../../metrics/Types";
+import { CollectorService, flatMap } from "../../../metrics";
 import { JiraCollectorConfig, JiraMetricItem } from "./Types";
-import { flatMap } from "../../../metrics/Utils";
 
 export class JiraCollectorsService
   implements CollectorService<JiraCollectorConfig, JiraMetricItem> {

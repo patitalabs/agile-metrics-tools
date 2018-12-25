@@ -1,5 +1,5 @@
 import { SonarMetricConverter } from "./SonarMetricConverter";
-import { CollectorService } from "../../../metrics/Types";
+import { CollectorService } from "../../../metrics";
 import { SonarCollectorConfig, SonarMetricItem } from "./Types";
 import { SonarService } from "../Types";
 

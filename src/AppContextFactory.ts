@@ -1,6 +1,5 @@
 import { AppConfig, AppContext, ModuleConfig } from "./Types";
-import { CollectorConfig, CollectorModuleFactory } from "./metrics/Types";
-import { flatMap } from "./metrics/Utils";
+import { CollectorConfig, CollectorModuleFactory, flatMap } from "./metrics";
 import { GithubModuleFactory } from "./modules/github";
 import { JiraModuleFactory } from "./modules/jira";
 import { JenkinsModuleFactory } from "./modules/jenkins";

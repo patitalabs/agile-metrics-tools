@@ -1,6 +1,6 @@
 import { JenkinsJob } from "../Types";
 import { JenkinsCollectorConfig, JenkinsMetricItem } from "./Types";
-import { toHash } from "../../../metrics/Utils";
+import { toHash } from "../../../metrics";
 
 export class JenkinsMetricConverter {
   static toMetricItem(

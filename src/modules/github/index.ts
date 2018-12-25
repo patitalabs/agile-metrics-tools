@@ -3,9 +3,9 @@ import { GithubClientImpl } from "./GithubClientImpl";
 import { GithubRepository } from "./GithubRepository";
 import { GithubServiceImpl } from "./GithubServiceImpl";
 import { GithubCollectorService } from "./collector/GithubCollectorService";
-import { checkEnvVar } from "../../metrics/Utils";
+import { checkEnvVar } from "../../metrics";
 import { GithubCollectorConfig, GithubMetricItem } from "./collector/Types";
-import { CollectorModuleFactory } from "../../metrics/Types";
+import { CollectorModuleFactory } from "../../metrics";
 
 export { GithubService } from "./Types";
 export { GithubCollectorService } from "./collector/GithubCollectorService";

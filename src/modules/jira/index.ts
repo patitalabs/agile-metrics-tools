@@ -3,8 +3,7 @@ import { JiraClientImpl } from "./JiraClientImpl";
 import { JiraRepository } from "./JiraRepository";
 import { JiraServiceImpl } from "./JiraServiceImpl";
 import { JiraCollectorsService } from "./collector/JiraCollectorsService";
-import { checkEnvVar } from "../../metrics/Utils";
-import { CollectorModuleFactory } from "../../metrics/Types";
+import { checkEnvVar, CollectorModuleFactory } from "../../metrics";
 import { JiraCollectorConfig, JiraMetricItem } from "./collector/Types";
 
 export { JiraCollectorsService } from "./collector/JiraCollectorsService";

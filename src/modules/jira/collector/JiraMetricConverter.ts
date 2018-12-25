@@ -1,8 +1,6 @@
 import { SprintTask } from "../Types";
 import { JiraCollectorConfig, JiraMetricItem } from "./Types";
-import { toHash } from "../../../metrics/Utils";
-import { Statistics } from "../../../metrics/sprint/Types";
-import { SprintUtils } from "../../../metrics/sprint/SprintUtils";
+import { toHash, Statistics, SprintUtils } from "../../../metrics";
 
 export class JiraMetricConverter {
   static toMetricItem(

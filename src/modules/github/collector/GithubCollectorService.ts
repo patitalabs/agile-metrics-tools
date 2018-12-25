@@ -1,5 +1,5 @@
 import { GithubMetricConverter } from "./GithubMetricConverter";
-import { CollectorService } from "../../../metrics/Types";
+import { CollectorService } from "../../../metrics";
 import { GithubCollectorConfig, GithubMetricItem } from "./Types";
 import { GithubService } from "../Types";
 

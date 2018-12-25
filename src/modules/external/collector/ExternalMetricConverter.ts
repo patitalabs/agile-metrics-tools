@@ -1,6 +1,6 @@
 import { ExternalCollectorConfig, ExternalMetricItem } from "./Types";
 import { ExternalData } from "../Types";
-import { toHash } from "../../../metrics/Utils";
+import { toHash } from "../../../metrics";
 
 export class ExternalMetricConverter {
   static toMetricItem(
