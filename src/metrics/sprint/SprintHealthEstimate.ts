@@ -50,9 +50,6 @@ export class SprintHealthEstimate {
     return this.estimateTime() + (nextEstimateRatio - this.estimateTime()) / 2;
   }
 
-  /**
-   * @return a value of 0 indicates that you're good.  Greater than 0 means underestimating, less than 0 indicated overestimating.
-   */
   public calculateHealthFactor(): number {
     let result = 0.0;
     const upperTimeBound = this.upperTimeBound();
