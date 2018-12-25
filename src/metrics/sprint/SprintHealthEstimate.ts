@@ -1,4 +1,4 @@
-export class HealthEstimate {
+export class SprintHealthEstimate {
   private readonly maxTime: number;
   private readonly estimationValues: number[];
   private readonly estimate: number;

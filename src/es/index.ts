@@ -1,14 +1,14 @@
 import { ElasticSearchService } from "./Types";
 import { ElasticSearchServiceImpl } from "./ElasticSearchService";
 import { ElasticSearchRepository } from "./ElasticSearchRepository";
-import { checkEnvVar } from "../metrics";
+import { Utils } from "../metrics";
 
 export { ElasticSearchServiceImpl } from "./ElasticSearchService";
 export { ElasticSearchService } from "./Types";
 
 export class ElasticSearch {
   static esService(indexPrefix: string): ElasticSearchService {
-    checkEnvVar("ES_HOST");
+    Utils.checkEnvVar("ES_HOST");
     const elasticSearchRepository = new ElasticSearchRepository({
       host: `${process.env.ES_HOST}`
     });

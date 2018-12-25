@@ -1,6 +1,6 @@
 import { ExternalCollectorConfig, ExternalMetricItem } from "./Types";
 import { ExternalData } from "../Types";
-import { toHash } from "../../../metrics";
+import { Utils } from "../../../metrics";
 
 export class ExternalMetricConverter {
   static toMetricItem(
@@ -9,7 +9,7 @@ export class ExternalMetricConverter {
   ): ExternalMetricItem[] {
     return externalData.map(item => {
       return {
-        id: toHash(JSON.stringify(item)),
+        id: Utils.toHash(JSON.stringify(item)),
         dataType: `EXT-${externalCollectorConfig.metricType}`,
         ...item
       };

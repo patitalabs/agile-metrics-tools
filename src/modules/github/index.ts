@@ -3,9 +3,8 @@ import { GithubClientImpl } from "./GithubClientImpl";
 import { GithubRepository } from "./GithubRepository";
 import { GithubServiceImpl } from "./GithubServiceImpl";
 import { GithubCollectorService } from "./collector/GithubCollectorService";
-import { checkEnvVar } from "../../metrics";
 import { GithubCollectorConfig, GithubMetricItem } from "./collector/Types";
-import { CollectorModuleFactory } from "../../metrics";
+import { CollectorModuleFactory, Utils } from "../../metrics";
 
 export { GithubService } from "./Types";
 export { GithubCollectorService } from "./collector/GithubCollectorService";
@@ -13,7 +12,7 @@ export { GithubCollectorService } from "./collector/GithubCollectorService";
 export class GithubModuleFactory
   implements CollectorModuleFactory<GithubCollectorConfig, GithubMetricItem> {
   private static githubService(): GithubService {
-    checkEnvVar("GITHUB_TOKEN");
+    Utils.checkEnvVar("GITHUB_TOKEN");
     const githubClient = new GithubClientImpl({
       token: `${process.env.GITHUB_TOKEN}`
     });

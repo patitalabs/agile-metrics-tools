@@ -1,5 +1,5 @@
 import { JenkinsBuild, JenkinsJob } from "./Types";
-import { flatMap } from "../../metrics";
+import { Utils } from "../../metrics";
 
 export class Converters {
   static toJenkinsJob(jobDetails, builds): JenkinsJob {
@@ -34,7 +34,7 @@ export class Converters {
   }
 
   private static commitDetails(jobDetails): CommitDetails {
-    const changeSetDetails = flatMap(
+    const changeSetDetails = Utils.flatMap(
       changeSet => changeSet.items,
       jobDetails.changeSets || []
     );

@@ -3,7 +3,7 @@ import { JenkinsClientImpl } from "./JenkinsClientImpl";
 import { JenkinsRepository } from "./JenkinsRepository";
 import { JenkinsServiceImpl } from "./JenkinsServiceImpl";
 import { JenkinsCollectorsService } from "./collector/JenkinsCollectorsService";
-import { CollectorModuleFactory, checkEnvVar } from "../../metrics";
+import { CollectorModuleFactory, Utils } from "../../metrics";
 import { JenkinsCollectorConfig, JenkinsMetricItem } from "./collector/Types";
 
 export { JenkinsCollectorsService } from "./collector/JenkinsCollectorsService";
@@ -12,7 +12,7 @@ export { JenkinsService } from "./Types";
 export class JenkinsModuleFactory
   implements CollectorModuleFactory<JenkinsCollectorConfig, JenkinsMetricItem> {
   private static jenkinsService(): JenkinsService {
-    checkEnvVar("JENKINS_HOST", "JENKINS_USER", "JENKINS_API_TOKEN");
+    Utils.checkEnvVar("JENKINS_HOST", "JENKINS_USER", "JENKINS_API_TOKEN");
     const jenkinsClient = new JenkinsClientImpl({
       host: `${process.env.JENKINS_HOST}`,
       apiToken: `${process.env.JENKINS_API_TOKEN}`,

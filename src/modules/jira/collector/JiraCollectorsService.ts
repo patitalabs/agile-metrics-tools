@@ -1,6 +1,6 @@
 import { JiraConfig, JiraService, Sprint, SprintTask } from "../Types";
 import { JiraMetricConverter } from "./JiraMetricConverter";
-import { CollectorService, flatMap } from "../../../metrics";
+import { CollectorService, Utils } from "../../../metrics";
 import { JiraCollectorConfig, JiraMetricItem } from "./Types";
 
 export class JiraCollectorsService
@@ -24,7 +24,7 @@ export class JiraCollectorsService
     });
 
     const results = await Promise.all(sprintsPromises);
-    return flatMap(item => item, results);
+    return Utils.flatMap(item => item, results);
   }
 
   private async sprintDetails(

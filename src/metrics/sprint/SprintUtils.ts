@@ -1,5 +1,5 @@
-import { Utils } from "./Utils";
-import { HealthEstimate } from "./HealthEstimate";
+import { Utils } from "../Utils";
+import { SprintHealthEstimate } from "./SprintHealthEstimate";
 
 export class SprintUtils {
   static devTime(movedToDev: Date, resolutionDate: Date): number {
@@ -41,7 +41,7 @@ export class SprintUtils {
     if (!estimationValues) {
       estimationValues = [1, 2, 3, 5, 8];
     }
-    return new HealthEstimate({
+    return new SprintHealthEstimate({
       maxTime,
       estimationValues,
       estimate,

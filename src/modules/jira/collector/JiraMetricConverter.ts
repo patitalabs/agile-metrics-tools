@@ -1,13 +1,13 @@
 import { SprintTask } from "../Types";
 import { JiraCollectorConfig, JiraMetricItem } from "./Types";
-import { toHash, Statistics, SprintUtils } from "../../../metrics";
+import { Utils, TaskStatistics, SprintUtils } from "../../../metrics";
 
 export class JiraMetricConverter {
   static toMetricItem(
     jiraCollectorConfig: JiraCollectorConfig,
     sprintTask: SprintTask
   ): JiraMetricItem {
-    const statistics: Statistics = this.taskStatistics(
+    const statistics: TaskStatistics = this.taskStatistics(
       jiraCollectorConfig,
       sprintTask
     );
@@ -28,7 +28,7 @@ export class JiraMetricConverter {
       estimationValues: [1, 2, 3, 5, 8]
     });
     return {
-      id: toHash(`${sprintTask.projectName}-${sprintTask.key}`),
+      id: Utils.toHash(`${sprintTask.projectName}-${sprintTask.key}`),
       dataType: "PTS",
       createdAt: sprintTask.created,
       key: sprintTask.key,
@@ -53,7 +53,7 @@ export class JiraMetricConverter {
   private static taskStatistics(
     jiraCollectorConfig: JiraCollectorConfig,
     sprintTask: SprintTask
-  ): Statistics {
+  ): TaskStatistics {
     const taskStatusMap =
       jiraCollectorConfig.workFlowMap ||
       JiraMetricConverter.defaultWorkFlowMap();

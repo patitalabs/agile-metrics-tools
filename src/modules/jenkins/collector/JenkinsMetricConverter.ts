@@ -1,6 +1,6 @@
 import { JenkinsJob } from "../Types";
 import { JenkinsCollectorConfig, JenkinsMetricItem } from "./Types";
-import { toHash } from "../../../metrics";
+import { Utils } from "../../../metrics";
 
 export class JenkinsMetricConverter {
   static toMetricItem(
@@ -9,7 +9,9 @@ export class JenkinsMetricConverter {
   ): JenkinsMetricItem[] {
     return jenkinsJob.builds.map(build => {
       return {
-        id: toHash(`${jenkinsConfig.projectName}-${build.timestamp.getTime()}`),
+        id: Utils.toHash(
+          `${jenkinsConfig.projectName}-${build.timestamp.getTime()}`
+        ),
         dataType: "CI",
         createdAt: build.timestamp,
         jenkinsUrl: build.url,

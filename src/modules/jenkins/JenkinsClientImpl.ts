@@ -1,5 +1,5 @@
 import * as fetch from "node-fetch";
-import { toBase64 } from "../../metrics";
+import { Utils } from "../../metrics";
 import { JenkinsClient } from "./Types";
 
 export class JenkinsClientImpl implements JenkinsClient {
@@ -15,7 +15,7 @@ export class JenkinsClientImpl implements JenkinsClient {
 
   async getData(url): Promise<any> {
     const fullUrl = `${this.host}/${url}/api/json?token=${this.apiToken}`;
-    const authToken = toBase64(`${this.apiUser}:${this.apiToken}`);
+    const authToken = Utils.toBase64(`${this.apiUser}:${this.apiToken}`);
 
     const config = {
       method: "get",
