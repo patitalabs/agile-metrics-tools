@@ -1,6 +1,15 @@
 import { AppContextFactory } from "./AppContextFactory";
 import { AppConfig, AppContext } from "./Types";
 
+async function assertInvalidConfigs(appConfig: AppConfig) {
+  const appContext: AppContext = await AppContextFactory.appContext(appConfig);
+  expect(appContext.collectorsServices).not.toBeNull();
+  expect(appContext.collectorsServices.length).toBe(1);
+
+  expect(appContext.collectorConfigs).not.toBeNull();
+  expect(appContext.collectorConfigs.length).toBe(0);
+}
+
 describe("AppContextFactory", () => {
   it("should create appContext with supported module", async () => {
     const appConfig: AppConfig = {
@@ -43,14 +52,7 @@ describe("AppContextFactory", () => {
         }
       ]
     };
-    const appContext: AppContext = await AppContextFactory.appContext(
-      appConfig
-    );
-    expect(appContext.collectorsServices).not.toBeNull();
-    expect(appContext.collectorsServices.length).toBe(1);
-
-    expect(appContext.collectorConfigs).not.toBeNull();
-    expect(appContext.collectorConfigs.length).toBe(0);
+    await assertInvalidConfigs(appConfig);
   });
 
   it("should create appContext with not existent files", async () => {
@@ -63,13 +65,6 @@ describe("AppContextFactory", () => {
         }
       ]
     };
-    const appContext: AppContext = await AppContextFactory.appContext(
-      appConfig
-    );
-    expect(appContext.collectorsServices).not.toBeNull();
-    expect(appContext.collectorsServices.length).toBe(1);
-
-    expect(appContext.collectorConfigs).not.toBeNull();
-    expect(appContext.collectorConfigs.length).toBe(0);
+    await assertInvalidConfigs(appConfig);
   });
 });
