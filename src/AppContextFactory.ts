@@ -1,5 +1,5 @@
 import { AppConfig, AppContext, ModuleConfig } from "./Types";
-import { CollectorConfig, CollectorModuleFactory, flatMap } from "./metrics";
+import { CollectorConfig, CollectorModuleFactory, Utils } from "./metrics";
 import { GithubModuleFactory } from "./modules/github";
 import { JiraModuleFactory } from "./modules/jira";
 import { JenkinsModuleFactory } from "./modules/jenkins";
@@ -82,7 +82,7 @@ export class AppContextFactory {
       }
     );
 
-    return flatMap(item => item, configsPerType);
+    return Utils.flatMap(item => item, configsPerType);
   }
 
   private static async configurationDetails(
