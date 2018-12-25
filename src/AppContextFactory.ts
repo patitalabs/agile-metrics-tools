@@ -74,7 +74,10 @@ export class AppContextFactory {
 
     const configsPerType: CollectorConfig[][] = configContents.map(
       configContent => {
-        return configContent.entries.map(item => {
+        const entries = Array.isArray(configContent.entries)
+          ? configContent.entries
+          : [];
+        return entries.map(item => {
           return moduleFactories[
             configContent.moduleConfig.type
           ].collectorConfiguration(item);
@@ -90,18 +93,21 @@ export class AppContextFactory {
   ): Promise<ModuleConfigurationDetails[]> {
     const configContentsPromises: Promise<
       ModuleConfigurationDetails
-    >[] = supportedConfigs
-      .map(async moduleConfig => {
-        const configContents = await import(moduleConfig.configFile);
-        if (!configContents) {
-          console.warn(`Unable to load file ${moduleConfig.configFile}`);
-          return null;
-        }
-        return { entries: configContents, moduleConfig: moduleConfig };
-      })
-      .filter(moduleConfig => moduleConfig != null);
+    >[] = supportedConfigs.map(async moduleConfig => {
+      let configContents = null;
+      try {
+        configContents = await import(moduleConfig.configFile);
+      } catch (error) {
+        console.warn(`Unable to load file ${moduleConfig.configFile}`);
+      }
+      if (!configContents) {
+        return null;
+      }
+      return { entries: configContents, moduleConfig: moduleConfig };
+    });
 
-    return await Promise.all(configContentsPromises);
+    const configurationContents = await Promise.all(configContentsPromises);
+    return configurationContents.filter(moduleConfig => moduleConfig != null);
   }
 }
 

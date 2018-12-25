@@ -1,0 +1,9 @@
+[
+  {
+    "metricType": "METRIC",
+    "type": "csv",
+    "srcType": "file",
+    "srcPath": "/some/path/some.csv",
+    "since": "2018-12-03T00:00:00Z"
+  }
+]

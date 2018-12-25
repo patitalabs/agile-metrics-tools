@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppContextFactory should create appContext without unsupported modules 1`] = `
+Object {
+  "appConfig": Object {
+    "indexPrefix": "someIndexName",
+    "modules": Array [
+      Object {
+        "configFile": "/some/test-external-config.json",
+        "type": "some",
+      },
+    ],
+  },
+  "collectorConfigs": Array [],
+  "collectorsServices": Array [],
+}
+`;
