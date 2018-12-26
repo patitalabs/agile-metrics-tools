@@ -7,11 +7,13 @@ export class GithubRepository {
   async commits(githubConfig: GithubConfig): Promise<GithubCommit[]> {
     const { repositoryName, orgName } = githubConfig;
 
-    const commitsResponse = await this.githubClient.commits(githubConfig);
-    const commitsWithDetails = commitsResponse.map(commit => {
-      return this.getCommitDetails(repositoryName, orgName, commit.sha);
-    });
-    return await Promise.all(commitsWithDetails);
+    const commitsSha: string[] = await this.githubClient.commits(githubConfig);
+    const commitsWithDetailsPromise: Promise<GithubCommit>[] = commitsSha.map(
+      commitSha => {
+        return this.getCommitDetails(repositoryName, orgName, commitSha);
+      }
+    );
+    return await Promise.all(commitsWithDetailsPromise);
   }
 
   private async getCommitDetails(
@@ -25,10 +27,9 @@ export class GithubRepository {
       sha
     );
 
-    return Converters.toGithubCommit(commitDetailsResponse);
-  }
+    const commitPrResponse = await this.githubClient.pullRequestForCommit(sha);
 
-  async allPullRequests(repositoryName: string, orgName: string): Promise<any> {
-    return await this.githubClient.allPullRequests(repositoryName, orgName);
+
+    return Converters.toGithubCommit(commitDetailsResponse, commitPrResponse);
   }
 }

@@ -1,9 +1,3 @@
-import {
-  PullRequestsGetAllResponse,
-  ReposGetCommitResponse,
-  ReposGetCommitsResponse
-} from "@octokit/rest";
-
 export class GithubCommit {
   sha: string;
   createdAt: Date;
@@ -11,6 +5,13 @@ export class GithubCommit {
   linesRemoved: number;
   author: string;
   message: string;
+  pullRequest?: PullRequest;
+}
+
+export class PullRequest {
+  id: number;
+  numberOfDaysOpen: number;
+  numberOfComments: number;
 }
 
 export interface GithubConfig {
@@ -24,16 +25,13 @@ export interface GithubService {
 }
 
 export interface GithubClient {
-  commits(githubConfig: GithubConfig): Promise<ReposGetCommitsResponse>;
+  commits(githubConfig: GithubConfig): Promise<string[]>;
 
   getCommitDetails(
     repositoryName: string,
     orgName: string,
     sha: string
-  ): Promise<ReposGetCommitResponse>;
+  ): Promise<any>;
 
-  allPullRequests(
-    repositoryName: string,
-    orgName: string
-  ): Promise<PullRequestsGetAllResponse>;
+  pullRequestForCommit(sha: string): Promise<any>;
 }

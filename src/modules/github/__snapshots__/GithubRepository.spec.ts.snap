@@ -49,5 +49,3 @@ Array [
   },
 ]
 `;
-
-exports[`GithubRepository should get pull requests 1`] = `Array []`;

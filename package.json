@@ -22,6 +22,9 @@
     "node-env-file": "^0.1.8",
     "node-fetch": "^2.3.0"
   },
+  "engines": {
+    "node": ">=8.9.0"
+  },
   "devDependencies": {
     "@types/jest": "^23.3.3",
     "@types/node": "7.0.22",

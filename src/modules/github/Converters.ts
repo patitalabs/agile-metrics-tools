@@ -1,8 +1,9 @@
-import * as Github from "@octokit/rest";
-import { GithubCommit } from "./Types";
+import {ReposGetCommitResponse} from "@octokit/rest";
+import {GithubCommit} from "./Types";
 
 export class Converters {
-  static toGithubCommit(data: Github.ReposGetCommitResponse): GithubCommit {
+  static toGithubCommit(data: ReposGetCommitResponse, commitPrResponse: any): GithubCommit {
+    //TODO use commitPrResponse
     return {
       sha: data.sha,
       createdAt: new Date(data.commit.committer.date),

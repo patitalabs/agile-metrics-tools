@@ -1,12 +1,5 @@
 import * as Github from "@octokit/rest";
-import {
-  PullRequestsGetAllParams,
-  PullRequestsGetAllResponse,
-  ReposGetCommitResponse,
-  ReposGetCommitsParams,
-  ReposGetCommitsResponse,
-  ReposGetForOrgResponse
-} from "@octokit/rest";
+import { ReposGetCommitsParams } from "@octokit/rest";
 import { GithubClient, GithubConfig } from "./Types";
 
 export class GithubClientImpl implements GithubClient {
@@ -24,34 +17,27 @@ export class GithubClientImpl implements GithubClient {
     });
   }
 
-  async repos(orgName): Promise<ReposGetForOrgResponse> {
+  async commits(githubConfig: GithubConfig): Promise<string[]> {
     this.authenticate();
-    const { data } = await this.octokit.repos.getForOrg({
-      org: orgName,
-      type: "private"
-    });
-    return data;
-  }
-
-  async commits(githubConfig: GithubConfig): Promise<ReposGetCommitsResponse> {
-    this.authenticate();
-    const searchResult = await this.searchIssues();
     const reposGetCommitsParams: ReposGetCommitsParams = {
       owner: githubConfig.orgName,
       repo: githubConfig.repositoryName,
-      since: githubConfig.since
+      since: githubConfig.since,
+      sha: "master"
     };
 
-    //TODO pagination
-    const { data } = await this.octokit.repos.getCommits(reposGetCommitsParams);
-    return data;
+    const { data: commitResponseItems } = await this.octokit.repos.getCommits(
+      reposGetCommitsParams
+    );
+    return commitResponseItems.map(commit => commit.sha);
   }
 
   async getCommitDetails(
     repositoryName: string,
     orgName: string,
     sha: string
-  ): Promise<ReposGetCommitResponse> {
+  ): Promise<any> {
+    this.authenticate();
     const commitConfig = {
       owner: orgName,
       repo: repositoryName,
@@ -61,25 +47,8 @@ export class GithubClientImpl implements GithubClient {
     return data;
   }
 
-  //TODO maybe pr time to close?
-  async searchIssues() : Promise<any> {
-    //TODO use search to get number of comments
-    return await this.octokit.search.issues({q:"gitcommitsha&is=merged&type=pr"})
-  }
-
-  async allPullRequests(
-    repositoryName: string,
-    orgName: string
-  ): Promise<PullRequestsGetAllResponse> {
-    this.authenticate();
-    const config: PullRequestsGetAllParams = {
-      owner: orgName,
-      repo: repositoryName,
-      state: "closed",
-      head: "master"
-    };
-
-    const { data } = await this.octokit.pullRequests.getAll(config);
+  async pullRequestForCommit(sha: string): Promise<any> {
+    const {data} = await this.octokit.search.issues({ q: `${sha} is:merged type:pr` });
     return data;
   }
 }
