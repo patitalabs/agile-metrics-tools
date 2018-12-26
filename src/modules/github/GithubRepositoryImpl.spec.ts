@@ -1,8 +1,8 @@
-import { GithubRepository } from "./GithubRepository";
-import { GithubClient, GithubConfig } from "./Types";
+import {GithubClient, GithubConfig, GithubRepository} from "./Types";
 import * as commitsFakeData from "./test/commits-response.json";
 import * as commitDetailsFakeData from "./test/commit-details-response.json";
 import * as commitPrFakeData from "./test/commit-pr-response.json";
+import {GithubRepositoryImpl} from "./GithubRepositoryImpl";
 
 describe("GithubRepository", () => {
   const githubClient: GithubClient = {
@@ -21,7 +21,7 @@ describe("GithubRepository", () => {
     }
   };
 
-  const githubService: GithubRepository = new GithubRepository(githubClient);
+  const githubService: GithubRepository = new GithubRepositoryImpl(githubClient);
 
   it("should get commits", async () => {
     const githubConfig: GithubConfig = {

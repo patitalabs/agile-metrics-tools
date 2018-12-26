@@ -1,5 +1,4 @@
-import { GithubRepository } from "./GithubRepository";
-import { GithubCommit, GithubConfig, GithubService } from "./Types";
+import {GithubCommit, GithubConfig, GithubRepository, GithubService} from "./Types";
 
 export class GithubServiceImpl implements GithubService {
   constructor(private githubRepository: GithubRepository) {}

@@ -2,6 +2,7 @@ import * as Github from "@octokit/rest";
 import { ReposGetCommitsParams } from "@octokit/rest";
 import { GithubClient, GithubConfig } from "./Types";
 
+//TODO deal with pagination and ratelimit
 export class GithubClientImpl implements GithubClient {
   private octokit: Github;
   private readonly token: string;

@@ -2,9 +2,9 @@ import { CollectorModuleFactory, Utils } from "../../metrics";
 import { GithubCollectorConfig, GithubMetricItem } from "./collector/Types";
 import { GithubService } from "./Types";
 import { GithubClientImpl } from "./GithubClientImpl";
-import { GithubRepository } from "./GithubRepository";
 import { GithubServiceImpl } from "./GithubServiceImpl";
 import { GithubCollectorService } from "./collector/GithubCollectorService";
+import {GithubRepositoryImpl} from "./GithubRepositoryImpl";
 
 export class GithubModuleFactory
   implements CollectorModuleFactory<GithubCollectorConfig, GithubMetricItem> {
@@ -13,7 +13,7 @@ export class GithubModuleFactory
     const githubClient = new GithubClientImpl({
       token: `${process.env.GITHUB_TOKEN}`
     });
-    const githubRepository = new GithubRepository(githubClient);
+    const githubRepository = new GithubRepositoryImpl(githubClient);
     return new GithubServiceImpl(githubRepository);
   }
 

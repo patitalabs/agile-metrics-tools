@@ -20,6 +20,10 @@ export interface GithubConfig {
   since: string;
 }
 
+export interface GithubRepository {
+  commits(githubConfig: GithubConfig): Promise<GithubCommit[]>;
+}
+
 export interface GithubService {
   commits(githubConfig: GithubConfig): Promise<GithubCommit[]>;
 }

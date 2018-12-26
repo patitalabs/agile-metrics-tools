@@ -1,7 +1,7 @@
-import { GithubClient, GithubCommit, GithubConfig } from "./Types";
+import {GithubClient, GithubCommit, GithubConfig, GithubRepository} from "./Types";
 import { Converters } from "./Converters";
 
-export class GithubRepository {
+export class GithubRepositoryImpl implements GithubRepository {
   constructor(private githubClient: GithubClient) {}
 
   async commits(githubConfig: GithubConfig): Promise<GithubCommit[]> {
