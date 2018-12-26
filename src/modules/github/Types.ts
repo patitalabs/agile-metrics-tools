@@ -5,11 +5,11 @@ export class GithubCommit {
   linesRemoved: number;
   author: string;
   message: string;
-  pullRequest?: PullRequest;
+  pullRequest?: PullRequestStats;
 }
 
-export class PullRequest {
-  id: number;
+export class PullRequestStats {
+  prId: number;
   numberOfDaysOpen: number;
   numberOfComments: number;
 }

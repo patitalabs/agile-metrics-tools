@@ -48,7 +48,9 @@ export class GithubClientImpl implements GithubClient {
   }
 
   async pullRequestForCommit(sha: string): Promise<any> {
-    const {data} = await this.octokit.search.issues({ q: `${sha} is:merged type:pr` });
+    const { data } = await this.octokit.search.issues({
+      q: `${sha} is:merged type:pr`
+    });
     return data;
   }
 }

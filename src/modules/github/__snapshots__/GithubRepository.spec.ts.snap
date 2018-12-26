@@ -9,6 +9,11 @@ Array [
     "linesRemoved": 21,
     "message": "ORG-5917
 - some comment",
+    "pullRequest": Object {
+      "numberOfComments": 2,
+      "numberOfDaysOpen": 0,
+      "prId": 177,
+    },
     "sha": "2a20a913d0159b1105e1be9f398d95a73e1a8129",
   },
   Object {
@@ -18,6 +23,11 @@ Array [
     "linesRemoved": 21,
     "message": "ORG-5917
 - some comment",
+    "pullRequest": Object {
+      "numberOfComments": 2,
+      "numberOfDaysOpen": 0,
+      "prId": 177,
+    },
     "sha": "2a20a913d0159b1105e1be9f398d95a73e1a8129",
   },
   Object {
@@ -27,6 +37,11 @@ Array [
     "linesRemoved": 21,
     "message": "ORG-5917
 - some comment",
+    "pullRequest": Object {
+      "numberOfComments": 2,
+      "numberOfDaysOpen": 0,
+      "prId": 177,
+    },
     "sha": "2a20a913d0159b1105e1be9f398d95a73e1a8129",
   },
   Object {
@@ -36,6 +51,11 @@ Array [
     "linesRemoved": 21,
     "message": "ORG-5917
 - some comment",
+    "pullRequest": Object {
+      "numberOfComments": 2,
+      "numberOfDaysOpen": 0,
+      "prId": 177,
+    },
     "sha": "2a20a913d0159b1105e1be9f398d95a73e1a8129",
   },
   Object {
@@ -45,6 +65,11 @@ Array [
     "linesRemoved": 21,
     "message": "ORG-5917
 - some comment",
+    "pullRequest": Object {
+      "numberOfComments": 2,
+      "numberOfDaysOpen": 0,
+      "prId": 177,
+    },
     "sha": "2a20a913d0159b1105e1be9f398d95a73e1a8129",
   },
 ]

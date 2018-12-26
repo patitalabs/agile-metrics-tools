@@ -29,7 +29,6 @@ export class GithubRepository {
 
     const commitPrResponse = await this.githubClient.pullRequestForCommit(sha);
 
-
     return Converters.toGithubCommit(commitDetailsResponse, commitPrResponse);
   }
 }
