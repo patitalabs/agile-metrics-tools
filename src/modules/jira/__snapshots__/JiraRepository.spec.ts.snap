@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`JiraRepository should get completedSprintsSince 1`] = `
+exports[`JiraRepositoryImpl should get completedSprintsSince 1`] = `
 Array [
   Object {
     "id": 171,
@@ -11,7 +11,7 @@ Array [
 ]
 `;
 
-exports[`JiraRepository should get issueDetails 1`] = `
+exports[`JiraRepositoryImpl should get issueDetails 1`] = `
 Object {
   "created": 2018-11-08T14:45:49.815Z,
   "createdBy": "name",
@@ -282,7 +282,7 @@ Object {
 }
 `;
 
-exports[`JiraRepository should get sprintData 1`] = `
+exports[`JiraRepositoryImpl should get sprintData 1`] = `
 Array [
   Object {
     "assignee": "pter",

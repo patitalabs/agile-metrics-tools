@@ -1,10 +1,10 @@
-import { JiraRepository } from "./JiraRepository";
 import * as issueDetailsExpanded from "./test/issue-details-expanded-response.json";
 import * as sprintFakeData from "./test/sprint-data-response.json";
 import * as completedSprints from "./test/completed-sprint-since-response.json";
-import { JiraClient, JiraConfig, Sprint } from "./Types";
+import { JiraClient, JiraConfig, JiraRepository, Sprint } from "./Types";
+import { JiraRepositoryImpl } from "./JiraRepositoryImpl";
 
-describe("JiraRepository", () => {
+describe("JiraRepositoryImpl", () => {
   const jiraClient: JiraClient = {
     getData: async (url): Promise<any> => {
       if (/\/*\/?expand=changelog/.test(url)) {
@@ -19,7 +19,7 @@ describe("JiraRepository", () => {
       return {};
     }
   };
-  const jiraRepository: JiraRepository = new JiraRepository(jiraClient);
+  const jiraRepository: JiraRepository = new JiraRepositoryImpl(jiraClient);
 
   it("should get sprintData", async () => {
     const teamId = 1;

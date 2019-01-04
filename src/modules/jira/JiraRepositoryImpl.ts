@@ -2,12 +2,13 @@ import {
   IssueDetails,
   JiraClient,
   JiraConfig,
+  JiraRepository,
   Sprint,
   SprintTask
 } from "./Types";
 import { Converters } from "./Converters";
 
-export class JiraRepository {
+export class JiraRepositoryImpl implements JiraRepository {
   constructor(private jiraClient: JiraClient) {}
 
   async issueDetailsWithChangelog(issueId: string): Promise<IssueDetails> {

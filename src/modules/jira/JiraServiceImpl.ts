@@ -1,11 +1,11 @@
 import {
   IssueDetails,
   JiraConfig,
+  JiraRepository,
   JiraService,
   Sprint,
   SprintTask
 } from "./Types";
-import { JiraRepository } from "./JiraRepository";
 
 export class JiraServiceImpl implements JiraService {
   constructor(private jiraRepository: JiraRepository) {}

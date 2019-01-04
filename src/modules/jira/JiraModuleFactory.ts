@@ -2,9 +2,9 @@ import { CollectorModuleFactory, Utils } from "../../metrics";
 import { JiraCollectorConfig, JiraMetricItem } from "./collector/Types";
 import { JiraService } from "./Types";
 import { JiraClientImpl } from "./JiraClientImpl";
-import { JiraRepository } from "./JiraRepository";
 import { JiraServiceImpl } from "./JiraServiceImpl";
 import { JiraCollectorsService } from "./collector/JiraCollectorsService";
+import { JiraRepositoryImpl } from "./JiraRepositoryImpl";
 
 export class JiraModuleFactory
   implements CollectorModuleFactory<JiraCollectorConfig, JiraMetricItem> {
@@ -14,7 +14,7 @@ export class JiraModuleFactory
       host: `${process.env.JIRA_HOST}`,
       apiToken: `${process.env.JIRA_API_TOKEN}`
     });
-    const jiraRepository = new JiraRepository(jiraClient);
+    const jiraRepository = new JiraRepositoryImpl(jiraClient);
     return new JiraServiceImpl(jiraRepository);
   }
 

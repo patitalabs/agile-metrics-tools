@@ -69,3 +69,10 @@ export interface JiraService {
 export interface JiraClient {
   getData(url: string): Promise<any>;
 }
+
+export interface JiraRepository {
+  issueDetailsWithChangelog(issueId: string): Promise<IssueDetails>;
+  sprintData(jiraConfig: JiraConfig, sprint: Sprint): Promise<SprintTask[]>;
+
+  completedSprintsSince(teamId: number, referenceDate: Date): Promise<Sprint[]>;
+}
