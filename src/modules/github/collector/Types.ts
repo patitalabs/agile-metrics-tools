@@ -6,7 +6,6 @@ export interface GithubMetricItem extends MetricItem {
   linesRemoved: number;
   author: string;
   repositoryName: string;
-  //TODO # comments in PR
 }
 
 export class GithubCollectorConfig implements CollectorConfig {

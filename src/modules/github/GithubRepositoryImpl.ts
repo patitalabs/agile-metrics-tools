@@ -1,4 +1,10 @@
-import {GithubClient, GithubCommit, GithubConfig, GithubRepository} from "./Types";
+import {
+  GithubClient,
+  GithubCommit,
+  GithubConfig,
+  GithubRepository,
+  PullRequestStats
+} from "./Types";
 import { Converters } from "./Converters";
 
 export class GithubRepositoryImpl implements GithubRepository {
@@ -29,6 +35,23 @@ export class GithubRepositoryImpl implements GithubRepository {
 
     const commitPrResponse = await this.githubClient.pullRequestForCommit(sha);
 
-    return Converters.toGithubCommit(commitDetailsResponse, commitPrResponse);
+    let pullRequestStats: PullRequestStats = null;
+    const hasAssociatedPullRequest =
+      commitPrResponse && commitPrResponse.total_count > 0;
+    if (hasAssociatedPullRequest) {
+      const linkedPr = commitPrResponse.items[0];
+
+      const prCommentsResponse = await this.githubClient.pullRequestComments({
+        owner: orgName,
+        repo: repositoryName,
+        number: linkedPr.number
+      });
+
+      pullRequestStats = Converters.pullRequestStats(
+        commitPrResponse,
+        prCommentsResponse
+      );
+    }
+    return Converters.toGithubCommit(commitDetailsResponse, pullRequestStats);
   }
 }

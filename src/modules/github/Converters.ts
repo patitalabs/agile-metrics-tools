@@ -5,7 +5,7 @@ import { Utils } from "../../metrics";
 export class Converters {
   static toGithubCommit(
     data: ReposGetCommitResponse,
-    commitPrResponse: any
+    pullRequestStats: PullRequestStats
   ): GithubCommit {
     return {
       sha: data.sha,
@@ -14,23 +14,22 @@ export class Converters {
       linesRemoved: data.stats.deletions,
       author: data.author ? data.author.login : data.commit.committer.name,
       message: data.commit.message,
-      pullRequest: Converters.pullRequestStats(commitPrResponse)
+      pullRequest: pullRequestStats
     };
   }
 
-  private static pullRequestStats(commitPrResponse: any): PullRequestStats {
-    let pullRequest: PullRequestStats = null;
-    if (commitPrResponse && commitPrResponse.total_count > 0) {
-      const linkedPr = commitPrResponse.items[0];
-      pullRequest = {
-        prId: linkedPr.number,
-        numberOfDaysOpen: Utils.daysBetween(
-          new Date(linkedPr.created_at),
-          new Date(linkedPr.closed_at)
-        ),
-        numberOfComments: linkedPr.comments
-      };
-    }
-    return pullRequest;
+  static pullRequestStats(
+    commitPrResponse: any,
+    prCommentsResponse: any
+  ): PullRequestStats {
+    const linkedPr = commitPrResponse.items[0];
+    return {
+      prId: linkedPr.number,
+      numberOfDaysOpen: Utils.daysBetween(
+        new Date(linkedPr.created_at),
+        new Date(linkedPr.closed_at)
+      ),
+      numberOfComments: linkedPr.comments + prCommentsResponse.length
+    };
   }
 }

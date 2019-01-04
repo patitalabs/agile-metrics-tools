@@ -54,4 +54,15 @@ export class GithubClientImpl implements GithubClient {
     });
     return data;
   }
+
+  async pullRequestComments({
+    owner,
+    repo,
+
+    number
+  }): Promise<any> {
+    const paramsconfig = { owner: owner, repo: repo, number: number };
+    const { data } = await this.octokit.pullRequests.getComments(paramsconfig);
+    return data;
+  }
 }

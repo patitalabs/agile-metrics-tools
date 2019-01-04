@@ -38,4 +38,11 @@ export interface GithubClient {
   ): Promise<any>;
 
   pullRequestForCommit(sha: string): Promise<any>;
+
+  pullRequestComments({
+    owner,
+    repo,
+
+    number
+  }): Promise<any>;
 }

@@ -1,27 +1,38 @@
-import {GithubClient, GithubConfig, GithubRepository} from "./Types";
+import { GithubClient, GithubConfig, GithubRepository } from "./Types";
 import * as commitsFakeData from "./test/commits-response.json";
 import * as commitDetailsFakeData from "./test/commit-details-response.json";
 import * as commitPrFakeData from "./test/commit-pr-response.json";
-import {GithubRepositoryImpl} from "./GithubRepositoryImpl";
+import * as commitPrReviewComentsFakeData from "./test/pull-request-review-comments-response.json";
+import { GithubRepositoryImpl } from "./GithubRepositoryImpl";
 
 describe("GithubRepository", () => {
   const githubClient: GithubClient = {
-    commits(githubConfig: GithubConfig): Promise<any> {
-      return Promise.resolve(commitsFakeData);
+    async commits(githubConfig: GithubConfig): Promise<any> {
+      return commitsFakeData;
     },
-    getCommitDetails(
+    async getCommitDetails(
       repositoryName: string,
       orgName: string,
       sha: string
     ): Promise<any> {
-      return Promise.resolve(commitDetailsFakeData);
+      return commitDetailsFakeData;
     },
-    pullRequestForCommit(sha: string): Promise<any> {
-      return Promise.resolve(commitPrFakeData);
+    async pullRequestForCommit(sha: string): Promise<any> {
+      return commitPrFakeData;
+    },
+    async pullRequestComments({
+      owner,
+      repo,
+
+      number
+    }): Promise<any> {
+      return commitPrReviewComentsFakeData;
     }
   };
 
-  const githubService: GithubRepository = new GithubRepositoryImpl(githubClient);
+  const githubService: GithubRepository = new GithubRepositoryImpl(
+    githubClient
+  );
 
   it("should get commits", async () => {
     const githubConfig: GithubConfig = {

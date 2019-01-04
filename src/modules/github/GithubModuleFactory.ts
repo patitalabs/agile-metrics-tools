@@ -4,7 +4,7 @@ import { GithubService } from "./Types";
 import { GithubClientImpl } from "./GithubClientImpl";
 import { GithubServiceImpl } from "./GithubServiceImpl";
 import { GithubCollectorService } from "./collector/GithubCollectorService";
-import {GithubRepositoryImpl} from "./GithubRepositoryImpl";
+import { GithubRepositoryImpl } from "./GithubRepositoryImpl";
 
 export class GithubModuleFactory
   implements CollectorModuleFactory<GithubCollectorConfig, GithubMetricItem> {

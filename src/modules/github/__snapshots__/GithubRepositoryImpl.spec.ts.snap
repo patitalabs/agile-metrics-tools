@@ -10,7 +10,7 @@ Array [
     "message": "ORG-5917
 - some comment",
     "pullRequest": Object {
-      "numberOfComments": 2,
+      "numberOfComments": 6,
       "numberOfDaysOpen": 0,
       "prId": 177,
     },
@@ -24,7 +24,7 @@ Array [
     "message": "ORG-5917
 - some comment",
     "pullRequest": Object {
-      "numberOfComments": 2,
+      "numberOfComments": 6,
       "numberOfDaysOpen": 0,
       "prId": 177,
     },
@@ -38,7 +38,7 @@ Array [
     "message": "ORG-5917
 - some comment",
     "pullRequest": Object {
-      "numberOfComments": 2,
+      "numberOfComments": 6,
       "numberOfDaysOpen": 0,
       "prId": 177,
     },
@@ -52,7 +52,7 @@ Array [
     "message": "ORG-5917
 - some comment",
     "pullRequest": Object {
-      "numberOfComments": 2,
+      "numberOfComments": 6,
       "numberOfDaysOpen": 0,
       "prId": 177,
     },
@@ -66,7 +66,7 @@ Array [
     "message": "ORG-5917
 - some comment",
     "pullRequest": Object {
-      "numberOfComments": 2,
+      "numberOfComments": 6,
       "numberOfDaysOpen": 0,
       "prId": 177,
     },
