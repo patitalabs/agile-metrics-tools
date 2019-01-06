@@ -112,6 +112,7 @@ ES_HOST=
         },
         "fields": {
           "storyPoints": "customfield_..."
+          "teamName": "customfield_..."
         }
   }
 ]
