@@ -86,11 +86,19 @@ class IssueConverter {
       : new Date();
   }
 
+  static isBug(issue): boolean {
+    return issue && issue.fields.issuetype.name === "Bug";
+  }
+
   static numberOfBugs(details: any): number {
     const linkedIssues: any[] = details.fields.issuelinks || [];
-    const linkedBugs = linkedIssues.filter(
-      issue => issue.outwardIssue.fields.issuetype.name === "Bug"
-    );
+    const linkedBugs = linkedIssues.filter(issue => {
+      return (
+        IssueConverter.isBug(issue.outwardIssue) ||
+        IssueConverter.isBug(issue.inwardIssue)
+      );
+    });
+
     return linkedBugs.length;
   }
 

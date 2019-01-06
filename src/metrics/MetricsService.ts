@@ -22,7 +22,7 @@ export class MetricsService {
             console.warn(
               `There was a problem collecting metrics for: ${JSON.stringify(
                 collectorConfig
-              )}, error:${JSON.stringify(error)}`
+              )}, error:${JSON.stringify(error)}, message:${error.message}`
             );
           }
         }
