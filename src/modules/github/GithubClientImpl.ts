@@ -61,8 +61,8 @@ export class GithubClientImpl implements GithubClient {
 
     number
   }): Promise<any> {
-    const paramsconfig = { owner: owner, repo: repo, number: number };
-    const { data } = await this.octokit.pullRequests.getComments(paramsconfig);
+    const paramsConfig = { owner: owner, repo: repo, number: number };
+    const { data } = await this.octokit.pullRequests.getComments(paramsConfig);
     return data;
   }
 }

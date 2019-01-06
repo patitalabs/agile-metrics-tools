@@ -1,5 +1,4 @@
 import {
-  IssueDetails,
   JiraConfig,
   JiraRepository,
   JiraService,
@@ -22,9 +21,5 @@ export class JiraServiceImpl implements JiraService {
     sprint: Sprint
   ): Promise<SprintTask[]> {
     return await this.jiraRepository.sprintData(jiraConfig, sprint);
-  }
-
-  issueDetails(issueId: string): Promise<IssueDetails> {
-    return this.jiraRepository.issueDetailsWithChangelog(issueId);
   }
 }

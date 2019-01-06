@@ -10,13 +10,6 @@ import {
 import { Utils } from "../../metrics";
 
 export class Converters {
-  static toSubtask(issue: any): SprintSubtask {
-    return {
-      key: issue.key,
-      statusName: issue.fields.status.name
-    };
-  }
-
   static toSprintTask(
     jiraConfig: JiraConfig,
     issue: any,
@@ -36,33 +29,17 @@ export class Converters {
     };
   }
 
-  static toHistoryItem(item): HistoryItem {
-    return {
-      field: item.field,
-      fromString: item.fromString,
-      toString: item.toString
-    };
-  }
-
-  static toHistoryEntry(history): HistoryEntry {
-    let createdDate = new Date(history.created);
-    let historyItems: HistoryItem[] = history.items.map(item => {
-      return Converters.toHistoryItem(item);
-    });
-
-    return {
-      created: createdDate,
-      items: historyItems,
-      category: historyItems.length > 0 ? historyItems[0].field : null
-    };
-  }
-
   private static storyPoints(jiraConfig: JiraConfig, issue: any): number {
-    let storyPointsField = "customfield_10005";
-    if (jiraConfig.fields && jiraConfig.fields.storyPoints) {
-      storyPointsField = jiraConfig.fields.storyPoints;
-    }
+    const storyPointsField =
+      this.configField(jiraConfig, "storyPoints") || "customfield_10005";
     return issue.fields[storyPointsField] || null;
+  }
+
+  static configField(jiraConfig: JiraConfig, nameOfField: string) {
+    if (jiraConfig.fields && jiraConfig.fields[nameOfField]) {
+      return jiraConfig.fields[nameOfField];
+    }
+    return null;
   }
 
   static toSprint(sprintData): Sprint {
@@ -74,36 +51,61 @@ export class Converters {
     };
   }
 
-  static createDetailsForIssue(details): IssueDetails {
+  static toIssueDetails(jiraConfig: JiraConfig, details: any): IssueDetails {
     return {
-      subtasks: this.issueSubtasks(details),
-      histories: Utils.mapToObj(this.issueHistories(details)),
+      subtasks: IssueConverter.subtasks(details),
+      histories: Utils.mapToObj(IssueConverter.histories(details)),
       labels: details.labels,
       created: new Date(details.fields.created),
       createdBy: details.fields.creator.name,
-      resolutionDate: details.fields.resolutiondate
-        ? new Date(details.fields.resolutiondate)
-        : new Date(),
+      resolutionDate: IssueConverter.resolutionDate(details),
       projectName: details.fields.project.name,
-      teamName: details.fields.customfield_10900.title,
-      numberOfComments: details.fields.comment
-        ? details.fields.comment.total
-        : 0
+      teamName: IssueConverter.teamName(jiraConfig, details),
+      numberOfComments: IssueConverter.numberOfComments(details),
+      numberOfBugs: IssueConverter.numberOfBugs(details)
     };
   }
+}
 
-  private static issueSubtasks(details): SprintSubtask[] {
-    return details.fields.subtasks.map(item => Converters.toSubtask(item));
+class IssueConverter {
+  static teamName(jiraConfig: JiraConfig, details: any) {
+    let teamNameField =
+      Converters.configField(jiraConfig, "teamName") || "customfield_10900";
+
+    const field = details.fields[teamNameField] || [];
+    return field.title || null;
   }
 
-  private static issueHistories(details): Map<string, HistoryEntry[]> {
+  static numberOfComments(details: any) {
+    return details.fields.comment ? details.fields.comment.total : 0;
+  }
+
+  static resolutionDate(details: any) {
+    return details.fields.resolutiondate
+      ? new Date(details.fields.resolutiondate)
+      : new Date();
+  }
+
+  static numberOfBugs(details: any): number {
+    const linkedIssues: any[] = details.fields.issuelinks || [];
+    const linkedBugs = linkedIssues.filter(
+      issue => issue.outwardIssue.fields.issuetype.name === "Bug"
+    );
+    return linkedBugs.length;
+  }
+
+  static subtasks(details): SprintSubtask[] {
+    return details.fields.subtasks.map(item => IssueConverter.toSubtask(item));
+  }
+
+  static histories(details): Map<string, HistoryEntry[]> {
     const entriesByCategory: Map<string, HistoryEntry[]> = new Map<
       string,
       HistoryEntry[]
     >();
 
     for (const history of details.changelog.histories) {
-      const historyEntry = Converters.toHistoryEntry(history);
+      const historyEntry = IssueConverter.toHistoryEntry(history);
       if (historyEntry.items.length == 0) {
         continue;
       }
@@ -117,5 +119,33 @@ export class Converters {
       historyEntries.push(historyEntry);
     }
     return entriesByCategory;
+  }
+
+  static toHistoryItem(item: any): HistoryItem {
+    return {
+      field: item.field,
+      fromString: item.fromString,
+      toString: item.toString
+    };
+  }
+
+  static toHistoryEntry(history): HistoryEntry {
+    let createdDate = new Date(history.created);
+    let historyItems: HistoryItem[] = history.items.map(item => {
+      return IssueConverter.toHistoryItem(item);
+    });
+
+    return {
+      created: createdDate,
+      items: historyItems,
+      category: historyItems.length > 0 ? historyItems[0].field : null
+    };
+  }
+
+  static toSubtask(issue: any): SprintSubtask {
+    return {
+      key: issue.key,
+      statusName: issue.fields.status.name
+    };
   }
 }

@@ -47,7 +47,8 @@ function testSprintTask(): SprintTask {
     labels: ["label1", "label2"],
     subtasks: testSubtasks(),
     histories: testHistories(),
-    numberOfComments: 4
+    numberOfComments: 4,
+    numberOfBugs: 1
   };
 }
 
@@ -62,18 +63,18 @@ function testSprint(): Sprint {
 
 describe("JiraCollectorsService", () => {
   const jiraService: JiraService = {
-    completedSprintsSince: (
+    completedSprintsSince: async (
       teamId: number,
       referenceDate: Date
     ): Promise<Sprint[]> => {
-      return Promise.resolve([testSprint()]);
+      return [testSprint()];
     },
 
-    sprintData: (
+    sprintData: async (
       jiraConfig: JiraConfig,
       sprint: Sprint
     ): Promise<SprintTask[]> => {
-      return Promise.resolve([testSprintTask()]);
+      return [testSprintTask()];
     }
   };
 

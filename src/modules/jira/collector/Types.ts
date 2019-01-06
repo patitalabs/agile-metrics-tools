@@ -17,7 +17,7 @@ export interface JiraMetricItem extends MetricItem {
   teamName: string;
   estimateHealth: number;
   rawEstimateHealth: number;
-  //TODO number of linked bugs
+  numberOfBugs: number;
 }
 
 export class JiraCollectorConfig implements CollectorConfig {

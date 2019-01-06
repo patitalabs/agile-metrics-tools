@@ -21,6 +21,11 @@ describe("JiraRepositoryImpl", () => {
   };
   const jiraRepository: JiraRepository = new JiraRepositoryImpl(jiraClient);
 
+  const jiraConfig: JiraConfig = {
+    teamId: 1,
+    since: new Date("2018-12-03")
+  };
+
   it("should get sprintData", async () => {
     const teamId = 1;
     const sprint: Sprint = {
@@ -29,10 +34,7 @@ describe("JiraRepositoryImpl", () => {
       isoStartDate: new Date("2018-12-21"),
       name: "some name"
     };
-    const jiraConfig: JiraConfig = {
-      teamId: 1,
-      since: new Date("2018-12-03")
-    };
+
     const data = await jiraRepository.sprintData(jiraConfig, sprint);
     expect(data).toMatchSnapshot();
   });
@@ -51,7 +53,10 @@ describe("JiraRepositoryImpl", () => {
   it("should get issueDetails", async () => {
     const issueId = "issue-id";
 
-    const data = await jiraRepository.issueDetailsWithChangelog(issueId);
+    const data = await jiraRepository.issueDetailsWithChangelog(
+      jiraConfig,
+      issueId
+    );
     expect(data).toMatchSnapshot();
   });
 });

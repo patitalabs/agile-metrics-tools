@@ -1,6 +1,6 @@
 import { SprintTask } from "../Types";
 import { JiraCollectorConfig, JiraMetricItem } from "./Types";
-import { Utils, TaskStatistics, SprintUtils } from "../../../metrics";
+import { SprintUtils, TaskStatistics, Utils } from "../../../metrics";
 
 export class JiraMetricConverter {
   static toMetricItem(
@@ -46,7 +46,8 @@ export class JiraMetricConverter {
       jiraProject: sprintTask.projectName,
       teamName: sprintTask.teamName,
       estimateHealth: Math.round(rawEstimateHealth),
-      rawEstimateHealth: rawEstimateHealth
+      rawEstimateHealth: rawEstimateHealth,
+      numberOfBugs: sprintTask.numberOfBugs
     };
   }
 

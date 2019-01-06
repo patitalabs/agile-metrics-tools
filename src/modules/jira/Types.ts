@@ -22,6 +22,7 @@ export class SprintTask {
   subtasks: SprintSubtask[];
   histories: { [type: string]: HistoryEntry[] };
   numberOfComments: number;
+  numberOfBugs: number;
 }
 
 export class SprintSubtask {
@@ -58,6 +59,7 @@ export interface IssueDetails {
   projectName: string;
   teamName: string;
   numberOfComments: number;
+  numberOfBugs: number;
 }
 
 export interface JiraService {
@@ -71,7 +73,10 @@ export interface JiraClient {
 }
 
 export interface JiraRepository {
-  issueDetailsWithChangelog(issueId: string): Promise<IssueDetails>;
+  issueDetailsWithChangelog(
+    jiraConfig: JiraConfig,
+    issueId: string
+  ): Promise<IssueDetails>;
   sprintData(jiraConfig: JiraConfig, sprint: Sprint): Promise<SprintTask[]>;
 
   completedSprintsSince(teamId: number, referenceDate: Date): Promise<Sprint[]>;

@@ -720,7 +720,56 @@
     "customfield_11548": null,
     "customfield_11547": null,
     "customfield_11549": null,
-    "issuelinks": [],
+    "issuelinks": [
+      {
+        "id": "41506",
+        "self": "https://jira.host/rest/api/2/issueLink/41506",
+        "type": {
+          "id": "10003",
+          "name": "Relates",
+          "inward": "relates to",
+          "outward": "relates to",
+          "self": "https://jira.host/rest/api/2/issueLinkType/10003"
+        },
+        "outwardIssue": {
+          "id": "41685",
+          "key": "ORG-5864",
+          "self": "https://jira.host/rest/api/2/issue/41685",
+          "fields": {
+            "summary": "Some summary",
+            "status": {
+              "self": "https://jira.host/rest/api/2/status/10001",
+              "description": "",
+              "iconUrl": "https://jira.host/images/icons/statuses/closed.png",
+              "name": "Done",
+              "id": "10001",
+              "statusCategory": {
+                "self": "https://jira.host/rest/api/2/statuscategory/3",
+                "id": 3,
+                "key": "done",
+                "colorName": "green",
+                "name": "Done"
+              }
+            },
+            "priority": {
+              "self": "https://jira.host/rest/api/2/priority/3",
+              "iconUrl": "https://jira.host/images/icons/priorities/medium.svg",
+              "name": "Medium",
+              "id": "3"
+            },
+            "issuetype": {
+              "self": "https://jira.host/rest/api/2/issuetype/10009",
+              "id": "10009",
+              "description": "A user story. Created by JIRA Software - do not edit or delete.",
+              "iconUrl": "https://jira.host/secure/viewavatar?size=xsmall&avatarId=10502&avatarType=issuetype",
+              "name": "Bug",
+              "subtask": false,
+              "avatarId": 10502
+            }
+          }
+        }
+      }
+    ],
     "assignee": {
       "self": "https://jira.host/rest/api/2/user?accountId=5bbf6da8d517b631d894ae17",
       "name": "name",

@@ -11,10 +11,13 @@ import { Converters } from "./Converters";
 export class JiraRepositoryImpl implements JiraRepository {
   constructor(private jiraClient: JiraClient) {}
 
-  async issueDetailsWithChangelog(issueId: string): Promise<IssueDetails> {
+  async issueDetailsWithChangelog(
+    jiraConfig: JiraConfig,
+    issueId: string
+  ): Promise<IssueDetails> {
     const url = `/rest/api/2/issue/${issueId}?expand=changelog`;
     const issueResponse = await this.jiraClient.getData(url);
-    return Converters.createDetailsForIssue(issueResponse);
+    return Converters.toIssueDetails(jiraConfig, issueResponse);
   }
 
   async sprintData(
@@ -30,7 +33,10 @@ export class JiraRepositoryImpl implements JiraRepository {
     const sprintTaskPromises: Promise<SprintTask>[] = issuesResponse
       .filter(issue => issue.fields.issuetype.name !== "Sub-task")
       .map(async issue => {
-        const issueDetails = await this.issueDetailsWithChangelog(issue.key);
+        const issueDetails = await this.issueDetailsWithChangelog(
+          jiraConfig,
+          issue.key
+        );
         return Converters.toSprintTask(jiraConfig, issue, sprint, issueDetails);
       });
     return await Promise.all(sprintTaskPromises);

@@ -20,6 +20,7 @@ Array [
     "leadTime": 4,
     "movedBackward": 0,
     "movedForward": 1,
+    "numberOfBugs": 1,
     "rawEstimateHealth": 0,
     "storyPoints": 2,
     "tags": Array [
