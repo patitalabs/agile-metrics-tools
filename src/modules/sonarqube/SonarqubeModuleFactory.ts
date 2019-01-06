@@ -2,7 +2,7 @@ import { CollectorModuleFactory, Utils } from "../../metrics";
 import { SonarCollectorConfig, SonarMetricItem } from "./collector/Types";
 import { SonarService } from "./Types";
 import { SonarClientImpl } from "./SonarClientImpl";
-import { SonarRepository } from "./SonarRepository";
+import { SonarRepositoryImpl } from "./SonarRepositoryImpl";
 import { SonarServiceImpl } from "./SonarServiceImpl";
 import { SonarCollectorsService } from "./collector/SonarCollectorsService";
 
@@ -14,7 +14,7 @@ export class SonarqubeModuleFactory
     const sonarClient = new SonarClientImpl({
       host: `${process.env.SONAR_HOST}`
     });
-    const sonarRepository = new SonarRepository(sonarClient);
+    const sonarRepository = new SonarRepositoryImpl(sonarClient);
     return new SonarServiceImpl(sonarRepository);
   }
   collectorInstance(): SonarCollectorsService {

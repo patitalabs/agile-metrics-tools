@@ -42,3 +42,7 @@ export interface SonarService {
 export interface SonarClient {
   getData(url: string): Promise<any>;
 }
+
+export interface SonarRepository {
+  projectMetrics(sonarConfig: SonarConfig): Promise<ProjectMetrics[]>;
+}

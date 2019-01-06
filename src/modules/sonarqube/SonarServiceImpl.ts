@@ -1,5 +1,9 @@
-import { SonarRepository } from "./SonarRepository";
-import { ProjectMetrics, SonarConfig, SonarService } from "./Types";
+import {
+  ProjectMetrics,
+  SonarConfig,
+  SonarRepository,
+  SonarService
+} from "./Types";
 
 export class SonarServiceImpl implements SonarService {
   constructor(private sonarRepository: SonarRepository) {}

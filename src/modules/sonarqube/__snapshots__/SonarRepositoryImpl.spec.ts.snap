@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SonarRepository should get projectMetrics 1`] = `
+exports[`SonarRepositoryImpl should get projectMetrics 1`] = `
 Array [
   Object {
     "alertStatus": "OK",
