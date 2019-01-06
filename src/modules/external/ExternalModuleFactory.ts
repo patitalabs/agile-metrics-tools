@@ -2,7 +2,7 @@ import { CollectorModuleFactory } from "../../metrics";
 import { ExternalCollectorConfig, ExternalMetricItem } from "./collector/Types";
 import { ExternalCollectorService } from "./collector/ExternalCollectorService";
 import { ExternalService } from "./Types";
-import { ExternalRepository } from "./ExternalRepository";
+import { ExternalRepositoryImpl } from "./ExternalRepositoryImpl";
 import { ExternalServiceImpl } from "./ExternalServiceImpl";
 
 export class ExternalModuleFactory
@@ -15,7 +15,7 @@ export class ExternalModuleFactory
   }
 
   private static externalService(): ExternalService {
-    const externalRepository = new ExternalRepository();
+    const externalRepository = new ExternalRepositoryImpl();
     return new ExternalServiceImpl(externalRepository);
   }
 

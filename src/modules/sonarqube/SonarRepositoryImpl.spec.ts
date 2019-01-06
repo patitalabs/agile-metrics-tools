@@ -1,7 +1,7 @@
 import { SonarRepositoryImpl } from "./SonarRepositoryImpl";
 import * as searchHistoryFakeData from "./test/search-history-response.json";
 import * as searchProjectFakeData from "./test/search-project-analysis.json";
-import { SonarClient } from "./Types";
+import { SonarClient, SonarRepository } from "./Types";
 
 describe("SonarRepositoryImpl", () => {
   const sonarClient: SonarClient = {
@@ -14,9 +14,7 @@ describe("SonarRepositoryImpl", () => {
       return {};
     }
   };
-  const sonarRepository: SonarRepositoryImpl = new SonarRepositoryImpl(
-    sonarClient
-  );
+  const sonarRepository: SonarRepository = new SonarRepositoryImpl(sonarClient);
 
   it("should get projectMetrics", async () => {
     const sonarConfig = { projectName: "someProject", since: "2018-11-20" };

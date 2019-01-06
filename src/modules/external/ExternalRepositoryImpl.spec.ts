@@ -1,8 +1,8 @@
-import { ExternalRepository } from "./ExternalRepository";
-import { ExternalConfig } from "./Types";
+import { ExternalRepositoryImpl } from "./ExternalRepositoryImpl";
+import { ExternalConfig, ExternalRepository } from "./Types";
 
-describe("ExternalRepository", () => {
-  const externalRepository: ExternalRepository = new ExternalRepository();
+describe("ExternalRepositoryImpl", () => {
+  const externalRepository: ExternalRepository = new ExternalRepositoryImpl();
 
   it("should get csv properly", async () => {
     const externalConfig: ExternalConfig = {

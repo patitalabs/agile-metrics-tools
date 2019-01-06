@@ -13,3 +13,7 @@ export class ExternalData {
 export interface ExternalService {
   fetchExternalInfo(externalConfig: ExternalConfig): Promise<ExternalData[]>;
 }
+
+export interface ExternalRepository {
+  csv(externalConfig: ExternalConfig): Promise<ExternalData[]>;
+}

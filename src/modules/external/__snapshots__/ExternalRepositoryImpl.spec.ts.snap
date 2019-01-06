@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ExternalRepository should get csv properly 1`] = `
+exports[`ExternalRepositoryImpl should get csv properly 1`] = `
 Array [
   Object {
     "createdAt": 2018-12-04T00:00:00.000Z,

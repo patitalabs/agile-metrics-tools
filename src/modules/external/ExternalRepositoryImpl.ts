@@ -1,10 +1,10 @@
-import { ExternalConfig, ExternalData } from "./Types";
+import { ExternalConfig, ExternalData, ExternalRepository } from "./Types";
 import { Converters } from "./Converters";
 import { CsvReader } from "./CsvReader";
 
-export class ExternalRepository {
+export class ExternalRepositoryImpl implements ExternalRepository {
   async csv(externalConfig: ExternalConfig): Promise<ExternalData[]> {
-    if (!ExternalRepository.isDate(externalConfig.since)) {
+    if (!ExternalRepositoryImpl.isDate(externalConfig.since)) {
       externalConfig.since = new Date(externalConfig.since);
     }
 

@@ -1,5 +1,9 @@
-import { ExternalRepository } from "./ExternalRepository";
-import { ExternalConfig, ExternalData, ExternalService } from "./Types";
+import {
+  ExternalConfig,
+  ExternalData,
+  ExternalRepository,
+  ExternalService
+} from "./Types";
 
 export class ExternalServiceImpl implements ExternalService {
   constructor(private externalRepository: ExternalRepository) {}
