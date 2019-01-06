@@ -1,8 +1,8 @@
-import { JenkinsRepository } from "./JenkinsRepository";
 import * as projectBuildDetailsResponse from "./test/project-build-details-response.json";
 import * as projectDetailsResponse from "./test/project-details-response.json";
 import * as projectListResponse from "./test/project-list-response.json";
-import { JenkinsClient } from "./Types";
+import { JenkinsClient, JenkinsRepository } from "./Types";
+import { JenkinsRepositoryImpl } from "./JenkinsRepositoryImpl";
 
 describe("JenkinsRepository", () => {
   const jenkinsClient: JenkinsClient = {
@@ -15,7 +15,7 @@ describe("JenkinsRepository", () => {
       return projectListResponse;
     }
   };
-  const jenkinsRepository: JenkinsRepository = new JenkinsRepository(
+  const jenkinsRepository: JenkinsRepository = new JenkinsRepositoryImpl(
     jenkinsClient
   );
 

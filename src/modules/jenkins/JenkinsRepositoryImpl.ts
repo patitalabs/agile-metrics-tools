@@ -1,7 +1,12 @@
-import { JenkinsBuild, JenkinsClient, JenkinsJob } from "./Types";
+import {
+  JenkinsBuild,
+  JenkinsClient,
+  JenkinsJob,
+  JenkinsRepository
+} from "./Types";
 import { Converters } from "./Converters";
 
-export class JenkinsRepository {
+export class JenkinsRepositoryImpl implements JenkinsRepository {
   constructor(private jenkinsClient: JenkinsClient) {}
 
   async jobDetails(

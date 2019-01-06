@@ -1,5 +1,4 @@
-import { JenkinsRepository } from "./JenkinsRepository";
-import { JenkinsJob, JenkinsService } from "./Types";
+import { JenkinsJob, JenkinsRepository, JenkinsService } from "./Types";
 
 export class JenkinsServiceImpl implements JenkinsService {
   constructor(private jenkinsRepository: JenkinsRepository) {}

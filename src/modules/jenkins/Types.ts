@@ -26,3 +26,7 @@ export interface JenkinsService {
 export interface JenkinsClient {
   getData(url): Promise<any>;
 }
+
+export interface JenkinsRepository {
+  jobDetails(orgName: string, projectName, since: Date): Promise<JenkinsJob>;
+}
