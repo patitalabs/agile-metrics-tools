@@ -15,8 +15,8 @@ function testCommit(): GithubCommit {
 
 describe("GithubCollectorsService", () => {
   const githubService: GithubService = {
-    commits: (githubConfig: GithubConfig): Promise<GithubCommit[]> => {
-      return Promise.resolve([testCommit()]);
+    commits: async (githubConfig: GithubConfig): Promise<GithubCommit[]> => {
+      return [testCommit()];
     }
   };
 

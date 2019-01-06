@@ -38,9 +38,10 @@ function testProjectMetric(): ProjectMetrics {
 
 describe("SonarCollectorsService", () => {
   const sonarService: SonarService = {
-    projectMetrics: (sonarConfig: SonarConfig): Promise<ProjectMetrics[]> => {
-      const projectMetrics = [testProjectMetric()];
-      return Promise.resolve(projectMetrics);
+    projectMetrics: async (
+      sonarConfig: SonarConfig
+    ): Promise<ProjectMetrics[]> => {
+      return [testProjectMetric()];
     }
   };
 

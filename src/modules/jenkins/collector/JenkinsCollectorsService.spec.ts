@@ -23,12 +23,12 @@ function testJenkinsJob(): JenkinsJob {
 
 describe("JenkinsCollectorsService", () => {
   const jenkinsService: JenkinsService = {
-    findData: (
+    findData: async (
       orgName: string,
       projectName: string,
       since: Date
     ): Promise<JenkinsJob> => {
-      return Promise.resolve(testJenkinsJob());
+      return testJenkinsJob();
     }
   };
 

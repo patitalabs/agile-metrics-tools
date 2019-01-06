@@ -13,10 +13,10 @@ function testExternalData(): ExternalData {
 
 describe("ExternalCollectorsService", () => {
   const externalService: ExternalService = {
-    fetchExternalInfo: (
+    fetchExternalInfo: async (
       externalConfig: ExternalConfig
     ): Promise<ExternalData[]> => {
-      return Promise.resolve([testExternalData()]);
+      return [testExternalData()];
     }
   };
 
