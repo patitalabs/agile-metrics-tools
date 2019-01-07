@@ -25,6 +25,7 @@ export class JiraCollectorConfig implements CollectorConfig {
   since: Date;
   workFlowMap?: { [name: string]: number };
   fields?: { [name: string]: string };
+  estimateConfig?: { maxTime: number; estimationValues: number[] };
 
   constructor({ teamId, since, workFlowMap, fields }) {
     this.teamId = teamId;

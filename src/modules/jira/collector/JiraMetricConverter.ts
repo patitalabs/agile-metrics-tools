@@ -21,12 +21,11 @@ export class JiraMetricConverter {
       sprintTask.resolutionDate
     );
 
-    const rawEstimateHealth = SprintUtils.estimateHealth({
-      estimate: sprintTask.storyPoints,
-      actualTime: devTime,
-      maxTime: 8,
-      estimationValues: [1, 2, 3, 5, 8]
-    });
+    const rawEstimateHealth = this.rawEstimateHealth(
+      jiraCollectorConfig,
+      sprintTask.storyPoints,
+      devTime
+    );
     return {
       id: Utils.toHash(`${sprintTask.projectName}-${sprintTask.key}`),
       dataType: "PTS",
@@ -49,6 +48,25 @@ export class JiraMetricConverter {
       rawEstimateHealth: rawEstimateHealth,
       numberOfBugs: sprintTask.numberOfBugs
     };
+  }
+
+  private static rawEstimateHealth(
+    jiraCollectorConfig: JiraCollectorConfig,
+    storyPoints: number,
+    devTime
+  ) {
+    const defaultEstimateConfig = this.defaultEstimateConfig();
+    const estimateConfig =
+      jiraCollectorConfig.estimateConfig || defaultEstimateConfig;
+
+    return SprintUtils.estimateHealth({
+      estimate: storyPoints,
+      actualTime: devTime,
+      maxTime: estimateConfig.maxTime || defaultEstimateConfig.maxTime,
+      estimationValues:
+        estimateConfig.estimationValues ||
+        defaultEstimateConfig.estimationValues
+    });
   }
 
   private static taskStatistics(
@@ -113,6 +131,13 @@ export class JiraMetricConverter {
       "Po Review": 5,
       Closed: 6,
       Done: 7
+    };
+  }
+
+  private static defaultEstimateConfig() {
+    return {
+      maxTime: 8,
+      estimationValues: [1, 2, 3, 5, 8]
     };
   }
 }

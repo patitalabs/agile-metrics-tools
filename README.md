@@ -113,6 +113,10 @@ ES_HOST=
         "fields": {
           "storyPoints": "customfield_..."
           "teamName": "customfield_..."
+        },
+        "estimateConfig": {
+            "maxTime": 8,
+            "estimationValues": [1, 2, 3, 5, 8]
         }
   }
 ]
