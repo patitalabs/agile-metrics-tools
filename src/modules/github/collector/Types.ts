@@ -6,6 +6,11 @@ export interface GithubMetricItem extends MetricItem {
   linesRemoved: number;
   author: string;
   repositoryName: string;
+  pullRequest?: {
+    prId: number;
+    numberOfDaysOpen: number;
+    numberOfComments: number;
+  };
 }
 
 export class GithubCollectorConfig implements CollectorConfig {
