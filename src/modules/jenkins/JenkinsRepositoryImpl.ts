@@ -3,8 +3,8 @@ import {
   JenkinsClient,
   JenkinsJob,
   JenkinsRepository
-} from "./Types";
-import { Converters } from "./Converters";
+} from './Types';
+import { Converters } from './Converters';
 
 export class JenkinsRepositoryImpl implements JenkinsRepository {
   constructor(private jenkinsClient: JenkinsClient) {}

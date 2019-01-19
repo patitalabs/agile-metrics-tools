@@ -1,17 +1,17 @@
-import { ExternalCollectorService } from "./ExternalCollectorService";
-import { ExternalCollectorConfig } from "./Types";
-import { ExternalConfig, ExternalData, ExternalService } from "../Types";
+import { ExternalCollectorService } from './ExternalCollectorService';
+import { ExternalCollectorConfig } from './Types';
+import { ExternalConfig, ExternalData, ExternalService } from '../Types';
 
 function testExternalData(): ExternalData {
   return {
-    createdAt: new Date("2018-12-06"),
-    field1: "someAdditionalData",
+    createdAt: new Date('2018-12-06'),
+    field1: 'someAdditionalData',
     field2: 4,
-    field3: new Date("2018-12-07")
+    field3: new Date('2018-12-07')
   };
 }
 
-describe("ExternalCollectorsService", () => {
+describe('ExternalCollectorsService', () => {
   const externalService: ExternalService = {
     fetchExternalInfo: async (
       externalConfig: ExternalConfig
@@ -24,14 +24,14 @@ describe("ExternalCollectorsService", () => {
     externalService
   );
 
-  it("should fetch githubMetrics", async () => {
+  it('should fetch githubMetrics', async () => {
     const externalCollectorConfig: ExternalCollectorConfig = new ExternalCollectorConfig(
       {
-        since: "2018-11-20",
-        type: "someType",
-        srcType: "file",
-        srcPath: "some/path",
-        metricType: "someType"
+        since: '2018-11-20',
+        type: 'someType',
+        srcType: 'file',
+        srcPath: 'some/path',
+        metricType: 'someType'
       }
     );
 

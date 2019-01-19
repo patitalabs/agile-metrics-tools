@@ -1,5 +1,5 @@
-import { Utils } from "../Utils";
-import { SprintHealthEstimate } from "./SprintHealthEstimate";
+import { Utils } from '../Utils';
+import { SprintHealthEstimate } from './SprintHealthEstimate';
 
 export class SprintUtils {
   static devTime(movedToDev: Date, resolutionDate: Date): number {

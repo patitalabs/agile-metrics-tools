@@ -4,7 +4,7 @@ import {
   JiraService,
   Sprint,
   SprintTask
-} from "./Types";
+} from './Types';
 
 export class JiraServiceImpl implements JiraService {
   constructor(private jiraRepository: JiraRepository) {}

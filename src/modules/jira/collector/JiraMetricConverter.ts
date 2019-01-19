@@ -1,6 +1,6 @@
-import { SprintTask } from "../Types";
-import { JiraCollectorConfig, JiraMetricItem } from "./Types";
-import { SprintUtils, TaskStatistics, Utils } from "../../../metrics";
+import { SprintTask } from '../Types';
+import { JiraCollectorConfig, JiraMetricItem } from './Types';
+import { SprintUtils, TaskStatistics, Utils } from '../../../metrics';
 
 export class JiraMetricConverter {
   static toMetricItem(
@@ -28,7 +28,7 @@ export class JiraMetricConverter {
     );
     return {
       id: Utils.toHash(`${sprintTask.projectName}-${sprintTask.key}`),
-      dataType: "PTS",
+      dataType: 'PTS',
       createdAt: sprintTask.created,
       key: sprintTask.key,
       createdBy: sprintTask.createdBy,
@@ -125,10 +125,10 @@ export class JiraMetricConverter {
   private static defaultWorkFlowMap() {
     return {
       Open: 1,
-      "On Hold": 2,
-      "In Progress": 3,
-      "Code Review": 4,
-      "Po Review": 5,
+      'On Hold': 2,
+      'In Progress': 3,
+      'Code Review': 4,
+      'Po Review': 5,
       Closed: 6,
       Done: 7
     };

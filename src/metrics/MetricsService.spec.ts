@@ -1,9 +1,9 @@
-import { MetricsService } from "./MetricsService";
-import { ElasticSearchService } from "../es";
-import { CollectorConfig, CollectorService, MetricItem } from "./Types";
-import { MetricsConfig } from "../Types";
+import { MetricsService } from './MetricsService';
+import { ElasticSearchService } from '../es';
+import { CollectorConfig, CollectorService, MetricItem } from './Types';
+import { MetricsConfig } from '../Types';
 
-describe("MetricsService", () => {
+describe('MetricsService', () => {
   const elasticSearchService: ElasticSearchService = {
     push: (payload: MetricItem): Promise<any> => {
       return;
@@ -14,9 +14,9 @@ describe("MetricsService", () => {
     fetch: async (config: CollectorConfig): Promise<MetricItem[]> => {
       return [
         {
-          id: "someId",
-          dataType: "someDataType",
-          createdAt: new Date("2018-12-03")
+          id: 'someId',
+          dataType: 'someDataType',
+          createdAt: new Date('2018-12-03')
         }
       ];
     },
@@ -29,8 +29,8 @@ describe("MetricsService", () => {
     fakeCollector
   ];
 
-  it("should process githubMetrics", async () => {
-    const spy = jest.spyOn(elasticSearchService, "push");
+  it('should process githubMetrics', async () => {
+    const spy = jest.spyOn(elasticSearchService, 'push');
 
     const metricsService: MetricsService = new MetricsService(
       elasticSearchService,

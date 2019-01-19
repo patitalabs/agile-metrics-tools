@@ -1,5 +1,5 @@
-import { JenkinsBuild, JenkinsJob } from "./Types";
-import { Utils } from "../../metrics";
+import { JenkinsBuild, JenkinsJob } from './Types';
+import { Utils } from '../../metrics';
 
 export class Converters {
   static toJenkinsJob(jobDetails, builds): JenkinsJob {
@@ -30,7 +30,7 @@ export class Converters {
   private static causedBy(jobDetails): string {
     let jenkinsCulprits = jobDetails.culprits || [];
     const culprits = jenkinsCulprits.map(culprit => culprit.fullName);
-    return culprits.join("; ");
+    return culprits.join('; ');
   }
 
   private static commitDetails(jobDetails): CommitDetails {
@@ -38,8 +38,8 @@ export class Converters {
       changeSet => changeSet.items,
       jobDetails.changeSets || []
     );
-    let revision = "";
-    let revisionDescription = "";
+    let revision = '';
+    let revisionDescription = '';
     if (changeSetDetails.length > 0) {
       let firstChangeSet = changeSetDetails[0];
       revision = firstChangeSet.commitId;

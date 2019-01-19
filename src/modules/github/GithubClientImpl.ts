@@ -1,6 +1,6 @@
-import * as Github from "@octokit/rest";
-import { ReposGetCommitsParams } from "@octokit/rest";
-import { GithubClient, GithubConfig } from "./Types";
+import * as Github from '@octokit/rest';
+import { ReposGetCommitsParams } from '@octokit/rest';
+import { GithubClient, GithubConfig } from './Types';
 
 //TODO deal with pagination and ratelimit
 export class GithubClientImpl implements GithubClient {
@@ -13,7 +13,7 @@ export class GithubClientImpl implements GithubClient {
 
   private authenticate() {
     this.octokit.authenticate({
-      type: "token",
+      type: 'token',
       token: this.token
     });
   }
@@ -24,7 +24,7 @@ export class GithubClientImpl implements GithubClient {
       owner: githubConfig.orgName,
       repo: githubConfig.repositoryName,
       since: githubConfig.since,
-      sha: "master"
+      sha: 'master'
     };
 
     const { data: commitResponseItems } = await this.octokit.repos.getCommits(

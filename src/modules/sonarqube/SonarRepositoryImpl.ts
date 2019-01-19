@@ -1,10 +1,10 @@
-import { Converters } from "./Converters";
+import { Converters } from './Converters';
 import {
   ProjectMetrics,
   SonarClient,
   SonarConfig,
   SonarRepository
-} from "./Types";
+} from './Types';
 
 export class SonarRepositoryImpl implements SonarRepository {
   constructor(private sonarClient: SonarClient) {}

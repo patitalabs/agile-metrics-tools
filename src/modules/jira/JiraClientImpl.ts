@@ -1,5 +1,5 @@
-import * as fetch from "node-fetch";
-import { JiraClient } from "./Types";
+import * as fetch from 'node-fetch';
+import { JiraClient } from './Types';
 
 export class JiraClientImpl implements JiraClient {
   private readonly host: string;
@@ -15,8 +15,8 @@ export class JiraClientImpl implements JiraClient {
     const authToken = `Basic ${this.apiToken}`;
 
     const config = {
-      method: "get",
-      headers: { "Content-Type": "application/json", Authorization: authToken }
+      method: 'get',
+      headers: { 'Content-Type': 'application/json', Authorization: authToken }
     };
     const response = await fetch(fullUrl, config);
     return response.json();

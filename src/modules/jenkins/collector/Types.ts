@@ -1,4 +1,4 @@
-import { CollectorConfig, MetricItem } from "../../../metrics";
+import { CollectorConfig, MetricItem } from '../../../metrics';
 
 export interface JenkinsMetricItem extends MetricItem {
   jenkinsUrl: string;

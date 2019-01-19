@@ -1,9 +1,9 @@
-import { CollectorModuleFactory } from "../../metrics";
-import { ExternalCollectorConfig, ExternalMetricItem } from "./collector/Types";
-import { ExternalCollectorService } from "./collector/ExternalCollectorService";
-import { ExternalService } from "./Types";
-import { ExternalRepositoryImpl } from "./ExternalRepositoryImpl";
-import { ExternalServiceImpl } from "./ExternalServiceImpl";
+import { CollectorModuleFactory } from '../../metrics';
+import { ExternalCollectorConfig, ExternalMetricItem } from './collector/Types';
+import { ExternalCollectorService } from './collector/ExternalCollectorService';
+import { ExternalService } from './Types';
+import { ExternalRepositoryImpl } from './ExternalRepositoryImpl';
+import { ExternalServiceImpl } from './ExternalServiceImpl';
 
 export class ExternalModuleFactory
   implements

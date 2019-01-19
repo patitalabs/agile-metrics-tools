@@ -1,10 +1,10 @@
-import { AppConfig, AppContext, ModuleConfig } from "./Types";
-import { CollectorConfig, CollectorModuleFactory, Utils } from "./metrics";
-import { GithubModuleFactory } from "./modules/github";
-import { JiraModuleFactory } from "./modules/jira";
-import { JenkinsModuleFactory } from "./modules/jenkins";
-import { SonarqubeModuleFactory } from "./modules/sonarqube";
-import { ExternalModuleFactory } from "./modules/external";
+import { AppConfig, AppContext, ModuleConfig } from './Types';
+import { CollectorConfig, CollectorModuleFactory, Utils } from './metrics';
+import { GithubModuleFactory } from './modules/github';
+import { JiraModuleFactory } from './modules/jira';
+import { JenkinsModuleFactory } from './modules/jenkins';
+import { SonarqubeModuleFactory } from './modules/sonarqube';
+import { ExternalModuleFactory } from './modules/external';
 
 interface ModuleFactoryMappings {
   [type: string]: CollectorModuleFactory<any, any>;

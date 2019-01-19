@@ -1,5 +1,5 @@
-import * as crypto from "crypto";
-const INIT_VECTOR = "someSecret";
+import * as crypto from 'crypto';
+const INIT_VECTOR = 'someSecret';
 
 export class Utils {
   static enrichWith<T>(
@@ -36,14 +36,14 @@ export class Utils {
   }
 
   static toBase64(theText: string): string {
-    return Buffer.from(theText).toString("base64");
+    return Buffer.from(theText).toString('base64');
   }
 
   static toHash(theText: string): string {
     return crypto
-      .createHmac("sha256", INIT_VECTOR)
+      .createHmac('sha256', INIT_VECTOR)
       .update(theText)
-      .digest("hex");
+      .digest('hex');
   }
 
   static concat(x: [], y: []) {

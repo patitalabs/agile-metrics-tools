@@ -1,7 +1,7 @@
-import { MetricsService } from "./metrics";
-import { AppContext } from "./Types";
-import { ElasticSearch } from "./es";
-import { AppContextFactory } from "./AppContextFactory";
+import { MetricsService } from './metrics';
+import { AppContext } from './Types';
+import { ElasticSearch } from './es';
+import { AppContextFactory } from './AppContextFactory';
 
 export class AppFactory {
   static async appContextFrom(fileConfigPath: string): Promise<AppContext> {

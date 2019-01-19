@@ -1,7 +1,7 @@
-import { GithubMetricConverter } from "./GithubMetricConverter";
-import { CollectorService } from "../../../metrics";
-import { GithubCollectorConfig, GithubMetricItem } from "./Types";
-import { GithubService } from "../Types";
+import { GithubMetricConverter } from './GithubMetricConverter';
+import { CollectorService } from '../../../metrics';
+import { GithubCollectorConfig, GithubMetricItem } from './Types';
+import { GithubService } from '../Types';
 
 export class GithubCollectorService
   implements CollectorService<GithubCollectorConfig, GithubMetricItem> {

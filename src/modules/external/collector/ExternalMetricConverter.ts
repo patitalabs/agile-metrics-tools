@@ -1,6 +1,6 @@
-import { ExternalCollectorConfig, ExternalMetricItem } from "./Types";
-import { ExternalData } from "../Types";
-import { Utils } from "../../../metrics";
+import { ExternalCollectorConfig, ExternalMetricItem } from './Types';
+import { ExternalData } from '../Types';
+import { Utils } from '../../../metrics';
 
 export class ExternalMetricConverter {
   static toMetricItem(

@@ -3,7 +3,7 @@ import {
   ExternalData,
   ExternalRepository,
   ExternalService
-} from "./Types";
+} from './Types';
 
 export class ExternalServiceImpl implements ExternalService {
   constructor(private externalRepository: ExternalRepository) {}
@@ -11,7 +11,7 @@ export class ExternalServiceImpl implements ExternalService {
   async fetchExternalInfo(
     externalConfig: ExternalConfig
   ): Promise<ExternalData[]> {
-    if (externalConfig.type === "csv") {
+    if (externalConfig.type === 'csv') {
       return this.externalRepository.csv(externalConfig);
     }
     return [];

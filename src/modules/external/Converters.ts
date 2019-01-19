@@ -1,4 +1,4 @@
-import { ExternalData } from "./Types";
+import { ExternalData } from './Types';
 
 export class Converters {
   static toExternalData(jsonObj): ExternalData {

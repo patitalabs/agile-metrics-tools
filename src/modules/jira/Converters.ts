@@ -6,8 +6,8 @@ import {
   Sprint,
   SprintSubtask,
   SprintTask
-} from "./Types";
-import { Utils } from "../../metrics";
+} from './Types';
+import { Utils } from '../../metrics';
 
 export class Converters {
   static toSprintTask(
@@ -31,7 +31,7 @@ export class Converters {
 
   private static storyPoints(jiraConfig: JiraConfig, issue: any): number {
     const storyPointsField =
-      this.configField(jiraConfig, "storyPoints") || "customfield_10005";
+      this.configField(jiraConfig, 'storyPoints') || 'customfield_10005';
     return issue.fields[storyPointsField] || null;
   }
 
@@ -70,7 +70,7 @@ export class Converters {
 class IssueConverter {
   static teamName(jiraConfig: JiraConfig, details: any) {
     let teamNameField =
-      Converters.configField(jiraConfig, "teamName") || "customfield_10900";
+      Converters.configField(jiraConfig, 'teamName') || 'customfield_10900';
 
     const field = details.fields[teamNameField] || [];
     return field.title || null;
@@ -87,7 +87,7 @@ class IssueConverter {
   }
 
   static isBug(issue): boolean {
-    return issue && issue.fields.issuetype.name === "Bug";
+    return issue && issue.fields.issuetype.name === 'Bug';
   }
 
   static numberOfBugs(details: any): number {

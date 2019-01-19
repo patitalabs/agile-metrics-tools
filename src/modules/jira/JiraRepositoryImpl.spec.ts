@@ -1,10 +1,10 @@
-import * as issueDetailsExpanded from "./test/issue-details-expanded-response.json";
-import * as sprintFakeData from "./test/sprint-data-response.json";
-import * as completedSprints from "./test/completed-sprint-since-response.json";
-import { JiraClient, JiraConfig, JiraRepository, Sprint } from "./Types";
-import { JiraRepositoryImpl } from "./JiraRepositoryImpl";
+import * as issueDetailsExpanded from './test/issue-details-expanded-response.json';
+import * as sprintFakeData from './test/sprint-data-response.json';
+import * as completedSprints from './test/completed-sprint-since-response.json';
+import { JiraClient, JiraConfig, JiraRepository, Sprint } from './Types';
+import { JiraRepositoryImpl } from './JiraRepositoryImpl';
 
-describe("JiraRepositoryImpl", () => {
+describe('JiraRepositoryImpl', () => {
   const jiraClient: JiraClient = {
     getData: async (url): Promise<any> => {
       if (/\/*\/?expand=changelog/.test(url)) {
@@ -23,25 +23,25 @@ describe("JiraRepositoryImpl", () => {
 
   const jiraConfig: JiraConfig = {
     teamId: 1,
-    since: new Date("2018-12-03")
+    since: new Date('2018-12-03')
   };
 
-  it("should get sprintData", async () => {
+  it('should get sprintData', async () => {
     const teamId = 1;
     const sprint: Sprint = {
       id: 2,
-      isoEndDate: new Date("2018-12-14"),
-      isoStartDate: new Date("2018-12-21"),
-      name: "some name"
+      isoEndDate: new Date('2018-12-14'),
+      isoStartDate: new Date('2018-12-21'),
+      name: 'some name'
     };
 
     const data = await jiraRepository.sprintData(jiraConfig, sprint);
     expect(data).toMatchSnapshot();
   });
 
-  it("should get completedSprintsSince", async () => {
+  it('should get completedSprintsSince', async () => {
     const teamId = 1;
-    const referenceDate: Date = new Date("2018-12-03");
+    const referenceDate: Date = new Date('2018-12-03');
 
     const data = await jiraRepository.completedSprintsSince(
       teamId,
@@ -50,8 +50,8 @@ describe("JiraRepositoryImpl", () => {
     expect(data).toMatchSnapshot();
   });
 
-  it("should get issueDetails", async () => {
-    const issueId = "issue-id";
+  it('should get issueDetails', async () => {
+    const issueId = 'issue-id';
 
     const data = await jiraRepository.issueDetailsWithChangelog(
       jiraConfig,

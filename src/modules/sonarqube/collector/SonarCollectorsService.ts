@@ -1,7 +1,7 @@
-import { SonarMetricConverter } from "./SonarMetricConverter";
-import { CollectorService } from "../../../metrics";
-import { SonarCollectorConfig, SonarMetricItem } from "./Types";
-import { SonarService } from "../Types";
+import { SonarMetricConverter } from './SonarMetricConverter';
+import { CollectorService } from '../../../metrics';
+import { SonarCollectorConfig, SonarMetricItem } from './Types';
+import { SonarService } from '../Types';
 
 export class SonarCollectorsService
   implements CollectorService<SonarCollectorConfig, SonarMetricItem> {

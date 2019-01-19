@@ -1,7 +1,7 @@
-import { JenkinsMetricConverter } from "./JenkinsMetricConverter";
-import { CollectorService } from "../../../metrics";
-import { JenkinsCollectorConfig, JenkinsMetricItem } from "./Types";
-import { JenkinsService } from "../Types";
+import { JenkinsMetricConverter } from './JenkinsMetricConverter';
+import { CollectorService } from '../../../metrics';
+import { JenkinsCollectorConfig, JenkinsMetricItem } from './Types';
+import { JenkinsService } from '../Types';
 
 export class JenkinsCollectorsService
   implements CollectorService<JenkinsCollectorConfig, JenkinsMetricItem> {

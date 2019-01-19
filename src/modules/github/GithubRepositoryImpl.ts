@@ -4,8 +4,8 @@ import {
   GithubConfig,
   GithubRepository,
   PullRequestStats
-} from "./Types";
-import { Converters } from "./Converters";
+} from './Types';
+import { Converters } from './Converters';
 
 export class GithubRepositoryImpl implements GithubRepository {
   constructor(private githubClient: GithubClient) {}

@@ -3,7 +3,7 @@ import {
   GithubConfig,
   GithubRepository,
   GithubService
-} from "./Types";
+} from './Types';
 
 export class GithubServiceImpl implements GithubService {
   constructor(private githubRepository: GithubRepository) {}

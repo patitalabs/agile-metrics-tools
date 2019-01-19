@@ -1,6 +1,6 @@
-import { MetricItem } from "../metrics";
-import { ElasticSearchService } from "./Types";
-import { ElasticSearchRepository } from "./ElasticSearchRepository";
+import { MetricItem } from '../metrics';
+import { ElasticSearchService } from './Types';
+import { ElasticSearchRepository } from './ElasticSearchRepository';
 
 export class ElasticSearchServiceImpl implements ElasticSearchService {
   constructor(
@@ -20,7 +20,7 @@ export class ElasticSearchServiceImpl implements ElasticSearchService {
     );
 
     if (entryExists) {
-      console.info("Item already exists..." + JSON.stringify(payload));
+      console.info('Item already exists...' + JSON.stringify(payload));
       return;
     }
 

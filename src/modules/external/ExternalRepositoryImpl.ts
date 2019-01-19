@@ -1,6 +1,6 @@
-import { ExternalConfig, ExternalData, ExternalRepository } from "./Types";
-import { Converters } from "./Converters";
-import { CsvReader } from "./CsvReader";
+import { ExternalConfig, ExternalData, ExternalRepository } from './Types';
+import { Converters } from './Converters';
+import { CsvReader } from './CsvReader';
 
 export class ExternalRepositoryImpl implements ExternalRepository {
   async csv(externalConfig: ExternalConfig): Promise<ExternalData[]> {
@@ -8,7 +8,7 @@ export class ExternalRepositoryImpl implements ExternalRepository {
       externalConfig.since = new Date(externalConfig.since);
     }
 
-    if (externalConfig.srcType === "file") {
+    if (externalConfig.srcType === 'file') {
       const externalConfigurations = await CsvReader.readFromCsv(
         externalConfig
       );

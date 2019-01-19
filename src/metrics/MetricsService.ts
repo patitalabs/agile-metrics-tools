@@ -1,6 +1,6 @@
-import { ElasticSearchService } from "../es";
-import { MetricsConfig } from "../Types";
-import { CollectorConfig, CollectorService, MetricItem } from "./Types";
+import { ElasticSearchService } from '../es';
+import { MetricsConfig } from '../Types';
+import { CollectorConfig, CollectorService, MetricItem } from './Types';
 
 export class MetricsService {
   constructor(

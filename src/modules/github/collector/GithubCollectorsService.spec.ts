@@ -1,19 +1,19 @@
-import { GithubCollectorConfig } from "./Types";
-import { GithubCommit, GithubConfig, GithubService } from "../Types";
-import { GithubCollectorService } from "./GithubCollectorService";
+import { GithubCollectorConfig } from './Types';
+import { GithubCommit, GithubConfig, GithubService } from '../Types';
+import { GithubCollectorService } from './GithubCollectorService';
 
 function testCommit(): GithubCommit {
   return {
-    sha: "someSha",
-    createdAt: new Date("2018-12-06"),
+    sha: 'someSha',
+    createdAt: new Date('2018-12-06'),
     linesAdded: 30,
     linesRemoved: 6,
-    author: "someAuthor",
-    message: "someMessage"
+    author: 'someAuthor',
+    message: 'someMessage'
   };
 }
 
-describe("GithubCollectorsService", () => {
+describe('GithubCollectorsService', () => {
   const githubService: GithubService = {
     commits: async (githubConfig: GithubConfig): Promise<GithubCommit[]> => {
       return [testCommit()];
@@ -24,12 +24,12 @@ describe("GithubCollectorsService", () => {
     githubService
   );
 
-  it("should fetch githubMetrics", async () => {
+  it('should fetch githubMetrics', async () => {
     const githubCollectorConfig: GithubCollectorConfig = new GithubCollectorConfig(
       {
-        repositoryName: "someRepoName",
-        orgName: "someOrgName",
-        since: "2018-11-20"
+        repositoryName: 'someRepoName',
+        orgName: 'someOrgName',
+        since: '2018-11-20'
       }
     );
 

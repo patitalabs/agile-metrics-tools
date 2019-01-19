@@ -5,8 +5,8 @@ import {
   JiraRepository,
   Sprint,
   SprintTask
-} from "./Types";
-import { Converters } from "./Converters";
+} from './Types';
+import { Converters } from './Converters';
 
 export class JiraRepositoryImpl implements JiraRepository {
   constructor(private jiraClient: JiraClient) {}
@@ -31,7 +31,7 @@ export class JiraRepositoryImpl implements JiraRepository {
     const { issues: issuesResponse } = await this.jiraClient.getData(url);
 
     const sprintTaskPromises: Promise<SprintTask>[] = issuesResponse
-      .filter(issue => issue.fields.issuetype.name !== "Sub-task")
+      .filter(issue => issue.fields.issuetype.name !== 'Sub-task')
       .map(async issue => {
         const issueDetails = await this.issueDetailsWithChangelog(
           jiraConfig,

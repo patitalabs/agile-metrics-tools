@@ -1,4 +1,4 @@
-import { CollectorConfig, MetricItem } from "../../../metrics";
+import { CollectorConfig, MetricItem } from '../../../metrics';
 
 export interface JiraMetricItem extends MetricItem {
   key: string;

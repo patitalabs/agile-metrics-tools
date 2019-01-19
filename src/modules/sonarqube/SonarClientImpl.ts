@@ -1,5 +1,5 @@
-import * as fetch from "node-fetch";
-import { SonarClient } from "./Types";
+import * as fetch from 'node-fetch';
+import { SonarClient } from './Types';
 
 export class SonarClientImpl implements SonarClient {
   private readonly host: string;
@@ -11,8 +11,8 @@ export class SonarClientImpl implements SonarClient {
     const fullUrl = `${this.host}${url}`;
 
     const config = {
-      method: "get",
-      headers: { "Content-Type": "application/json" }
+      method: 'get',
+      headers: { 'Content-Type': 'application/json' }
     };
     const data = await fetch(fullUrl, config);
     return data.json();

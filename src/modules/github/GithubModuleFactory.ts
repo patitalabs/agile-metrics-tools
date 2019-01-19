@@ -1,15 +1,15 @@
-import { CollectorModuleFactory, Utils } from "../../metrics";
-import { GithubCollectorConfig, GithubMetricItem } from "./collector/Types";
-import { GithubService } from "./Types";
-import { GithubClientImpl } from "./GithubClientImpl";
-import { GithubServiceImpl } from "./GithubServiceImpl";
-import { GithubCollectorService } from "./collector/GithubCollectorService";
-import { GithubRepositoryImpl } from "./GithubRepositoryImpl";
+import { CollectorModuleFactory, Utils } from '../../metrics';
+import { GithubCollectorConfig, GithubMetricItem } from './collector/Types';
+import { GithubService } from './Types';
+import { GithubClientImpl } from './GithubClientImpl';
+import { GithubServiceImpl } from './GithubServiceImpl';
+import { GithubCollectorService } from './collector/GithubCollectorService';
+import { GithubRepositoryImpl } from './GithubRepositoryImpl';
 
 export class GithubModuleFactory
   implements CollectorModuleFactory<GithubCollectorConfig, GithubMetricItem> {
   private static githubService(): GithubService {
-    Utils.checkEnvVar("GITHUB_TOKEN");
+    Utils.checkEnvVar('GITHUB_TOKEN');
     const githubClient = new GithubClientImpl({
       token: `${process.env.GITHUB_TOKEN}`
     });

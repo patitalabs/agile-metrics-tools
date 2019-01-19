@@ -1,4 +1,4 @@
-import * as elasticsearch from "elasticsearch";
+import * as elasticsearch from 'elasticsearch';
 
 export class ElasticSearchRepository {
   private client: any;
@@ -8,7 +8,7 @@ export class ElasticSearchRepository {
     this.host = host;
     this.client = new elasticsearch.Client({
       host: this.host,
-      log: "trace"
+      log: 'trace'
     });
   }
 

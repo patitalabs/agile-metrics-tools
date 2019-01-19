@@ -1,0 +1,4 @@
+{
+  "singleQuote": true,
+  "filepath": "src/**/*.{ts,js,json}"
+}

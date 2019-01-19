@@ -1,6 +1,6 @@
-import { ReposGetCommitResponse } from "@octokit/rest";
-import { GithubCommit, PullRequestStats } from "./Types";
-import { Utils } from "../../metrics";
+import { ReposGetCommitResponse } from '@octokit/rest';
+import { GithubCommit, PullRequestStats } from './Types';
+import { Utils } from '../../metrics';
 
 export class Converters {
   static toGithubCommit(

@@ -1,7 +1,7 @@
-import { CollectorService } from "../../../metrics";
-import { ExternalCollectorConfig, ExternalMetricItem } from "./Types";
-import { ExternalMetricConverter } from "./ExternalMetricConverter";
-import { ExternalConfig, ExternalService } from "../Types";
+import { CollectorService } from '../../../metrics';
+import { ExternalCollectorConfig, ExternalMetricItem } from './Types';
+import { ExternalMetricConverter } from './ExternalMetricConverter';
+import { ExternalConfig, ExternalService } from '../Types';
 
 export class ExternalCollectorService
   implements CollectorService<ExternalCollectorConfig, ExternalMetricItem> {

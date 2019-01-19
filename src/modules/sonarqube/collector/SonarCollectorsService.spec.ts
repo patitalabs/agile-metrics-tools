@@ -1,13 +1,13 @@
-import { SonarCollectorConfig } from "./Types";
-import { SonarCollectorsService } from "./SonarCollectorsService";
-import { ProjectMetrics, SonarConfig, SonarService } from "../Types";
+import { SonarCollectorConfig } from './Types';
+import { SonarCollectorsService } from './SonarCollectorsService';
+import { ProjectMetrics, SonarConfig, SonarService } from '../Types';
 
 function testProjectMetric(): ProjectMetrics {
   return {
-    createdAt: new Date("2018-12-20"),
-    projectName: "the project",
-    alertStatus: "OK",
-    qualityGateDetails: "Passed",
+    createdAt: new Date('2018-12-20'),
+    projectName: 'the project',
+    alertStatus: 'OK',
+    qualityGateDetails: 'Passed',
     bugs: 1,
     newBugs: 2,
     reliabilityRating: 3,
@@ -21,7 +21,7 @@ function testProjectMetric(): ProjectMetrics {
     sqaleRating: 1,
     newMaintainabilityRating: 2,
     sqaleIndex: 1,
-    newTechnicalDebt: "technical debt text",
+    newTechnicalDebt: 'technical debt text',
     coverage: 60,
     newCoverage: 60,
     newLinesToCover: 50,
@@ -30,13 +30,13 @@ function testProjectMetric(): ProjectMetrics {
     newDuplicatedLinesDensity: 10,
     duplicatedBlocks: 10,
     ncloc: 40,
-    nclocLanguageDistribution: "lang distribution",
+    nclocLanguageDistribution: 'lang distribution',
     newLines: 20,
-    version: "2.5"
+    version: '2.5'
   };
 }
 
-describe("SonarCollectorsService", () => {
+describe('SonarCollectorsService', () => {
   const sonarService: SonarService = {
     projectMetrics: async (
       sonarConfig: SonarConfig
@@ -49,9 +49,9 @@ describe("SonarCollectorsService", () => {
     sonarService
   );
 
-  it("should fetch sonarMetrics", async () => {
+  it('should fetch sonarMetrics', async () => {
     const sonarCollectorConfig: SonarCollectorConfig = new SonarCollectorConfig(
-      { projectName: "someProject", since: "2018-11-20" }
+      { projectName: 'someProject', since: '2018-11-20' }
     );
 
     const data = await sonarCollectorsService.fetch(sonarCollectorConfig);

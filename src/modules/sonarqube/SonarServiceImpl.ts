@@ -3,7 +3,7 @@ import {
   SonarConfig,
   SonarRepository,
   SonarService
-} from "./Types";
+} from './Types';
 
 export class SonarServiceImpl implements SonarService {
   constructor(private sonarRepository: SonarRepository) {}

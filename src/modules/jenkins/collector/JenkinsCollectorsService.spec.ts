@@ -1,27 +1,27 @@
-import { JenkinsCollectorsService } from "./JenkinsCollectorsService";
-import { JenkinsJob, JenkinsService } from "../Types";
-import { JenkinsCollectorConfig } from "./Types";
+import { JenkinsCollectorsService } from './JenkinsCollectorsService';
+import { JenkinsJob, JenkinsService } from '../Types';
+import { JenkinsCollectorConfig } from './Types';
 
 function testJenkinsJob(): JenkinsJob {
   return {
-    name: "jenkins job",
-    branch: "master",
+    name: 'jenkins job',
+    branch: 'master',
     builds: [
       {
-        timestamp: new Date("2018-12-06"),
-        result: "SUCCESS",
+        timestamp: new Date('2018-12-06'),
+        result: 'SUCCESS',
         durationInMs: 2000,
-        causedBy: "someone",
-        revision: "someVersion",
-        revisionDescription: "some description",
-        buildNumber: "50",
-        url: "someUrl"
+        causedBy: 'someone',
+        revision: 'someVersion',
+        revisionDescription: 'some description',
+        buildNumber: '50',
+        url: 'someUrl'
       }
     ]
   };
 }
 
-describe("JenkinsCollectorsService", () => {
+describe('JenkinsCollectorsService', () => {
   const jenkinsService: JenkinsService = {
     findData: async (
       orgName: string,
@@ -36,12 +36,12 @@ describe("JenkinsCollectorsService", () => {
     jenkinsService
   );
 
-  it("should fetch jenkinsMetrics", async () => {
+  it('should fetch jenkinsMetrics', async () => {
     const jiraCollectorConfig: JenkinsCollectorConfig = new JenkinsCollectorConfig(
       {
-        orgName: "orgName",
-        projectName: "projectName",
-        since: "2018-11-20"
+        orgName: 'orgName',
+        projectName: 'projectName',
+        since: '2018-11-20'
       }
     );
 

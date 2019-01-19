@@ -1,5 +1,5 @@
-import { AppFactory } from "./AppFactory";
-import { AppContext } from "./Types";
+import { AppFactory } from './AppFactory';
+import { AppContext } from './Types';
 
 async function main(fileConfigPath: string): Promise<void> {
   const context: AppContext = await AppFactory.appContextFrom(fileConfigPath);
@@ -15,7 +15,7 @@ function printUsage() {
 
 if (process.argv.length < 2) {
   printUsage();
-  throw Error("No config specified:");
+  throw Error('No config specified:');
 }
 const configFilePath = process.argv[2];
-main(configFilePath).then(() => console.log("Finished!"));
+main(configFilePath).then(() => console.log('Finished!'));

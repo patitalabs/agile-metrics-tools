@@ -1,6 +1,6 @@
-import * as fetch from "node-fetch";
-import { Utils } from "../../metrics";
-import { JenkinsClient } from "./Types";
+import * as fetch from 'node-fetch';
+import { Utils } from '../../metrics';
+import { JenkinsClient } from './Types';
 
 export class JenkinsClientImpl implements JenkinsClient {
   private readonly host: string;
@@ -18,9 +18,9 @@ export class JenkinsClientImpl implements JenkinsClient {
     const authToken = Utils.toBase64(`${this.apiUser}:${this.apiToken}`);
 
     const config = {
-      method: "get",
+      method: 'get',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Basic ${authToken}`
       }
     };

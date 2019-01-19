@@ -1,4 +1,4 @@
-import { ProjectMetrics, SonarConfig } from "./Types";
+import { ProjectMetrics, SonarConfig } from './Types';
 
 export class Converters {
   static toProjectMetrics(
@@ -61,68 +61,68 @@ export class Converters {
     return {
       createdAt: new Date(dateStr),
       projectName: sonarConfig.projectName,
-      alertStatus: this.stringValue(measureMapForDate, "alert_status"),
+      alertStatus: this.stringValue(measureMapForDate, 'alert_status'),
       qualityGateDetails: this.stringValue(
         measureMapForDate,
-        "quality_gate_details"
+        'quality_gate_details'
       ),
-      bugs: this.numberValue(measureMapForDate, "bugs"),
-      newBugs: this.numberValue(measureMapForDate, "new_bugs"),
+      bugs: this.numberValue(measureMapForDate, 'bugs'),
+      newBugs: this.numberValue(measureMapForDate, 'new_bugs'),
       reliabilityRating: this.numberValue(
         measureMapForDate,
-        "reliability_rating"
+        'reliability_rating'
       ),
       newReliabilityRating: this.numberValue(
         measureMapForDate,
-        "new_reliability_rating"
+        'new_reliability_rating'
       ),
-      vulnerabilities: this.numberValue(measureMapForDate, "vulnerabilities"),
+      vulnerabilities: this.numberValue(measureMapForDate, 'vulnerabilities'),
       newVulnerabilities: this.numberValue(
         measureMapForDate,
-        "new_vulnerabilities"
+        'new_vulnerabilities'
       ),
-      securityRating: this.numberValue(measureMapForDate, "security_rating"),
+      securityRating: this.numberValue(measureMapForDate, 'security_rating'),
       newSecurityRating: this.numberValue(
         measureMapForDate,
-        "new_security_rating"
+        'new_security_rating'
       ),
-      codeSmells: this.numberValue(measureMapForDate, "code_smells"),
-      newCodeSmells: this.numberValue(measureMapForDate, "new_code_smells"),
-      sqaleRating: this.numberValue(measureMapForDate, "sqale_rating"),
+      codeSmells: this.numberValue(measureMapForDate, 'code_smells'),
+      newCodeSmells: this.numberValue(measureMapForDate, 'new_code_smells'),
+      sqaleRating: this.numberValue(measureMapForDate, 'sqale_rating'),
       newMaintainabilityRating: this.numberValue(
         measureMapForDate,
-        "new_maintainability_rating"
+        'new_maintainability_rating'
       ),
-      sqaleIndex: this.numberValue(measureMapForDate, "sqale_index"),
+      sqaleIndex: this.numberValue(measureMapForDate, 'sqale_index'),
       newTechnicalDebt: this.stringValue(
         measureMapForDate,
-        "new_technical_debt"
+        'new_technical_debt'
       ),
-      coverage: this.numberValue(measureMapForDate, "coverage"),
-      newCoverage: this.numberValue(measureMapForDate, "new_coverage"),
+      coverage: this.numberValue(measureMapForDate, 'coverage'),
+      newCoverage: this.numberValue(measureMapForDate, 'new_coverage'),
       newLinesToCover: this.numberValue(
         measureMapForDate,
-        "new_lines_to_cover"
+        'new_lines_to_cover'
       ),
-      tests: this.numberValue(measureMapForDate, "tests"),
+      tests: this.numberValue(measureMapForDate, 'tests'),
       duplicatedLinesDensity: this.numberValue(
         measureMapForDate,
-        "duplicated_lines_density"
+        'duplicated_lines_density'
       ),
       newDuplicatedLinesDensity: this.numberValue(
         measureMapForDate,
-        "new_duplicated_lines_density"
+        'new_duplicated_lines_density'
       ),
       duplicatedBlocks: this.numberValue(
         measureMapForDate,
-        "duplicated_blocks"
+        'duplicated_blocks'
       ),
-      ncloc: this.numberValue(measureMapForDate, "ncloc"),
+      ncloc: this.numberValue(measureMapForDate, 'ncloc'),
       nclocLanguageDistribution: this.stringValue(
         measureMapForDate,
-        "ncloc_language_distribution"
+        'ncloc_language_distribution'
       ),
-      newLines: this.numberValue(measureMapForDate, "new_lines"),
+      newLines: this.numberValue(measureMapForDate, 'new_lines'),
       version: version
     };
   }
@@ -132,7 +132,7 @@ export class Converters {
   }
 
   private static stringValue(measureMap, key) {
-    return measureMap.get(key) || "";
+    return measureMap.get(key) || '';
   }
 
   private static analysisMapPerDate(
@@ -143,7 +143,7 @@ export class Converters {
     for (const analysis of analysisHistoryResponse.analyses || []) {
       let versions =
         analysis.events
-          .filter(event => event.category == "VERSION")
+          .filter(event => event.category == 'VERSION')
           .map(event => event.name) || [];
 
       if (versions.length > 0) {

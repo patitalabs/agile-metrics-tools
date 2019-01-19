@@ -1,5 +1,5 @@
-import { ExternalConfig } from "./Types";
-import * as csvtojson from "csvtojson";
+import { ExternalConfig } from './Types';
+import * as csvtojson from 'csvtojson';
 
 export class CsvReader {
   static readFromCsv(externalConfig: ExternalConfig): Promise<any[]> {

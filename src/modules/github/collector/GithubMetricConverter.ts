@@ -1,5 +1,5 @@
-import { GithubCommit } from "../Types";
-import { GithubCollectorConfig, GithubMetricItem } from "./Types";
+import { GithubCommit } from '../Types';
+import { GithubCollectorConfig, GithubMetricItem } from './Types';
 
 export class GithubMetricConverter {
   static toMetricItem(
@@ -9,7 +9,7 @@ export class GithubMetricConverter {
     return githubCommits.map(commit => {
       return {
         id: commit.sha,
-        dataType: "SCM",
+        dataType: 'SCM',
         repositoryName: githubConfig.repositoryName,
         ...commit
       };
