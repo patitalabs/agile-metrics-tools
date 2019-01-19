@@ -15,18 +15,22 @@ export class MetricsService {
     for (const collectorConfig of metricsConfig.collectorConfigs || []) {
       for (const collector of this.collectors) {
         if (collector.supports(collectorConfig)) {
-          try {
-            const metricItems = await collector.fetch(collectorConfig);
-            await this.processMetrics(metricItems);
-          } catch (error) {
-            console.warn(
-              `There was a problem collecting metrics for: ${JSON.stringify(
-                collectorConfig
-              )}, error:${JSON.stringify(error)}, message:${error.message}`
-            );
-          }
+          await this.collectMetrics(collector, collectorConfig);
         }
       }
+    }
+  }
+
+  private async collectMetrics(collector, collectorConfig) {
+    try {
+      const metricItems = await collector.fetch(collectorConfig);
+      await this.processMetrics(metricItems);
+    } catch (error) {
+      console.warn(
+        `There was a problem collecting metrics for: ${JSON.stringify(
+          collectorConfig
+        )}, error:${JSON.stringify(error)}, message:${error.message}`
+      );
     }
   }
 
