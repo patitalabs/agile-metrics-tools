@@ -32,7 +32,7 @@ JENKINS_API_TOKEN=
 ES_HOST=
 ````
 
-###Configurations:
+### Configurations:
 #### app-config.json
 ````
 {
