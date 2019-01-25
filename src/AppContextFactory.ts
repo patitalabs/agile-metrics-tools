@@ -21,6 +21,24 @@ export class AppContextFactory {
     };
   }
 
+  static appContextForService(serviceName: string, config: string): AppContext {
+    const moduleFactoryMapping: ModuleFactoryMappings = AppContextFactory.moduleFactoryMappings();
+    const moduleFactory: CollectorModuleFactory<any, any> =
+      moduleFactoryMapping[serviceName];
+
+    if (!moduleFactory) {
+      throw Error(`Unable to create module for service: ${serviceName}`);
+    }
+
+    const collectorService = moduleFactory.collectorInstance();
+
+    return {
+      appConfig: { indexPrefix: 'myindex', modules: [] },
+      collectorsServices: [collectorService],
+      collectorConfigs: [config]
+    };
+  }
+
   static async appContext(appConfig: AppConfig): Promise<AppContext> {
     const moduleFactoryMapping: ModuleFactoryMappings = AppContextFactory.moduleFactoryMappings();
     const supportedConfigs = AppContextFactory.supportedConfigs(
