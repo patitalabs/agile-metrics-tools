@@ -21,7 +21,7 @@ export class AppContextFactory {
     };
   }
 
-  static appContextForService(serviceName: string, config: string): AppContext {
+  static appContextForService(serviceName: string, configs: any): AppContext {
     const moduleFactoryMapping: ModuleFactoryMappings = AppContextFactory.moduleFactoryMappings();
     const moduleFactory: CollectorModuleFactory<any, any> =
       moduleFactoryMapping[serviceName];
@@ -31,11 +31,14 @@ export class AppContextFactory {
     }
 
     const collectorService = moduleFactory.collectorInstance();
+    const collectorConfigs = configs.map(config =>
+      moduleFactory.collectorConfiguration(config)
+    );
 
     return {
       appConfig: { indexPrefix: 'myindex', modules: [] },
       collectorsServices: [collectorService],
-      collectorConfigs: [config]
+      collectorConfigs: collectorConfigs
     };
   }
 

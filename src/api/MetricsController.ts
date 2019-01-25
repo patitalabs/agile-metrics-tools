@@ -14,10 +14,10 @@ export class MetricsController {
       await metricsService.start({
         collectorConfigs: appContext.collectorConfigs
       });
+      res.json({ status: 'OK' });
     } catch (error) {
       console.error(error);
       res.json({ error: 'could not process request' });
     }
-    res.json({ status: 'OK' });
   };
 }
