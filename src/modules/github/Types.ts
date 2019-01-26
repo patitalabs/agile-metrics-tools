@@ -18,6 +18,7 @@ export interface GithubConfig {
   repositoryName: string;
   orgName: string;
   since: string;
+  until?: string;
 }
 
 export interface GithubRepository {

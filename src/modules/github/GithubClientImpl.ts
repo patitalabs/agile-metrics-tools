@@ -28,6 +28,7 @@ export class GithubClientImpl implements GithubClient {
       owner: githubConfig.orgName,
       repo: githubConfig.repositoryName,
       since: githubConfig.since,
+      until: githubConfig.until,
       sha: 'master'
     };
 

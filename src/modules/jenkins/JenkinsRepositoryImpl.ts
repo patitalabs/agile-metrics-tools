@@ -5,6 +5,7 @@ import {
   JenkinsRepository
 } from './Types';
 import { Converters } from './Converters';
+import { Utils } from '../../metrics';
 
 export class JenkinsRepositoryImpl implements JenkinsRepository {
   constructor(private jenkinsClient: JenkinsClient) {}
@@ -12,7 +13,8 @@ export class JenkinsRepositoryImpl implements JenkinsRepository {
   async jobDetails(
     orgName: string,
     projectName,
-    since: Date
+    since: Date,
+    until?: Date
   ): Promise<JenkinsJob> {
     const jobDetails = await this.jenkinsClient.getData(
       `job/${orgName}/job/${projectName}/job/master/`
@@ -26,7 +28,11 @@ export class JenkinsRepositoryImpl implements JenkinsRepository {
 
     const builds = await Promise.all(buildsPromises);
     const filteredBuilds = builds.filter(jobBuild => {
-      return new Date(jobBuild.timestamp) >= since;
+      return Utils.isDateInRange({
+        createdAt: jobBuild.timestamp,
+        since,
+        until
+      });
     });
     return Converters.toJenkinsJob(jobDetails, filteredBuilds);
   }

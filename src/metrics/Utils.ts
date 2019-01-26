@@ -61,4 +61,21 @@ export class Utils {
       }
     });
   }
+
+  static isDateInRange({
+    createdAt,
+    since,
+    until
+  }: {
+    createdAt: Date;
+    since: Date;
+    until?: Date;
+  }) {
+    let isInRangeFromEnd = true;
+    if (until) {
+      isInRangeFromEnd = createdAt <= until;
+    }
+    const isInRangeFromStart = createdAt >= since;
+    return isInRangeFromStart && isInRangeFromEnd;
+  }
 }

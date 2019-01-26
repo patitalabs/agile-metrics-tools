@@ -33,6 +33,7 @@ export class ProjectMetrics {
 export interface SonarConfig {
   projectName: string;
   since: string;
+  until: string;
 }
 
 export interface SonarService {

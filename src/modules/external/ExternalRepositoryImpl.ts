@@ -1,6 +1,7 @@
 import { ExternalConfig, ExternalData, ExternalRepository } from './Types';
 import { Converters } from './Converters';
 import { CsvReader } from './CsvReader';
+import { Utils } from '../../metrics';
 
 export class ExternalRepositoryImpl implements ExternalRepository {
   async csv(externalConfig: ExternalConfig): Promise<ExternalData[]> {
@@ -30,7 +31,11 @@ export class ExternalRepositoryImpl implements ExternalRepository {
         return Converters.toExternalData(jsonObj);
       })
       .filter(item => {
-        return item.createdAt >= externalConfig.since;
+        return Utils.isDateInRange({
+          createdAt: item.createdAt,
+          until: externalConfig.until,
+          since: externalConfig.since
+        });
       });
   }
 }

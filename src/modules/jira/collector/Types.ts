@@ -23,13 +23,15 @@ export interface JiraMetricItem extends MetricItem {
 export class JiraCollectorConfig implements CollectorConfig {
   teamId: number;
   since: Date;
+  until?: Date;
   workFlowMap?: { [name: string]: number };
   fields?: { [name: string]: string };
   estimateConfig?: { maxTime: number; estimationValues: number[] };
 
-  constructor({ teamId, since, workFlowMap, fields }) {
+  constructor({ teamId, since, until = null, workFlowMap, fields }) {
     this.teamId = teamId;
     this.since = new Date(since);
+    this.until = until ? new Date(until) : null;
     this.workFlowMap = workFlowMap;
     this.fields = fields;
   }

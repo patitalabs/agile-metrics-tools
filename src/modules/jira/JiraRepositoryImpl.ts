@@ -7,6 +7,7 @@ import {
   SprintTask
 } from './Types';
 import { Converters } from './Converters';
+import { Utils } from '../../metrics';
 
 export class JiraRepositoryImpl implements JiraRepository {
   constructor(private jiraClient: JiraClient) {}
@@ -42,9 +43,10 @@ export class JiraRepositoryImpl implements JiraRepository {
     return await Promise.all(sprintTaskPromises);
   }
 
-  async completedSprintsSince(
+  async completedSprints(
     teamId: number,
-    referenceDate: Date
+    since: Date,
+    until?: Date
   ): Promise<Sprint[]> {
     const url = `/rest/agile/1.0/board/${teamId}/sprint?state=closed`;
     //TODO pagination
@@ -52,7 +54,7 @@ export class JiraRepositoryImpl implements JiraRepository {
     return values
       .filter(sprintData => {
         const completedDate: Date = new Date(sprintData.completeDate);
-        return completedDate >= referenceDate;
+        return Utils.isDateInRange({ createdAt: completedDate, since, until });
       })
       .map(sprintData => {
         return Converters.toSprint(sprintData);

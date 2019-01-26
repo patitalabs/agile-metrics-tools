@@ -6,8 +6,14 @@ export class JenkinsServiceImpl implements JenkinsService {
   findData(
     orgName: string,
     projectName: string,
-    since: Date
+    since: Date,
+    until?: Date
   ): Promise<JenkinsJob> {
-    return this.jenkinsRepository.jobDetails(orgName, projectName, since);
+    return this.jenkinsRepository.jobDetails(
+      orgName,
+      projectName,
+      since,
+      until
+    );
   }
 }

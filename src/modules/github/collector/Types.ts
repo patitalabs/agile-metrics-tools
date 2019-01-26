@@ -17,10 +17,12 @@ export class GithubCollectorConfig implements CollectorConfig {
   repositoryName: string;
   orgName: string;
   since: string;
+  until?: string;
 
-  constructor({ repositoryName, orgName, since }) {
+  constructor({ repositoryName, orgName, since, until = null }) {
     this.repositoryName = repositoryName;
     this.orgName = orgName;
     this.since = since;
+    this.until = until;
   }
 }

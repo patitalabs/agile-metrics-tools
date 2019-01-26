@@ -19,7 +19,8 @@ export interface JenkinsService {
   findData(
     orgName: string,
     projectName: string,
-    since: Date
+    since: Date,
+    until?: Date
   ): Promise<JenkinsJob>;
 }
 
@@ -28,5 +29,10 @@ export interface JenkinsClient {
 }
 
 export interface JenkinsRepository {
-  jobDetails(orgName: string, projectName, since: Date): Promise<JenkinsJob>;
+  jobDetails(
+    orgName: string,
+    projectName,
+    since: Date,
+    until?: Date
+  ): Promise<JenkinsJob>;
 }

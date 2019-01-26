@@ -16,7 +16,8 @@ export class JenkinsCollectorsService
     const jenkinsJob = await this.jenkinsService.findData(
       jenkinsConfig.orgName,
       jenkinsConfig.projectName,
-      jenkinsConfig.since
+      jenkinsConfig.since,
+      jenkinsConfig.until
     );
 
     return JenkinsMetricConverter.toMetricItem(jenkinsJob, jenkinsConfig);
