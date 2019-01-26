@@ -1,35 +1,39 @@
-import * as Github from '@octokit/rest';
-import { ReposGetCommitsParams } from '@octokit/rest';
+import * as Octokit from '@octokit/rest';
+import { ReposListCommitsParams } from '@octokit/rest';
 import { GithubClient, GithubConfig } from './Types';
+import Bottleneck from 'bottleneck';
 
-//TODO deal with pagination and ratelimit
+const limiter = new Bottleneck({
+  reservoir: 30, // initial value
+  reservoirRefreshAmount: 30,
+  reservoirRefreshInterval: 60 * 1000, // must be divisible by 250
+  minTime: 333,
+  maxConcurrent: 1
+});
+
+//TODO deal with pagination
 export class GithubClientImpl implements GithubClient {
-  private octokit: Github;
+  private octokit: Octokit;
   private readonly token: string;
   constructor({ token }) {
     this.token = token;
-    this.octokit = new Github();
-  }
 
-  private authenticate() {
-    this.octokit.authenticate({
-      type: 'token',
-      token: this.token
+    this.octokit = new Octokit({
+      auth: `token ${token}`
     });
   }
 
   async commits(githubConfig: GithubConfig): Promise<string[]> {
-    this.authenticate();
-    const reposGetCommitsParams: ReposGetCommitsParams = {
+    const reposGetCommitsParams: ReposListCommitsParams = {
       owner: githubConfig.orgName,
       repo: githubConfig.repositoryName,
       since: githubConfig.since,
       sha: 'master'
     };
 
-    const { data: commitResponseItems } = await this.octokit.repos.getCommits(
-      reposGetCommitsParams
-    );
+    const { data: commitResponseItems } = await limiter.schedule(() => {
+      return this.octokit.repos.listCommits(reposGetCommitsParams);
+    });
     return commitResponseItems.map(commit => commit.sha);
   }
 
@@ -38,7 +42,6 @@ export class GithubClientImpl implements GithubClient {
     orgName: string,
     sha: string
   ): Promise<any> {
-    this.authenticate();
     const commitConfig = {
       owner: orgName,
       repo: repositoryName,
@@ -49,8 +52,10 @@ export class GithubClientImpl implements GithubClient {
   }
 
   async pullRequestForCommit(sha: string): Promise<any> {
-    const { data } = await this.octokit.search.issues({
-      q: `${sha} is:merged type:pr`
+    const { data } = await limiter.schedule(() => {
+      return this.octokit.search.issuesAndPullRequests({
+        q: `${sha} is:merged type:pr`
+      });
     });
     return data;
   }
@@ -62,7 +67,9 @@ export class GithubClientImpl implements GithubClient {
     number
   }): Promise<any> {
     const paramsConfig = { owner: owner, repo: repo, number: number };
-    const { data } = await this.octokit.pullRequests.getComments(paramsConfig);
+    const { data } = await limiter.schedule(() => {
+      return this.octokit.pulls.listComments(paramsConfig);
+    });
     return data;
   }
 }
