@@ -32,7 +32,7 @@ describe('JenkinsCollectorsService', () => {
     }
   };
 
-  const jen: JenkinsCollectorsService = new JenkinsCollectorsService(
+  const jenkinsCollectorsService: JenkinsCollectorsService = new JenkinsCollectorsService(
     jenkinsService
   );
 
@@ -41,11 +41,12 @@ describe('JenkinsCollectorsService', () => {
       {
         orgName: 'orgName',
         projectName: 'projectName',
-        since: '2018-11-20'
+        since: '2018-11-20',
+        until: '2020-11-20'
       }
     );
 
-    const data = await jen.fetch(jiraCollectorConfig);
+    const data = await jenkinsCollectorsService.fetch(jiraCollectorConfig);
     expect(data).toMatchSnapshot();
   });
 });

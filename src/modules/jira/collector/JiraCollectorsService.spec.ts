@@ -87,7 +87,8 @@ describe('JiraCollectorsService', () => {
       teamId: 68,
       since: '2018-11-20',
       workFlowMap: null,
-      fields: null
+      fields: null,
+      until: '2020-11-20'
     });
 
     const data = await jiraCollectorsService.fetch(jiraCollectorConfig);

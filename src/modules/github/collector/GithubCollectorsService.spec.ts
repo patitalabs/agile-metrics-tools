@@ -29,7 +29,8 @@ describe('GithubCollectorsService', () => {
       {
         repositoryName: 'someRepoName',
         orgName: 'someOrgName',
-        since: '2018-11-20'
+        since: '2018-11-20',
+        until: '2020-11-20'
       }
     );
 
