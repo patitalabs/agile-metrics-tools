@@ -11,13 +11,16 @@ export class MetricsController {
         req.body
       );
       const metricsService = AppFactory.metricsService(appContext);
-      await metricsService.start({
-        collectorConfigs: appContext.collectorConfigs
-      });
-      res.json({ status: 'OK' });
+      metricsService
+        .start({
+          collectorConfigs: appContext.collectorConfigs
+        })
+        .then(() => console.log('Done!'));
+
+      res.json({ status: 'Started Collecting metrics....' });
     } catch (error) {
       console.error(error);
-      res.json({ error: 'could not process request' });
+      res.json({ error: 'Could not process request' });
     }
   };
 }

@@ -30,6 +30,7 @@ export class AppContextFactory {
       throw Error(`Unable to create module for service: ${serviceName}`);
     }
 
+    //TODO collectorInstance should be singleton
     const collectorService = moduleFactory.collectorInstance();
     const collectorConfigs = configs.map(config =>
       moduleFactory.collectorConfiguration(config)
