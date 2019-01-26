@@ -9,7 +9,10 @@ export class AppFactory {
     return await AppContextFactory.appContext(config);
   }
 
-  static metricsService(appContext: AppContext): MetricsService {
+  static metricsService(
+    appContext: AppContext,
+    shouldReplaceEntry: boolean = false
+  ): MetricsService {
     const elasticSearchService = ElasticSearch.esService(
       appContext.appConfig.indexPrefix
     );
