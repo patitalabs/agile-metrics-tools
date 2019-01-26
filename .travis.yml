@@ -18,15 +18,10 @@ install:
   - "yarn install"
   - "npm install -g snyk"
 
-jobs:
-  include:
-    - stage: "Build"
-      name: "Build"
-      script: "yarn build && yarn test"
-    - stage: "Sonar"
-      name: "Sonarqube"
-      if: branch = master
-      script: "sonar-scanner"
+script:
+  - "yarn build"
+  - "yarn test"
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner; fi'
 
 after_success:
-  - "snyk monitor"
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then snyk monitor; fi'
