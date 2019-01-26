@@ -9,10 +9,10 @@ export class ElasticSearchServiceImpl implements ElasticSearchService {
     private shouldReplaceEntry: boolean
   ) {}
 
-  async push(payload: MetricItem): Promise<any> {
-    const type = payload.dataType;
+  async push(metricItem: MetricItem): Promise<any> {
+    const type = metricItem.dataType;
     const indexName = `${this.indexPrefix}-${type.toLowerCase()}`;
-    const id = payload.id;
+    const id = metricItem.id;
 
     if (!this.shouldReplaceEntry) {
       const entryExists = await this.elasticSearchRepository.entryExists(
@@ -22,7 +22,7 @@ export class ElasticSearchServiceImpl implements ElasticSearchService {
       );
 
       if (entryExists) {
-        console.info('Item already exists...' + JSON.stringify(payload));
+        console.info('Item already exists...' + JSON.stringify(metricItem));
         return;
       }
     }
@@ -31,7 +31,7 @@ export class ElasticSearchServiceImpl implements ElasticSearchService {
       indexName: indexName,
       type: type,
       id: id,
-      payload
+      payload: metricItem
     });
   }
 }
