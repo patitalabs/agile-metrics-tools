@@ -4,9 +4,9 @@ import { GithubClient, GithubConfig } from './Types';
 import Bottleneck from 'bottleneck';
 
 const limiter = new Bottleneck({
-  reservoir: 30, // initial value
+  reservoir: 30,
   reservoirRefreshAmount: 30,
-  reservoirRefreshInterval: 60 * 1000, // must be divisible by 250
+  reservoirRefreshInterval: 60 * 1000,
   minTime: 333,
   maxConcurrent: 1
 });
