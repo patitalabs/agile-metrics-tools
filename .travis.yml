@@ -21,7 +21,7 @@ install:
 script:
   - "yarn build"
   - "yarn test"
-  - "sonar-scanner"
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then sonar-scanner; fi
 
 after_success:
   - "snyk monitor"
