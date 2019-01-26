@@ -22,9 +22,7 @@ jobs:
   include:
     - stage: "Build"
       name: "Build"
-    - stage: "Test"
-      name: "Unit tests"
-      script: "yarn test"
+      script: "yarn build && yarn test"
     - stage: "Sonar"
       name: "Sonarqube"
       if: branch = master
