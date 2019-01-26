@@ -16,10 +16,12 @@ export class JenkinsCollectorConfig implements CollectorConfig {
   orgName: string;
   projectName: string;
   since: Date;
+  until?: Date;
 
-  constructor({ orgName, projectName, since }) {
+  constructor({ orgName, projectName, since, until = null }) {
     this.orgName = orgName;
     this.projectName = projectName;
     this.since = new Date(since);
+    this.until = until ? new Date(until) : null;
   }
 }

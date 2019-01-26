@@ -63,7 +63,11 @@ export interface IssueDetails {
 }
 
 export interface JiraService {
-  completedSprintsSince(teamId: number, referenceDate: Date): Promise<Sprint[]>;
+  completedSprintsSince(
+    teamId: number,
+    since: Date,
+    until: Date
+  ): Promise<Sprint[]>;
 
   sprintData(jiraConfig: JiraConfig, sprint: Sprint): Promise<SprintTask[]>;
 }
@@ -79,5 +83,9 @@ export interface JiraRepository {
   ): Promise<IssueDetails>;
   sprintData(jiraConfig: JiraConfig, sprint: Sprint): Promise<SprintTask[]>;
 
-  completedSprintsSince(teamId: number, referenceDate: Date): Promise<Sprint[]>;
+  completedSprints(
+    teamId: number,
+    since: Date,
+    until?: Date
+  ): Promise<Sprint[]>;
 }

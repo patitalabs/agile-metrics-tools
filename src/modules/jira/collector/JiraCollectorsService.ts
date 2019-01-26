@@ -16,7 +16,8 @@ export class JiraCollectorsService
 
     const sprints = await this.jiraService.completedSprintsSince(
       jiraConfig.teamId,
-      jiraConfig.since
+      jiraConfig.since,
+      jiraConfig.until
     );
 
     const sprintsPromises: Promise<JiraMetricItem[]>[] = sprints.map(sprint => {

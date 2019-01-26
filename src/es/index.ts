@@ -7,12 +7,19 @@ export { ElasticSearchServiceImpl } from './ElasticSearchService';
 export { ElasticSearchService } from './Types';
 
 export class ElasticSearch {
-  static esService(indexPrefix: string): ElasticSearchService {
+  static esService(
+    indexPrefix: string,
+    shouldReplaceEntry: boolean = false
+  ): ElasticSearchService {
     Utils.checkEnvVar('ES_HOST');
     const elasticSearchRepository = new ElasticSearchRepository({
       host: `${process.env.ES_HOST}`
     });
-    return new ElasticSearchServiceImpl(elasticSearchRepository, indexPrefix);
+    return new ElasticSearchServiceImpl(
+      elasticSearchRepository,
+      indexPrefix,
+      shouldReplaceEntry
+    );
   }
 
   static justLogEsService(indexPrefix: string): ElasticSearchService {

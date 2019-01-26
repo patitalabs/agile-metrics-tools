@@ -27,9 +27,9 @@ describe('JiraRepositoryImpl', () => {
   };
 
   it('should get sprintData', async () => {
-    const teamId = 1;
+    const teamId = 2;
     const sprint: Sprint = {
-      id: 2,
+      id: teamId,
       isoEndDate: new Date('2018-12-14'),
       isoStartDate: new Date('2018-12-21'),
       name: 'some name'
@@ -39,14 +39,11 @@ describe('JiraRepositoryImpl', () => {
     expect(data).toMatchSnapshot();
   });
 
-  it('should get completedSprintsSince', async () => {
+  it('should get completedSprints', async () => {
     const teamId = 1;
-    const referenceDate: Date = new Date('2018-12-03');
+    const since: Date = new Date('2018-12-03');
 
-    const data = await jiraRepository.completedSprintsSince(
-      teamId,
-      referenceDate
-    );
+    const data = await jiraRepository.completedSprints(teamId, since);
     expect(data).toMatchSnapshot();
   });
 

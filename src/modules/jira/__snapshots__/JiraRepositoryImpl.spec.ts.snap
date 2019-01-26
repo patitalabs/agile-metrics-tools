@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`JiraRepositoryImpl should get completedSprintsSince 1`] = `
+exports[`JiraRepositoryImpl should get completedSprints 1`] = `
 Array [
   Object {
     "id": 171,

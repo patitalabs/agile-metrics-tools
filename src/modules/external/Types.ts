@@ -1,5 +1,6 @@
 export interface ExternalConfig {
   since: Date;
+  until?: Date;
   type: string;
   srcType: string;
   srcPath: string;

@@ -11,9 +11,10 @@ export class JiraServiceImpl implements JiraService {
 
   completedSprintsSince(
     teamId: number,
-    referenceDate: Date
+    since: Date,
+    until: Date
   ): Promise<Sprint[]> {
-    return this.jiraRepository.completedSprintsSince(teamId, referenceDate);
+    return this.jiraRepository.completedSprints(teamId, since, until);
   }
 
   async sprintData(
