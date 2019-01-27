@@ -48,10 +48,25 @@ export class JiraRepositoryImpl implements JiraRepository {
     since: Date,
     until?: Date
   ): Promise<Sprint[]> {
-    const url = `/rest/agile/1.0/board/${teamId}/sprint?state=closed`;
-    //TODO pagination
-    const { values } = await this.jiraClient.getData(url);
-    return values
+    let desiredStartAt = 0;
+
+    const allSprints = [];
+
+    let shouldContinue = false;
+    do {
+      const url = `/rest/agile/1.0/board/${teamId}/sprint?state=closed&startAt=${desiredStartAt}`;
+      const {
+        values,
+        isLast,
+        startAt,
+        maxResults
+      } = await this.jiraClient.getData(url);
+      shouldContinue = !isLast;
+      desiredStartAt += startAt + maxResults;
+      allSprints.push(...values);
+    } while (shouldContinue);
+
+    return allSprints
       .filter(sprintData => {
         const completedDate: Date = new Date(sprintData.completeDate);
         return Utils.isDateInRange({ createdAt: completedDate, since, until });
