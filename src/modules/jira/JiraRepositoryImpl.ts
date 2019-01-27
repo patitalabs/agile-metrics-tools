@@ -56,9 +56,10 @@ export class JiraRepositoryImpl implements JiraRepository {
         values,
         isLast,
         startAt,
-        maxResults
+        maxResults,
+        total
       } = await this.jiraClient.getData(url);
-      shouldContinue = !isLast;
+      shouldContinue = !isLast || total > maxResults;
       desiredStartAt += startAt + maxResults;
       allSprints.push(...values);
     } while (shouldContinue);

@@ -15,7 +15,9 @@ export class MetricsController {
     try {
       const serviceName = req.params.serviceName;
       const shouldUpdateEntries = req.method === 'PUT';
-      await this.collectMetrics(serviceName, req.body, shouldUpdateEntries);
+      this.collectMetrics(serviceName, req.body, shouldUpdateEntries).then(() =>
+        console.log('Done!')
+      );
 
       res.json({ status: 'Started Collecting metrics....' });
     } catch (error) {
@@ -29,7 +31,7 @@ export class MetricsController {
     config: any,
     shouldUpdateEntries: boolean
   ) {
-    const appContext = await AppContextFactory.appContextForService(
+    const appContext = AppContextFactory.appContextForService(
       serviceName,
       config
     );
@@ -38,10 +40,8 @@ export class MetricsController {
       appContext,
       shouldUpdateEntries
     );
-    metricsService
-      .start({
-        collectorConfigs: appContext.collectorConfigs
-      })
-      .then(() => console.log('Done!'));
+    return metricsService.start({
+      collectorConfigs: appContext.collectorConfigs
+    });
   }
 }
