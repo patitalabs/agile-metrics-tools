@@ -19,7 +19,7 @@ export class GithubCollectorConfig implements CollectorConfig {
   since: string;
   until?: string;
 
-  constructor({ repositoryName, orgName, since, until = null }) {
+  constructor({ repositoryName, orgName, since, until = undefined }) {
     this.repositoryName = repositoryName;
     this.orgName = orgName;
     this.since = since;
