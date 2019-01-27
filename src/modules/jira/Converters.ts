@@ -4,18 +4,18 @@ import {
   IssueDetails,
   JiraConfig,
   Sprint,
-  SprintSubtask,
-  SprintTask
+  Subtask,
+  Task
 } from './Types';
 import { Utils } from '../../metrics';
 
 export class Converters {
-  static toSprintTask(
+  static toTask(
     jiraConfig: JiraConfig,
     issue: any,
     sprint: Sprint,
     issueDetails: IssueDetails
-  ): SprintTask {
+  ): Task {
     let fields = issue.fields;
     return {
       key: issue.key,
@@ -102,7 +102,7 @@ class IssueConverter {
     return linkedBugs.length;
   }
 
-  static subtasks(details): SprintSubtask[] {
+  static subtasks(details): Subtask[] {
     return details.fields.subtasks.map(item => IssueConverter.toSubtask(item));
   }
 
@@ -150,7 +150,7 @@ class IssueConverter {
     };
   }
 
-  static toSubtask(issue: any): SprintSubtask {
+  static toSubtask(issue: any): Subtask {
     return {
       key: issue.key,
       statusName: issue.fields.status.name

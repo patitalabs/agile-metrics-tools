@@ -1,52 +1,52 @@
-import { SprintTask } from '../Types';
+import { Task } from '../Types';
 import { JiraCollectorConfig, JiraMetricItem } from './Types';
 import { SprintUtils, TaskStatistics, Utils } from '../../../metrics';
 
 export class JiraMetricConverter {
   static toMetricItem(
     jiraCollectorConfig: JiraCollectorConfig,
-    sprintTask: SprintTask
+    task: Task
   ): JiraMetricItem {
     const statistics: TaskStatistics = this.taskStatistics(
       jiraCollectorConfig,
-      sprintTask
+      task
     );
 
     const leadTime = SprintUtils.leadTime({
-      created: sprintTask.created,
-      resolutionDate: sprintTask.resolutionDate
+      created: task.created,
+      resolutionDate: task.resolutionDate
     });
     const devTime = SprintUtils.devTime(
       statistics.movedToDev,
-      sprintTask.resolutionDate
+      task.resolutionDate
     );
 
     const rawEstimateHealth = this.rawEstimateHealth(
       jiraCollectorConfig,
-      sprintTask.storyPoints,
+      task.storyPoints,
       devTime
     );
     return {
-      id: Utils.toHash(`${sprintTask.projectName}-${sprintTask.key}`),
+      id: Utils.toHash(`${task.projectName}-${task.key}`),
       dataType: 'PTS',
-      createdAt: sprintTask.created,
-      key: sprintTask.key,
-      createdBy: sprintTask.createdBy,
-      issueType: sprintTask.typeName,
+      createdAt: task.created,
+      key: task.key,
+      createdBy: task.createdBy,
+      issueType: task.typeName,
       movedForward: statistics.moveForward,
       movedBackward: statistics.moveBackward,
-      storyPoints: sprintTask.storyPoints,
-      assignees: this.taskAssignees(sprintTask),
-      tags: sprintTask.labels,
-      finished: sprintTask.resolutionDate,
+      storyPoints: task.storyPoints,
+      assignees: this.taskAssignees(task),
+      tags: task.labels,
+      finished: task.resolutionDate,
       leadTime: leadTime,
       devTime: devTime,
-      commentCount: sprintTask.numberOfComments,
-      jiraProject: sprintTask.projectName,
-      teamName: sprintTask.teamName,
+      commentCount: task.numberOfComments,
+      jiraProject: task.projectName,
+      teamName: task.teamName,
       estimateHealth: Math.round(rawEstimateHealth),
       rawEstimateHealth: rawEstimateHealth,
-      numberOfBugs: sprintTask.numberOfBugs
+      numberOfBugs: task.numberOfBugs
     };
   }
 
@@ -71,7 +71,7 @@ export class JiraMetricConverter {
 
   private static taskStatistics(
     jiraCollectorConfig: JiraCollectorConfig,
-    sprintTask: SprintTask
+    task: Task
   ): TaskStatistics {
     const taskStatusMap =
       jiraCollectorConfig.workFlowMap ||
@@ -79,7 +79,7 @@ export class JiraMetricConverter {
     const movedBackwardDates = [];
     const movedForwardDates = [];
 
-    let statusHistoryEntries = sprintTask.histories.status || [];
+    let statusHistoryEntries = task.histories.status || [];
 
     for (let history of statusHistoryEntries) {
       for (let historyItem of history.items) {
@@ -102,9 +102,9 @@ export class JiraMetricConverter {
     };
   }
 
-  private static taskAssignees(sprintTask: SprintTask): string[] {
+  private static taskAssignees(task: Task): string[] {
     const assignees = new Set();
-    let assigneesHistoryEntries = sprintTask.histories.assignee || [];
+    let assigneesHistoryEntries = task.histories.assignee || [];
     for (let history of assigneesHistoryEntries) {
       for (let historyItem of history.items) {
         if (historyItem.toString) {
@@ -116,8 +116,8 @@ export class JiraMetricConverter {
       }
     }
 
-    if (sprintTask.assignee) {
-      assignees.add(sprintTask.assignee);
+    if (task.assignee) {
+      assignees.add(task.assignee);
     }
     return Array.from(assignees);
   }

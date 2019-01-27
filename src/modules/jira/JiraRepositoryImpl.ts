@@ -4,7 +4,7 @@ import {
   JiraConfig,
   JiraRepository,
   Sprint,
-  SprintTask
+  Task
 } from './Types';
 import { Converters } from './Converters';
 import { Utils } from '../../metrics';
@@ -21,26 +21,23 @@ export class JiraRepositoryImpl implements JiraRepository {
     return Converters.toIssueDetails(jiraConfig, issueResponse);
   }
 
-  async sprintData(
-    jiraConfig: JiraConfig,
-    sprint: Sprint
-  ): Promise<SprintTask[]> {
+  async sprintData(jiraConfig: JiraConfig, sprint: Sprint): Promise<Task[]> {
     const url = `/rest/agile/1.0/board/${jiraConfig.teamId}/sprint/${
       sprint.id
     }/issue`;
 
     const { issues: issuesResponse } = await this.jiraClient.getData(url);
 
-    const sprintTaskPromises: Promise<SprintTask>[] = issuesResponse
+    const taskPromises: Promise<Task>[] = issuesResponse
       .filter(issue => issue.fields.issuetype.name !== 'Sub-task')
       .map(async issue => {
         const issueDetails = await this.issueDetailsWithChangelog(
           jiraConfig,
           issue.key
         );
-        return Converters.toSprintTask(jiraConfig, issue, sprint, issueDetails);
+        return Converters.toTask(jiraConfig, issue, sprint, issueDetails);
       });
-    return await Promise.all(sprintTaskPromises);
+    return await Promise.all(taskPromises);
   }
 
   async completedSprints(

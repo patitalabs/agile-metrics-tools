@@ -1,4 +1,4 @@
-import { JiraConfig, JiraService, Sprint, SprintTask } from '../Types';
+import { JiraConfig, JiraService, Sprint, Task } from '../Types';
 import { JiraMetricConverter } from './JiraMetricConverter';
 import { CollectorService, Utils } from '../../../metrics';
 import { JiraCollectorConfig, JiraMetricItem } from './Types';
@@ -34,8 +34,8 @@ export class JiraCollectorsService
   ): Promise<JiraMetricItem[]> {
     const jiraConfig: JiraConfig = { ...jiraCollectorConfig };
     const sprintItems = await this.jiraService.sprintData(jiraConfig, sprint);
-    return sprintItems.map((sprintItem: SprintTask) => {
-      return JiraMetricConverter.toMetricItem(jiraCollectorConfig, sprintItem);
+    return sprintItems.map((task: Task) => {
+      return JiraMetricConverter.toMetricItem(jiraCollectorConfig, task);
     });
   }
 

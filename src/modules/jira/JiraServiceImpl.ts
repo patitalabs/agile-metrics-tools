@@ -1,10 +1,4 @@
-import {
-  JiraConfig,
-  JiraRepository,
-  JiraService,
-  Sprint,
-  SprintTask
-} from './Types';
+import { JiraConfig, JiraRepository, JiraService, Sprint, Task } from './Types';
 
 export class JiraServiceImpl implements JiraService {
   constructor(private jiraRepository: JiraRepository) {}
@@ -17,10 +11,7 @@ export class JiraServiceImpl implements JiraService {
     return this.jiraRepository.completedSprints(teamId, since, until);
   }
 
-  async sprintData(
-    jiraConfig: JiraConfig,
-    sprint: Sprint
-  ): Promise<SprintTask[]> {
+  async sprintData(jiraConfig: JiraConfig, sprint: Sprint): Promise<Task[]> {
     return await this.jiraRepository.sprintData(jiraConfig, sprint);
   }
 }

@@ -3,13 +3,13 @@ import {
   JiraConfig,
   JiraService,
   Sprint,
-  SprintSubtask,
-  SprintTask
+  Subtask,
+  Task
 } from '../Types';
 import { JiraCollectorsService } from './JiraCollectorsService';
 import { JiraCollectorConfig } from './Types';
 
-function testSubtasks(): SprintSubtask[] {
+function testSubtasks(): Subtask[] {
   return [{ key: 'someKey-12', statusName: 'Done' }];
 }
 
@@ -30,7 +30,7 @@ function testHistories(): { [type: string]: HistoryEntry[] } {
   };
 }
 
-function testSprintTask(): SprintTask {
+function testTask(): Task {
   return {
     key: 'someKey-1',
     typeName: 'Story',
@@ -73,8 +73,8 @@ describe('JiraCollectorsService', () => {
     sprintData: async (
       jiraConfig: JiraConfig,
       sprint: Sprint
-    ): Promise<SprintTask[]> => {
-      return [testSprintTask()];
+    ): Promise<Task[]> => {
+      return [testTask()];
     }
   };
 

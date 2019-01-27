@@ -5,13 +5,13 @@ export class Sprint {
   isoEndDate: Date;
 }
 
-export class SprintTask {
+export class Task {
   key: string;
   typeName: string;
   statusName: string;
   assignee: string;
   epic: string;
-  sprint: Sprint;
+  sprint?: Sprint;
   created: Date;
   projectName: string;
   teamName: string;
@@ -19,13 +19,13 @@ export class SprintTask {
   resolutionDate: Date;
   storyPoints: number;
   labels: string[];
-  subtasks: SprintSubtask[];
+  subtasks: Subtask[];
   histories: { [type: string]: HistoryEntry[] };
   numberOfComments: number;
   numberOfBugs: number;
 }
 
-export class SprintSubtask {
+export class Subtask {
   key: string;
   statusName: string;
 }
@@ -50,7 +50,7 @@ export interface JiraConfig {
 }
 
 export interface IssueDetails {
-  subtasks: SprintSubtask[];
+  subtasks: Subtask[];
   histories: { [type: string]: HistoryEntry[] };
   labels: string[];
   created: Date;
@@ -69,7 +69,7 @@ export interface JiraService {
     until: Date
   ): Promise<Sprint[]>;
 
-  sprintData(jiraConfig: JiraConfig, sprint: Sprint): Promise<SprintTask[]>;
+  sprintData(jiraConfig: JiraConfig, sprint: Sprint): Promise<Task[]>;
 }
 
 export interface JiraClient {
@@ -81,7 +81,7 @@ export interface JiraRepository {
     jiraConfig: JiraConfig,
     issueId: string
   ): Promise<IssueDetails>;
-  sprintData(jiraConfig: JiraConfig, sprint: Sprint): Promise<SprintTask[]>;
+  sprintData(jiraConfig: JiraConfig, sprint: Sprint): Promise<Task[]>;
 
   completedSprints(
     teamId: number,
