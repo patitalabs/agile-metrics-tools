@@ -210,16 +210,6 @@
     editorContainerDom.classList.remove('hidden');
   };
 
-  const cleanup = modeRadios => {
-    global.onunload = () => {
-      formDom.removeEventListener('submit', handleFormSubmit);
-      for (const radio of modeRadios) {
-        radio.removeEventListener('click', toggleModeType);
-      }
-      sampleBtnDom.removeEventListener('click', setSample);
-    };
-  };
-
   const setSample = e => {
     e.preventDefault();
     const selectedService = formDom.serviceName.value;
@@ -230,6 +220,16 @@
       const jsonString = prettyJson([sample]);
       aceEditor.setValue(jsonString, -1);
     }
+  };
+
+  const cleanup = modeRadios => {
+    global.onunload = () => {
+      formDom.removeEventListener('submit', handleFormSubmit);
+      for (const radio of modeRadios) {
+        radio.removeEventListener('click', toggleModeType);
+      }
+      sampleBtnDom.removeEventListener('click', setSample);
+    };
   };
 
   const addEventListeners = () => {
