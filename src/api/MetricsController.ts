@@ -17,10 +17,9 @@ export class MetricsController {
 
   private static async handleRequest(req: Request, res: Response) {
     try {
-      this.collectMetrics(req).then(() => {
-        res.json({ status: 'Your request will be handled shortly' });
-        console.log('Done!');
-      });
+      await this.collectMetrics(req);
+      res.json({ status: 'Done!.' });
+      console.log('Done!');
     } catch (error) {
       console.error(error);
       res.json({ error: 'Could not process request' });
