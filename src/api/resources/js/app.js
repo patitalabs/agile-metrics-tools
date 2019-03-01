@@ -59,8 +59,8 @@
   };
 
   const externalSampleBuilder = (
-    referenceDate = new Date(),
-    { metricType, rows: columns }
+    { metricType, rows: columns },
+    referenceDate = new Date()
   ) => {
     return {
       metricType: metricType,
@@ -78,13 +78,16 @@
   };
 
   const sampleExternalConfig = (referenceDate = new Date()) => {
-    return externalSampleBuilder(referenceDate, {
-      metricType: 'METRIC-NAME',
-      columns: {
-        colOne: 0,
-        colTwo: 'value'
-      }
-    });
+    return externalSampleBuilder(
+      {
+        metricType: 'METRIC-NAME',
+        columns: {
+          colOne: 0,
+          colTwo: 'value'
+        }
+      },
+      referenceDate
+    );
   };
 
   const sampleForValue = (theValue, optionText) => {

@@ -31,7 +31,7 @@ export class JiraRepositoryImpl implements JiraRepository {
     const taskPromises: Promise<Task>[] = issuesResponse
       .filter(issue => issue.fields.issuetype.name !== 'Sub-task')
       .map(async issue => {
-        return await this.issueDetails(jiraConfig, issue, sprint);
+        return this.issueDetails(jiraConfig, issue, sprint);
       })
       .filter(issue => Boolean(issue));
     return Promise.all(taskPromises);
@@ -66,7 +66,7 @@ export class JiraRepositoryImpl implements JiraRepository {
     )}"${untilConstraint}`;
     const kanbanDataResponse: any[] = await this.paginate(url, 'issues');
 
-    const taskPromises: Promise<Task>[] = await kanbanDataResponse
+    const taskPromises: Promise<Task>[] = kanbanDataResponse
       .map(issue => {
         return this.issueDetails(jiraConfig, issue, null);
       })

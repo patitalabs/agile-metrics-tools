@@ -48,7 +48,7 @@ describe('JiraRepositoryImpl', () => {
     const jiraKanbanConfig: JiraConfig = {
       teamId: 1,
       teamName: 'someTeamName',
-      since: new Date('2018-12-03'),
+      since: new Date('2018-12-13'),
       workFlowType: 'kanban'
     };
 

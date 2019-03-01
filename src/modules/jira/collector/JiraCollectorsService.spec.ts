@@ -88,31 +88,27 @@ describe('JiraCollectorsService', () => {
     jiraService
   );
 
-  it('should fetch jiraMetrics for sprint', async () => {
-    const jiraCollectorConfig: JiraCollectorConfig = new JiraCollectorConfig({
+  const config = ({ workFlowType }): JiraCollectorConfig => {
+    return new JiraCollectorConfig({
       teamId: 68,
       teamName: 'someTeamName',
       since: '2018-11-20',
       workFlowMap: null,
-      workFlowType: 'sprint',
+      workFlowType,
       fields: null,
       until: '2020-11-20'
     });
+  };
+
+  it('should fetch jiraMetrics for sprint', async () => {
+    const jiraCollectorConfig = config({ workFlowType: 'sprint' });
 
     const data = await jiraCollectorsService.fetch(jiraCollectorConfig);
     expect(data).toMatchSnapshot();
   });
 
   it('should fetch jiraMetrics for kanban', async () => {
-    const jiraCollectorConfig: JiraCollectorConfig = new JiraCollectorConfig({
-      teamId: 68,
-      teamName: 'someTeamName',
-      since: '2018-11-20',
-      workFlowMap: null,
-      workFlowType: 'kanban',
-      fields: null,
-      until: '2020-11-20'
-    });
+    const jiraCollectorConfig = config({ workFlowType: 'kanban' });
 
     const data = await jiraCollectorsService.fetch(jiraCollectorConfig);
     expect(data).toMatchSnapshot();
