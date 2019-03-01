@@ -71,6 +71,21 @@ ES_HOST=
     "srcType": "file",
     "srcPath": "/your/path/sample.csv",
     "since": "2018-12-03T00:00:00Z"
+  },
+   {
+    "metricType": "METRIC",
+    "since": "2018-12-03T00:00:00Z",
+    "type: "csv",
+    "srcType": "inline",
+    "inlineData": [
+      {
+        "createdAt": "2018-12-03T00:00:00Z",
+        "teamName": "someTeam",
+        "header1": 2,
+        "header2": 3,
+        "header3": 'someValue'
+      }
+    ]
   }
 ]
 ````
@@ -80,6 +95,7 @@ ES_HOST=
 [
   {
     "repositoryName": "your-repo",
+    "teamName": "someTeam",
     "orgName": "orgName/own",
     "since": "2018-12-03T00:00:00Z"
   }
@@ -91,6 +107,7 @@ ES_HOST=
 [
    {
       "orgName": "org-name",
+      "teamName": "someTeam",
       "projectName": "your-project",
       "since": "2018-12-03"
     }
@@ -102,6 +119,7 @@ ES_HOST=
 [
   {
     "teamId": 1,
+    "teamName": "someTeam",
     "since": "2018-12-03",
     "workFlowMap": {
           "Open": 1,
@@ -112,10 +130,9 @@ ES_HOST=
         },
         "fields": {
           "storyPoints": "customfield_..."
-          "teamName": "customfield_..."
         },
         "estimateConfig": {
-            "maxTime": 8,
+            "maxTime": 7,
             "estimationValues": [1, 2, 3, 5, 8]
         }
   }
@@ -127,6 +144,7 @@ ES_HOST=
 [
   {
      "projectName": "your-project",
+     "teamName": "someTeam",
      "since": "2018-12-03"
   }
 ]

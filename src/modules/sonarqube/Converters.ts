@@ -10,13 +10,13 @@ export class Converters {
     const analysisMapsPerDate = this.analysisMapPerDate(
       analysisHistoryResponse
     );
-    let result = [];
+    const result = [];
 
     for (const dateStr of measureMapsPerDate.keys()) {
       const measureMapForDate = measureMapsPerDate.get(dateStr);
       const version = analysisMapsPerDate.get(dateStr);
 
-      let projectMetrics = this.toProjectMetric({
+      const projectMetrics = this.toProjectMetric({
         sonarConfig,
         measureMapForDate,
         dateStr,
@@ -35,7 +35,7 @@ export class Converters {
     const measureMapsPerDate = new Map<string, Map<string, string>>();
 
     for (const measure of measures) {
-      for (let historyEntry of measure.history) {
+      for (const historyEntry of measure.history) {
         let metricMapForDate = measureMapsPerDate.get(historyEntry.date);
         if (!metricMapForDate) {
           metricMapForDate = new Map<string, string>();
@@ -60,6 +60,7 @@ export class Converters {
   }): ProjectMetrics {
     return {
       createdAt: new Date(dateStr),
+      teamName: sonarConfig.teamName,
       projectName: sonarConfig.projectName,
       alertStatus: this.stringValue(measureMapForDate, 'alert_status'),
       qualityGateDetails: this.stringValue(
@@ -123,7 +124,7 @@ export class Converters {
         'ncloc_language_distribution'
       ),
       newLines: this.numberValue(measureMapForDate, 'new_lines'),
-      version: version
+      version
     };
   }
 
@@ -138,12 +139,12 @@ export class Converters {
   private static analysisMapPerDate(
     analysisHistoryResponse: any
   ): Map<string, string> {
-    let analysisMap: Map<string, string> = new Map<string, string>();
+    const analysisMap: Map<string, string> = new Map<string, string>();
 
     for (const analysis of analysisHistoryResponse.analyses || []) {
-      let versions =
+      const versions =
         analysis.events
-          .filter(event => event.category == 'VERSION')
+          .filter(event => event.category === 'VERSION')
           .map(event => event.name) || [];
 
       if (versions.length > 0) {

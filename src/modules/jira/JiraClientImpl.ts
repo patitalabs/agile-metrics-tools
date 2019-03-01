@@ -19,6 +19,11 @@ export class JiraClientImpl implements JiraClient {
       headers: { 'Content-Type': 'application/json', Authorization: authToken }
     };
     const response = await fetch(fullUrl, config);
-    return response.json();
+
+    const json = await response.json();
+    if (json.errors) {
+      throw new Error(...json.errors);
+    }
+    return json;
   }
 }

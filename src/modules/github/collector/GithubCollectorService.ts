@@ -5,7 +5,7 @@ import { GithubService } from '../Types';
 
 export class GithubCollectorService
   implements CollectorService<GithubCollectorConfig, GithubMetricItem> {
-  constructor(private githubService: GithubService) {}
+  constructor(private readonly githubService: GithubService) {}
 
   public async fetch(
     githubCollectorConfig: GithubCollectorConfig

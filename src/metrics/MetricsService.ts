@@ -4,8 +4,8 @@ import { CollectorConfig, CollectorService, MetricItem } from './Types';
 
 export class MetricsService {
   constructor(
-    private elasticSearch: ElasticSearchService,
-    private collectors: CollectorService<CollectorConfig, MetricItem>[]
+    private readonly elasticSearch: ElasticSearchService,
+    private readonly collectors: CollectorService<CollectorConfig, MetricItem>[]
   ) {}
 
   async start(metricsConfig: MetricsConfig): Promise<void> {
@@ -25,12 +25,15 @@ export class MetricsService {
     try {
       const metricItems = await collector.fetch(collectorConfig);
       await this.processMetrics(metricItems);
-    } catch (error) {
-      console.warn(
-        `There was a problem collecting metrics for: ${JSON.stringify(
-          collectorConfig
-        )}, error:${JSON.stringify(error)}, message:${error.message}`
+      console.log(
+        `Finished collecting metrics for: ${JSON.stringify(collectorConfig)}`
       );
+    } catch (error) {
+      const errorMessage = `There was a problem collecting metrics for: ${JSON.stringify(
+        collectorConfig
+      )}, error:${JSON.stringify(error)}, message:${error.message}`;
+      console.warn(`${errorMessage}`);
+      throw errorMessage;
     }
   }
 

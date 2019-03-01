@@ -1,4 +1,4 @@
-import app from './api/app';
+import app from './app';
 
 const server = app.listen(app.get('port'), () => {
   console.log(

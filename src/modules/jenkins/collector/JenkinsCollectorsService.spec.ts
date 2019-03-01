@@ -40,6 +40,7 @@ describe('JenkinsCollectorsService', () => {
     const jiraCollectorConfig: JenkinsCollectorConfig = new JenkinsCollectorConfig(
       {
         orgName: 'orgName',
+        teamName: 'someTeamName',
         projectName: 'projectName',
         since: '2018-11-20',
         until: '2020-11-20'

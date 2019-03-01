@@ -5,7 +5,7 @@ import { JenkinsService } from '../Types';
 
 export class JenkinsCollectorsService
   implements CollectorService<JenkinsCollectorConfig, JenkinsMetricItem> {
-  constructor(private jenkinsService: JenkinsService) {}
+  constructor(private readonly jenkinsService: JenkinsService) {}
 
   public async fetch(
     jenkinsConfig: JenkinsCollectorConfig

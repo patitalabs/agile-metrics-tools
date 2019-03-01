@@ -11,6 +11,7 @@ export class GithubMetricConverter {
         id: commit.sha,
         dataType: 'SCM',
         repositoryName: githubConfig.repositoryName,
+        teamName: githubConfig.teamName,
         ...commit
       };
     });

@@ -1,0 +1,430 @@
+{
+  "expand": "schema,names",
+  "startAt": 0,
+  "maxResults": 50,
+  "total": 37,
+  "issues": [
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "41573",
+      "self": "https://jira-host/rest/agile/1.0/issue/41573",
+      "key": "ORG-5785",
+      "fields": {
+        "issuetype": {
+          "self": "https://jira-host/rest/api/2/issuetype/10009",
+          "id": "10009",
+          "description": "A user story. Created by JIRA Software - do not edit or delete.",
+          "iconUrl": "https://jira-host/secure/viewavatar?size=xsmall&avatarId=10502&avatarType=issuetype",
+          "name": "Story",
+          "subtask": false,
+          "avatarId": 10502
+        },
+        "sprint": null,
+        "project": {
+          "self": "https://jira-host/rest/api/2/project/10900",
+          "id": "10900",
+          "key": "ORG",
+          "name": "orgName",
+          "projectTypeKey": "software",
+          "avatarUrls": {
+            "48x48": "https://jira-host/secure/projectavatar?pid=10900&avatarId=10409",
+            "24x24": "https://jira-host/secure/projectavatar?size=small&pid=10900&avatarId=10409",
+            "16x16": "https://jira-host/secure/projectavatar?size=xsmall&pid=10900&avatarId=10409",
+            "32x32": "https://jira-host/secure/projectavatar?size=medium&pid=10900&avatarId=10409"
+          }
+        },
+        "customfield_11000": null,
+        "fixVersions": [
+          {
+            "self": "https://jira-host/rest/api/2/version/15028",
+            "id": "15028",
+            "description": "Platform 1.0",
+            "name": "Q4 2018",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2018-12-31"
+          },
+          {
+            "self": "https://jira-host/rest/api/2/version/15040",
+            "id": "15040",
+            "description": "",
+            "name": "_MVP",
+            "archived": false,
+            "released": false,
+            "releaseDate": "2018-12-21"
+          }
+        ],
+        "customfield_11200": null,
+        "resolution": {
+          "self": "https://jira-host/rest/api/2/resolution/1",
+          "id": "1",
+          "description": "Work has been completed on this issue.",
+          "name": "Done"
+        },
+        "customfield_10500": null,
+        "customfield_11557": null,
+        "customfield_11556": null,
+        "customfield_10700": {
+          "hasEpicLinkFieldDependency": false,
+          "showField": false,
+          "nonEditableReason": {
+            "reason": "EPIC_LINK_SHOULD_BE_USED",
+            "message": "To set an epic as the parent, use the epic link instead"
+          }
+        },
+        "customfield_11558": null,
+        "customfield_10900": {
+          "id": "7",
+          "title": "teamName",
+          "isShared": true
+        },
+        "resolutiondate": "2018-12-04T17:06:10.050+0100",
+        "workratio": -1,
+        "lastViewed": null,
+        "watches": {
+          "self": "https://jira-host/rest/api/2/issue/ORG-5785/watchers",
+          "watchCount": 1,
+          "isWatching": false
+        },
+        "created": "2018-11-16T11:24:50.096+0100",
+        "customfield_11551": null,
+        "epic": {
+          "id": 41087,
+          "key": "ORG-5387",
+          "self": "https://jira-host/rest/agile/1.0/epic/41087",
+          "name": "epic-name",
+          "summary": "epic-summary",
+          "color": {
+            "key": "color_2"
+          },
+          "done": false
+        },
+        "priority": {
+          "self": "https://jira-host/rest/api/2/priority/3",
+          "iconUrl": "https://jira-host/images/icons/priorities/medium.svg",
+          "name": "Medium",
+          "id": "3"
+        },
+        "customfield_11552": null,
+        "customfield_10301": null,
+        "labels": ["partner-integration"],
+        "customfield_11546": null,
+        "customfield_11545": null,
+        "customfield_11548": null,
+        "customfield_11547": null,
+        "customfield_11549": null,
+        "issuelinks": [
+          {
+            "id": "40924",
+            "self": "https://jira-host/rest/api/2/issueLink/40924",
+            "type": {
+              "id": "10003",
+              "name": "Relates",
+              "inward": "relates to",
+              "outward": "relates to",
+              "self": "https://jira-host/rest/api/2/issueLinkType/10003"
+            },
+            "outwardIssue": {
+              "id": "41069",
+              "key": "ORG-5371",
+              "self": "https://jira-host/rest/api/2/issue/41069",
+              "fields": {
+                "summary": "",
+                "status": {
+                  "self": "https://jira-host/rest/api/2/status/10001",
+                  "description": "",
+                  "iconUrl": "https://jira-host/images/icons/statuses/closed.png",
+                  "name": "Done",
+                  "id": "10001",
+                  "statusCategory": {
+                    "self": "https://jira-host/rest/api/2/statuscategory/3",
+                    "id": 3,
+                    "key": "done",
+                    "colorName": "green",
+                    "name": "Done"
+                  }
+                },
+                "priority": {
+                  "self": "https://jira-host/rest/api/2/priority/3",
+                  "iconUrl": "https://jira-host/images/icons/priorities/medium.svg",
+                  "name": "Medium",
+                  "id": "3"
+                },
+                "issuetype": {
+                  "self": "https://jira-host/rest/api/2/issuetype/10009",
+                  "id": "10009",
+                  "description": "A user story. Created by JIRA Software - do not edit or delete.",
+                  "iconUrl": "https://jira-host/secure/viewavatar?size=xsmall&avatarId=10502&avatarType=issuetype",
+                  "name": "Story",
+                  "subtask": false,
+                  "avatarId": 10502
+                }
+              }
+            }
+          }
+        ],
+        "assignee": {
+          "self": "https://jira-host/rest/api/2/user?accountId=5bbc7764420fae14bc8142eb",
+          "name": "pter",
+          "key": "pter",
+          "accountId": "5bbc7764420fae14bc8142eb",
+          "emailAddress": "pter@org.com",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/09438f8b1a970c513e37ad900fede84d?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F09438f8b1a970c513e37ad900fede84d%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/09438f8b1a970c513e37ad900fede84d?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F09438f8b1a970c513e37ad900fede84d%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/09438f8b1a970c513e37ad900fede84d?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F09438f8b1a970c513e37ad900fede84d%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/09438f8b1a970c513e37ad900fede84d?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F09438f8b1a970c513e37ad900fede84d%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+          },
+          "displayName": "peter",
+          "active": true,
+          "timeZone": "Europe/Berlin"
+        },
+        "updated": "2018-12-10T15:16:42.050+0100",
+        "status": {
+          "self": "https://jira-host/rest/api/2/status/10001",
+          "description": "",
+          "iconUrl": "https://jira-host/images/icons/statuses/closed.png",
+          "name": "Done",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://jira-host/rest/api/2/statuscategory/3",
+            "id": 3,
+            "key": "done",
+            "colorName": "green",
+            "name": "Done"
+          }
+        },
+        "components": [],
+        "description": "",
+        "customfield_11540": null,
+        "customfield_11100": null,
+        "customfield_11542": null,
+        "customfield_11541": null,
+        "customfield_11300": null,
+        "customfield_11544": null,
+        "customfield_11543": null,
+        "customfield_10005": 2,
+        "customfield_11535": null,
+        "customfield_10600": null,
+        "customfield_11534": null,
+        "customfield_11537": null,
+        "customfield_11536": null,
+        "attachment": [],
+        "customfield_10009": "ORG-5387",
+        "customfield_11539": null,
+        "flagged": false,
+        "customfield_11538": null,
+        "summary": "the summary",
+        "creator": {
+          "self": "https://jira-host/rest/api/2/user?accountId=5a7192847c30f0550fba6f0d",
+          "name": "jane",
+          "key": "jane",
+          "accountId": "5a7192847c30f0550fba6f0d",
+          "emailAddress": "jane@org.com",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/2404406f6a2d20873973581ef70e92d8?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F2404406f6a2d20873973581ef70e92d8%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/2404406f6a2d20873973581ef70e92d8?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F2404406f6a2d20873973581ef70e92d8%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/2404406f6a2d20873973581ef70e92d8?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F2404406f6a2d20873973581ef70e92d8%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/2404406f6a2d20873973581ef70e92d8?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F2404406f6a2d20873973581ef70e92d8%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+          },
+          "displayName": "jane doe",
+          "active": true,
+          "timeZone": "Europe/Berlin"
+        },
+        "subtasks": [
+          {
+            "id": "41768",
+            "key": "ORG-5943",
+            "self": "https://jira-host/rest/api/2/issue/41768",
+            "fields": {
+              "summary": "validate if validationRules exists",
+              "status": {
+                "self": "https://jira-host/rest/api/2/status/10001",
+                "description": "",
+                "iconUrl": "https://jira-host/images/icons/statuses/closed.png",
+                "name": "Done",
+                "id": "10001",
+                "statusCategory": {
+                  "self": "https://jira-host/rest/api/2/statuscategory/3",
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "self": "https://jira-host/rest/api/2/priority/3",
+                "iconUrl": "https://jira-host/images/icons/priorities/medium.svg",
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "self": "https://jira-host/rest/api/2/issuetype/5",
+                "id": "5",
+                "description": "The sub-task of the issue",
+                "iconUrl": "https://jira-host/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype",
+                "name": "Sub-task",
+                "subtask": true,
+                "avatarId": 10316
+              }
+            }
+          },
+          {
+            "id": "41947",
+            "key": "ORG-6090",
+            "self": "https://jira-host/rest/api/2/issue/41947",
+            "fields": {
+              "summary": "implement something cool",
+              "status": {
+                "self": "https://jira-host/rest/api/2/status/10001",
+                "description": "",
+                "iconUrl": "https://jira-host/images/icons/statuses/closed.png",
+                "name": "Done",
+                "id": "10001",
+                "statusCategory": {
+                  "self": "https://jira-host/rest/api/2/statuscategory/3",
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "self": "https://jira-host/rest/api/2/priority/3",
+                "iconUrl": "https://jira-host/images/icons/priorities/medium.svg",
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "self": "https://jira-host/rest/api/2/issuetype/5",
+                "id": "5",
+                "description": "The sub-task of the issue",
+                "iconUrl": "https://jira-host/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype",
+                "name": "Sub-task",
+                "subtask": true,
+                "avatarId": 10316
+              }
+            }
+          },
+          {
+            "id": "41975",
+            "key": "ORG-6117",
+            "self": "https://jira-host/rest/api/2/issue/41975",
+            "fields": {
+              "summary": "implement something awesome",
+              "status": {
+                "self": "https://jira-host/rest/api/2/status/10001",
+                "description": "",
+                "iconUrl": "https://jira-host/images/icons/statuses/closed.png",
+                "name": "Done",
+                "id": "10001",
+                "statusCategory": {
+                  "self": "https://jira-host/rest/api/2/statuscategory/3",
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "self": "https://jira-host/rest/api/2/priority/3",
+                "iconUrl": "https://jira-host/images/icons/priorities/medium.svg",
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "self": "https://jira-host/rest/api/2/issuetype/5",
+                "id": "5",
+                "description": "The sub-task of the issue",
+                "iconUrl": "https://jira-host/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype",
+                "name": "Sub-task",
+                "subtask": true,
+                "avatarId": 10316
+              }
+            }
+          }
+        ],
+        "customfield_11571": null,
+        "customfield_11570": null,
+        "reporter": {
+          "self": "https://jira-host/rest/api/2/user?accountId=5a7192847c30f0550fba6f0d",
+          "name": "jane",
+          "key": "jane",
+          "accountId": "5a7192847c30f0550fba6f0d",
+          "emailAddress": "jane@org.com",
+          "avatarUrls": {
+            "48x48": "https://avatar-cdn.atlassian.com/2404406f6a2d20873973581ef70e92d8?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F2404406f6a2d20873973581ef70e92d8%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+            "24x24": "https://avatar-cdn.atlassian.com/2404406f6a2d20873973581ef70e92d8?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F2404406f6a2d20873973581ef70e92d8%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+            "16x16": "https://avatar-cdn.atlassian.com/2404406f6a2d20873973581ef70e92d8?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F2404406f6a2d20873973581ef70e92d8%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+            "32x32": "https://avatar-cdn.atlassian.com/2404406f6a2d20873973581ef70e92d8?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F2404406f6a2d20873973581ef70e92d8%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+          },
+          "displayName": "jane doe",
+          "active": true,
+          "timeZone": "Europe/Berlin"
+        },
+        "customfield_11573": null,
+        "customfield_11572": null,
+        "customfield_11531": null,
+        "customfield_11530": null,
+        "customfield_11574": null,
+        "customfield_11533": null,
+        "customfield_11532": null,
+        "customfield_10004": null,
+        "customfield_11568": null,
+        "customfield_11567": null,
+        "customfield_11526": [],
+        "customfield_11569": null,
+        "customfield_11528": null,
+        "customfield_11527": null,
+        "duedate": null,
+        "customfield_11529": null,
+        "closedSprints": [
+          {
+            "id": 330,
+            "self": "https://jira-host/rest/agile/1.0/sprint/330",
+            "state": "closed",
+            "name": "20.11 teamName",
+            "startDate": "2018-11-20T10:30:06.200Z",
+            "endDate": "2018-11-27T10:30:00.000Z",
+            "completeDate": "2018-11-27T10:47:33.911Z",
+            "originBoardId": 68,
+            "goal": "goal 1"
+          },
+          {
+            "id": 333,
+            "self": "https://jira-host/rest/agile/1.0/sprint/333",
+            "state": "closed",
+            "name": "27.11 teamName",
+            "startDate": "2018-11-27T11:32:34.537Z",
+            "endDate": "2018-12-04T11:32:00.000Z",
+            "completeDate": "2018-12-04T10:06:29.865Z",
+            "originBoardId": 68,
+            "goal": "goal 2"
+          },
+          {
+            "id": 334,
+            "self": "https://jira-host/rest/agile/1.0/sprint/334",
+            "state": "closed",
+            "name": "04.12 teamName",
+            "startDate": "2018-12-04T10:18:45.727Z",
+            "endDate": "2018-12-11T10:18:00.000Z",
+            "completeDate": "2018-12-11T11:10:26.059Z",
+            "originBoardId": 68,
+            "goal": "goal 3"
+          }
+        ],
+        "comment": {
+          "comments": [],
+          "maxResults": 0,
+          "total": 0,
+          "startAt": 0
+        },
+        "votes": {
+          "self": "https://jira-host/rest/api/2/issue/ORG-5785/votes",
+          "votes": 0,
+          "hasVoted": false
+        }
+      }
+    }
+  ]
+}

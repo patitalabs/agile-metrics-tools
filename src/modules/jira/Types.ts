@@ -44,8 +44,11 @@ export class HistoryEntry {
 
 export interface JiraConfig {
   teamId: number;
+  teamName: string;
   since: Date;
+  until?: Date;
   workFlowMap?: { [name: string]: number };
+  workFlowType: 'sprint' | 'kanban';
   fields?: { [name: string]: string };
 }
 
@@ -70,6 +73,8 @@ export interface JiraService {
   ): Promise<Sprint[]>;
 
   sprintData(jiraConfig: JiraConfig, sprint: Sprint): Promise<Task[]>;
+
+  completedKanbanIssuesSince(jiraConfig: JiraConfig): Promise<Task[]>;
 }
 
 export interface JiraClient {
@@ -88,4 +93,6 @@ export interface JiraRepository {
     since: Date,
     until?: Date
   ): Promise<Sprint[]>;
+
+  completedKanbanIssuesSince(jiraConfig: JiraConfig): Promise<Task[]>;
 }

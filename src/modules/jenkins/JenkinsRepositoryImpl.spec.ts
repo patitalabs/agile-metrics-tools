@@ -9,7 +9,7 @@ describe('JenkinsRepository', () => {
     getData: async (url): Promise<any> => {
       if (/.*job\/master\/\d+/.test(url)) {
         return projectBuildDetailsResponse;
-      } else if (/.*job\/master\//.test(url)) {
+      } else if (/.*job\/master/.test(url)) {
         return projectDetailsResponse;
       }
       return projectListResponse;

@@ -27,6 +27,7 @@ describe('GithubCollectorsService', () => {
   it('should fetch githubMetrics', async () => {
     const githubCollectorConfig: GithubCollectorConfig = new GithubCollectorConfig(
       {
+        teamName: 'someTeamName',
         repositoryName: 'someRepoName',
         orgName: 'someOrgName',
         since: '2018-11-20',

@@ -10,9 +10,12 @@ export interface MetricItem {
   id: string;
   dataType: string;
   createdAt: Date;
+  teamName: string;
 }
 
-export interface CollectorConfig {}
+export interface CollectorConfig {
+  teamName: string;
+}
 
 export interface CollectorModuleFactory<
   T extends CollectorConfig,

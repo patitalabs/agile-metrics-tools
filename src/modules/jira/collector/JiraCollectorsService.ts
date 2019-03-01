@@ -5,7 +5,7 @@ import { JiraCollectorConfig, JiraMetricItem } from './Types';
 
 export class JiraCollectorsService
   implements CollectorService<JiraCollectorConfig, JiraMetricItem> {
-  constructor(private jiraService: JiraService) {}
+  constructor(private readonly jiraService: JiraService) {}
 
   public async fetch(
     jiraConfig: JiraCollectorConfig
@@ -14,29 +14,57 @@ export class JiraCollectorsService
       return [];
     }
 
-    const sprints = await this.jiraService.completedSprintsSince(
+    const tasks: Task[] = await this.tasks(jiraConfig);
+    return tasks.map(task => {
+      return JiraMetricConverter.toMetricItem(jiraConfig, task);
+    });
+  }
+
+  private async tasks(jiraConfig: JiraCollectorConfig) {
+    let tasks = [];
+    if (jiraConfig.isKanban()) {
+      tasks = await this.tasksForKanban(jiraConfig);
+    } else {
+      tasks = await this.tasksForSprint(jiraConfig);
+    }
+    return tasks;
+  }
+
+  private async tasksForSprint(
+    jiraConfig: JiraCollectorConfig
+  ): Promise<Task[]> {
+    const sprints: Sprint[] = await this.jiraService.completedSprintsSince(
       jiraConfig.teamId,
       jiraConfig.since,
       jiraConfig.until
     );
 
-    const sprintsPromises: Promise<JiraMetricItem[]>[] = sprints.map(sprint => {
+    const taskPromises: Promise<Task[]>[] = sprints.map(sprint => {
       return this.sprintDetails(jiraConfig, sprint);
     });
 
-    const results = await Promise.all(sprintsPromises);
-    return Utils.flatMap(item => item, results);
+    return Utils.flatMap(item => item, await Promise.all(taskPromises));
+  }
+
+  private async tasksForKanban(
+    jiraCollectorConfig: JiraCollectorConfig
+  ): Promise<Task[]> {
+    const jiraConfig = JiraCollectorsService.toJiraConfig(jiraCollectorConfig);
+    return this.jiraService.completedKanbanIssuesSince(jiraConfig);
+  }
+
+  private static toJiraConfig(
+    jiraCollectorConfig: JiraCollectorConfig
+  ): JiraConfig {
+    return { ...jiraCollectorConfig };
   }
 
   private async sprintDetails(
     jiraCollectorConfig: JiraCollectorConfig,
     sprint: Sprint
-  ): Promise<JiraMetricItem[]> {
-    const jiraConfig: JiraConfig = { ...jiraCollectorConfig };
-    const sprintItems = await this.jiraService.sprintData(jiraConfig, sprint);
-    return sprintItems.map((task: Task) => {
-      return JiraMetricConverter.toMetricItem(jiraCollectorConfig, task);
-    });
+  ): Promise<Task[]> {
+    const jiraConfig = JiraCollectorsService.toJiraConfig(jiraCollectorConfig);
+    return this.jiraService.sprintData(jiraConfig, sprint);
   }
 
   supports(config: any): boolean {

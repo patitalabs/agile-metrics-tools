@@ -8,7 +8,7 @@ import {
 import { Converters } from './Converters';
 
 export class GithubRepositoryImpl implements GithubRepository {
-  constructor(private githubClient: GithubClient) {}
+  constructor(private readonly githubClient: GithubClient) {}
 
   async commits(githubConfig: GithubConfig): Promise<GithubCommit[]> {
     const { repositoryName, orgName } = githubConfig;
@@ -19,7 +19,7 @@ export class GithubRepositoryImpl implements GithubRepository {
         return this.getCommitDetails(repositoryName, orgName, commitSha);
       }
     );
-    return await Promise.all(commitsWithDetailsPromise);
+    return Promise.all(commitsWithDetailsPromise);
   }
 
   private async getCommitDetails(

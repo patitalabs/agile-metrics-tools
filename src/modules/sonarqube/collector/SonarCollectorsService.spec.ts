@@ -5,6 +5,7 @@ import { ProjectMetrics, SonarConfig, SonarService } from '../Types';
 function testProjectMetric(): ProjectMetrics {
   return {
     createdAt: new Date('2018-12-20'),
+    teamName: 'someTeamName',
     projectName: 'the project',
     alertStatus: 'OK',
     qualityGateDetails: 'Passed',
@@ -51,7 +52,12 @@ describe('SonarCollectorsService', () => {
 
   it('should fetch sonarMetrics', async () => {
     const sonarCollectorConfig: SonarCollectorConfig = new SonarCollectorConfig(
-      { projectName: 'someProject', since: '2018-11-20', until: '2020-11-20' }
+      {
+        projectName: 'someProject',
+        since: '2018-11-20',
+        until: '2020-11-20',
+        teamName: 'someTeamName'
+      }
     );
 
     const data = await sonarCollectorsService.fetch(sonarCollectorConfig);

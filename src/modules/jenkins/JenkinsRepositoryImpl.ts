@@ -8,7 +8,7 @@ import { Converters } from './Converters';
 import { Utils } from '../../metrics';
 
 export class JenkinsRepositoryImpl implements JenkinsRepository {
-  constructor(private jenkinsClient: JenkinsClient) {}
+  constructor(private readonly jenkinsClient: JenkinsClient) {}
 
   async jobDetails(
     orgName: string,
@@ -17,7 +17,7 @@ export class JenkinsRepositoryImpl implements JenkinsRepository {
     until?: Date
   ): Promise<JenkinsJob> {
     const jobDetails = await this.jenkinsClient.getData(
-      `job/${orgName}/job/${projectName}/job/master/`
+      `job/${orgName}/job/${projectName}/job/master`
     );
 
     const buildsPromises: Promise<JenkinsBuild>[] = jobDetails.builds.map(

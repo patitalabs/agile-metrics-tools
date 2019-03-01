@@ -5,6 +5,7 @@ import { ExternalConfig, ExternalData, ExternalService } from '../Types';
 function testExternalData(): ExternalData {
   return {
     createdAt: new Date('2018-12-06'),
+    teamName: 'someTeamName',
     field1: 'someAdditionalData',
     field2: 4,
     field3: new Date('2018-12-07')
@@ -31,7 +32,8 @@ describe('ExternalCollectorsService', () => {
         type: 'someType',
         srcType: 'file',
         srcPath: 'some/path',
-        metricType: 'someType'
+        metricType: 'someType',
+        teamName: 'someTeamName'
       }
     );
 

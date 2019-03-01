@@ -4,9 +4,9 @@ import { ElasticSearchRepository } from './ElasticSearchRepository';
 
 export class ElasticSearchServiceImpl implements ElasticSearchService {
   constructor(
-    private elasticSearchRepository: ElasticSearchRepository,
-    private indexPrefix: string,
-    private shouldReplaceEntry: boolean
+    private readonly elasticSearchRepository: ElasticSearchRepository,
+    private readonly indexPrefix: string,
+    private readonly shouldReplaceEntry: boolean
   ) {}
 
   async push(metricItem: MetricItem): Promise<any> {
@@ -23,14 +23,14 @@ export class ElasticSearchServiceImpl implements ElasticSearchService {
 
       if (entryExists) {
         console.info('Item already exists...' + JSON.stringify(metricItem));
-        return;
+        return Promise.resolve({});
       }
     }
 
     return this.elasticSearchRepository.push({
-      indexName: indexName,
-      type: type,
-      id: id,
+      indexName,
+      type,
+      id,
       payload: metricItem
     });
   }

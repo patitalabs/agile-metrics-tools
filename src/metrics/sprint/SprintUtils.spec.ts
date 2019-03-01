@@ -3,16 +3,16 @@ import { SprintUtils } from './SprintUtils';
 describe('SprintUtils', () => {
   it('devTime', () => {
     const devTime = SprintUtils.devTime(
-      new Date('2018-12-03'),
-      new Date('2018-12-13')
+      new Date('2018-12-04'),
+      new Date('2018-12-14')
     );
     expect(devTime).toBe(10);
   });
 
   it('leadTime', () => {
     const leadTime = SprintUtils.leadTime({
-      created: new Date('2018-12-03'),
-      resolutionDate: new Date('2018-12-13')
+      created: new Date('2018-12-02'),
+      resolutionDate: new Date('2018-12-12')
     });
     expect(leadTime).toBe(10);
   });
@@ -53,5 +53,35 @@ describe('SprintUtils', () => {
       estimationValues: [1, 2, 3, 5, 8]
     });
     expect(estimateHealth).toBe(-3);
+  });
+
+  it('estimateHealth underEstimate no estimate', () => {
+    const estimateHealth = SprintUtils.estimateHealth({
+      estimate: 1,
+      actualTime: 6,
+      maxTime: 3,
+      estimationValues: [1]
+    });
+    expect(estimateHealth).toBe(3);
+  });
+
+  it('estimateHealth exact estimate no estimate', () => {
+    const estimateHealth = SprintUtils.estimateHealth({
+      estimate: 1,
+      actualTime: 1,
+      maxTime: 14,
+      estimationValues: [1]
+    });
+    expect(estimateHealth).toBe(0);
+  });
+
+  it('estimateHealth oveEstimate no estimate', () => {
+    const estimateHealth = SprintUtils.estimateHealth({
+      estimate: 1,
+      actualTime: 0,
+      maxTime: 14,
+      estimationValues: [1]
+    });
+    expect(estimateHealth).toBe(-1);
   });
 });

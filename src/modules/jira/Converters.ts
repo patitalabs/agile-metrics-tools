@@ -12,27 +12,30 @@ import { Utils } from '../../metrics';
 export class Converters {
   static toTask(
     jiraConfig: JiraConfig,
-    issue: any,
+    issueDetailsWithChangelogResponse: any,
     sprint: Sprint,
     issueDetails: IssueDetails
   ): Task {
-    let fields = issue.fields;
+    const fields = issueDetailsWithChangelogResponse.fields;
     return {
-      key: issue.key,
+      key: issueDetailsWithChangelogResponse.key,
       typeName: fields.issuetype.name,
       statusName: fields.status.name,
       assignee: fields.assignee ? fields.assignee.name : null,
       epic: fields.epic ? fields.epic.name : null,
-      storyPoints: this.storyPoints(jiraConfig, issue),
-      sprint: sprint,
+      storyPoints: this.storyPoints(
+        jiraConfig,
+        issueDetailsWithChangelogResponse.fields
+      ),
+      sprint,
       ...issueDetails
     };
   }
 
-  private static storyPoints(jiraConfig: JiraConfig, issue: any): number {
+  private static storyPoints(jiraConfig: JiraConfig, fields: any): number {
     const storyPointsField =
       this.configField(jiraConfig, 'storyPoints') || 'customfield_10005';
-    return issue.fields[storyPointsField] || null;
+    return fields[storyPointsField] || null;
   }
 
   static configField(jiraConfig: JiraConfig, nameOfField: string) {
@@ -52,15 +55,16 @@ export class Converters {
   }
 
   static toIssueDetails(jiraConfig: JiraConfig, details: any): IssueDetails {
+    const histories = IssueConverter.histories(details);
     return {
       subtasks: IssueConverter.subtasks(details),
-      histories: Utils.mapToObj(IssueConverter.histories(details)),
+      histories: Utils.mapToObj(histories),
       labels: details.labels,
       created: new Date(details.fields.created),
       createdBy: details.fields.creator.name,
-      resolutionDate: IssueConverter.resolutionDate(details),
+      resolutionDate: IssueConverter.resolutionDate(details, histories),
       projectName: details.fields.project.name,
-      teamName: IssueConverter.teamName(jiraConfig, details),
+      teamName: jiraConfig.teamName,
       numberOfComments: IssueConverter.numberOfComments(details),
       numberOfBugs: IssueConverter.numberOfBugs(details)
     };
@@ -68,22 +72,24 @@ export class Converters {
 }
 
 class IssueConverter {
-  static teamName(jiraConfig: JiraConfig, details: any) {
-    let teamNameField =
-      Converters.configField(jiraConfig, 'teamName') || 'customfield_10900';
-
-    const field = details.fields[teamNameField] || [];
-    return field.title || null;
-  }
-
   static numberOfComments(details: any) {
     return details.fields.comment ? details.fields.comment.total : 0;
   }
 
-  static resolutionDate(details: any) {
+  static resolutionDate(details: any, histories: Map<string, HistoryEntry[]>) {
+    let dateFromStatus = new Date();
+
+    for (const statusHistoryEntry of histories.get('status') || []) {
+      for (const statusChangeDetail of statusHistoryEntry.items || []) {
+        if (statusChangeDetail.toString === 'Done') {
+          dateFromStatus = statusHistoryEntry.created;
+        }
+      }
+    }
+
     return details.fields.resolutiondate
       ? new Date(details.fields.resolutiondate)
-      : new Date();
+      : dateFromStatus;
   }
 
   static isBug(issue): boolean {
@@ -103,7 +109,12 @@ class IssueConverter {
   }
 
   static subtasks(details): Subtask[] {
-    return details.fields.subtasks.map(item => IssueConverter.toSubtask(item));
+    const fields = details.fields;
+    if (!fields) {
+      return [];
+    }
+    const subtasks = fields.subtasks || [];
+    return subtasks.map(item => IssueConverter.toSubtask(item));
   }
 
   static histories(details): Map<string, HistoryEntry[]> {
@@ -112,9 +123,12 @@ class IssueConverter {
       HistoryEntry[]
     >();
 
-    for (const history of details.changelog.histories) {
+    if (!details.changelog) {
+      return entriesByCategory;
+    }
+    for (const history of details.changelog.histories || []) {
       const historyEntry = IssueConverter.toHistoryEntry(history);
-      if (historyEntry.items.length == 0) {
+      if (historyEntry.items.length === 0) {
         continue;
       }
       let historyEntries: HistoryEntry[] = entriesByCategory.get(
@@ -138,8 +152,8 @@ class IssueConverter {
   }
 
   static toHistoryEntry(history): HistoryEntry {
-    let createdDate = new Date(history.created);
-    let historyItems: HistoryItem[] = history.items.map(item => {
+    const createdDate = new Date(history.created);
+    const historyItems: HistoryItem[] = history.items.map(item => {
       return IssueConverter.toHistoryItem(item);
     });
 

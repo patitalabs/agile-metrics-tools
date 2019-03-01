@@ -6,7 +6,7 @@ export class Converters {
     return {
       name: jobDetails.fullName,
       branch: jobDetails.name,
-      builds: builds
+      builds
     };
   }
 
@@ -19,7 +19,7 @@ export class Converters {
       timestamp: new Date(jobDetails.timestamp),
       result: jobDetails.result,
       durationInMs: jobDetails.duration,
-      causedBy: causedBy,
+      causedBy,
       revision: commitDetails.revision,
       revisionDescription: commitDetails.revisionDescription,
       buildNumber: jobDetails.number,
@@ -28,7 +28,7 @@ export class Converters {
   }
 
   private static causedBy(jobDetails): string {
-    let jenkinsCulprits = jobDetails.culprits || [];
+    const jenkinsCulprits = jobDetails.culprits || [];
     const culprits = jenkinsCulprits.map(culprit => culprit.fullName);
     return culprits.join('; ');
   }
@@ -41,7 +41,7 @@ export class Converters {
     let revision = '';
     let revisionDescription = '';
     if (changeSetDetails.length > 0) {
-      let firstChangeSet = changeSetDetails[0];
+      const firstChangeSet = changeSetDetails[0];
       revision = firstChangeSet.commitId;
       revisionDescription = firstChangeSet.msg;
     }

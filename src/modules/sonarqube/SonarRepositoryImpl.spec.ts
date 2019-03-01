@@ -17,7 +17,11 @@ describe('SonarRepositoryImpl', () => {
   const sonarRepository: SonarRepository = new SonarRepositoryImpl(sonarClient);
 
   it('should get projectMetrics', async () => {
-    const sonarConfig = { projectName: 'someProject', since: '2018-11-20' };
+    const sonarConfig = {
+      projectName: 'someProject',
+      since: '2018-11-20',
+      teamName: 'someTeam'
+    };
 
     const data = await sonarRepository.projectMetrics(sonarConfig);
     expect(data).toMatchSnapshot();

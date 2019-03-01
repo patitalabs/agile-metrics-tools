@@ -15,13 +15,15 @@ export interface JenkinsMetricItem extends MetricItem {
 export class JenkinsCollectorConfig implements CollectorConfig {
   orgName: string;
   projectName: string;
+  teamName: string;
   since: Date;
   until?: Date;
 
-  constructor({ orgName, projectName, since, until = null }) {
+  constructor({ orgName, projectName, since, until = null, teamName }) {
     this.orgName = orgName;
     this.projectName = projectName;
     this.since = new Date(since);
     this.until = until ? new Date(until) : null;
+    this.teamName = teamName;
   }
 }

@@ -12,6 +12,7 @@ Array [
     "message": "someMessage",
     "repositoryName": "someRepoName",
     "sha": "someSha",
+    "teamName": "someTeamName",
   },
 ]
 `;

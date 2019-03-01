@@ -6,15 +6,16 @@ import { AppContextFactory } from './AppContextFactory';
 export class AppFactory {
   static async appContextFrom(fileConfigPath: string): Promise<AppContext> {
     const config = await ConfigurationUtils.loadConfiguration(fileConfigPath);
-    return await AppContextFactory.appContext(config);
+    return AppContextFactory.appContext(config);
   }
 
   static metricsService(
     appContext: AppContext,
-    shouldReplaceEntry: boolean = false
+    shouldReplaceEntry = false
   ): MetricsService {
     const elasticSearchService = ElasticSearch.esService(
-      appContext.appConfig.indexPrefix
+      appContext.appConfig.indexPrefix,
+      shouldReplaceEntry
     );
     return new MetricsService(
       elasticSearchService,

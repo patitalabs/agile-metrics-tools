@@ -33,12 +33,14 @@ export interface SonarMetricItem extends MetricItem {
 
 export class SonarCollectorConfig implements CollectorConfig {
   projectName: string;
+  teamName: string;
   since: string;
   until?: string;
 
-  constructor({ projectName, since, until = null }) {
+  constructor({ projectName, since, until = null, teamName }) {
     this.projectName = projectName;
     this.since = since;
     this.until = until;
+    this.teamName = teamName;
   }
 }

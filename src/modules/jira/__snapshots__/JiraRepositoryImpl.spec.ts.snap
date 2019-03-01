@@ -279,8 +279,289 @@ Object {
       "statusName": "Done",
     },
   ],
-  "teamName": "TeamName",
+  "teamName": "someTeamName",
 }
+`;
+
+exports[`JiraRepositoryImpl should get kanbanData 1`] = `
+Array [
+  Object {
+    "assignee": "pter",
+    "created": 2018-11-08T14:45:49.815Z,
+    "createdBy": "name",
+    "epic": "epic-name",
+    "histories": Object {
+      "Epic Link": Array [
+        Object {
+          "category": "Epic Link",
+          "created": 2018-11-08T14:45:49.917Z,
+          "items": Array [
+            Object {
+              "field": "Epic Link",
+              "fromString": null,
+              "toString": "ORG-3417",
+            },
+          ],
+        },
+      ],
+      "Fix Version": Array [
+        Object {
+          "category": "Fix Version",
+          "created": 2018-11-09T11:49:50.537Z,
+          "items": Array [
+            Object {
+              "field": "Fix Version",
+              "fromString": null,
+              "toString": "Q4 2018",
+            },
+          ],
+        },
+      ],
+      "Rank": Array [
+        Object {
+          "category": "Rank",
+          "created": 2018-11-13T11:03:02.807Z,
+          "items": Array [
+            Object {
+              "field": "Rank",
+              "fromString": "",
+              "toString": "Ranked lower",
+            },
+          ],
+        },
+        Object {
+          "category": "Rank",
+          "created": 2018-11-09T11:44:38.932Z,
+          "items": Array [
+            Object {
+              "field": "Rank",
+              "fromString": "",
+              "toString": "Ranked higher",
+            },
+          ],
+        },
+        Object {
+          "category": "Rank",
+          "created": 2018-11-09T08:07:34.379Z,
+          "items": Array [
+            Object {
+              "field": "Rank",
+              "fromString": "",
+              "toString": "Ranked lower",
+            },
+          ],
+        },
+        Object {
+          "category": "Rank",
+          "created": 2018-11-09T08:07:14.391Z,
+          "items": Array [
+            Object {
+              "field": "Rank",
+              "fromString": "",
+              "toString": "Ranked higher",
+            },
+          ],
+        },
+        Object {
+          "category": "Rank",
+          "created": 2018-11-08T14:53:42.810Z,
+          "items": Array [
+            Object {
+              "field": "Rank",
+              "fromString": "",
+              "toString": "Ranked higher",
+            },
+          ],
+        },
+      ],
+      "Sprint": Array [
+        Object {
+          "category": "Sprint",
+          "created": 2018-11-13T11:03:02.659Z,
+          "items": Array [
+            Object {
+              "field": "Sprint",
+              "fromString": "",
+              "toString": "13.11 TeamName",
+            },
+          ],
+        },
+        Object {
+          "category": "Sprint",
+          "created": 2018-11-09T11:44:38.594Z,
+          "items": Array [
+            Object {
+              "field": "Sprint",
+              "fromString": "",
+              "toString": "",
+            },
+          ],
+        },
+        Object {
+          "category": "Sprint",
+          "created": 2018-11-09T08:07:34.158Z,
+          "items": Array [
+            Object {
+              "field": "Sprint",
+              "fromString": "",
+              "toString": "",
+            },
+          ],
+        },
+        Object {
+          "category": "Sprint",
+          "created": 2018-11-09T08:07:14.073Z,
+          "items": Array [
+            Object {
+              "field": "Sprint",
+              "fromString": "",
+              "toString": "",
+            },
+          ],
+        },
+      ],
+      "Story Points": Array [
+        Object {
+          "category": "Story Points",
+          "created": 2018-11-09T10:19:53.633Z,
+          "items": Array [
+            Object {
+              "field": "Story Points",
+              "fromString": null,
+              "toString": "2",
+            },
+          ],
+        },
+      ],
+      "Team": Array [
+        Object {
+          "category": "Team",
+          "created": 2018-11-16T15:51:59.911Z,
+          "items": Array [
+            Object {
+              "field": "Team",
+              "fromString": "teamName",
+              "toString": "teamName",
+            },
+            Object {
+              "field": "status",
+              "fromString": "PO Review",
+              "toString": "Done",
+            },
+          ],
+        },
+      ],
+      "assignee": Array [
+        Object {
+          "category": "assignee",
+          "created": 2018-11-13T11:47:44.382Z,
+          "items": Array [
+            Object {
+              "field": "assignee",
+              "fromString": null,
+              "toString": "Name",
+            },
+          ],
+        },
+      ],
+      "description": Array [
+        Object {
+          "category": "description",
+          "created": 2018-11-16T09:20:53.029Z,
+          "items": Array [
+            Object {
+              "field": "description",
+              "fromString": "previous",
+              "toString": "new",
+            },
+          ],
+        },
+        Object {
+          "category": "description",
+          "created": 2018-11-09T11:02:53.832Z,
+          "items": Array [
+            Object {
+              "field": "description",
+              "fromString": "Refer to ORG-5566",
+              "toString": "new desc",
+            },
+          ],
+        },
+      ],
+      "status": Array [
+        Object {
+          "category": "status",
+          "created": 2018-11-16T14:10:14.441Z,
+          "items": Array [
+            Object {
+              "field": "status",
+              "fromString": "In Progress",
+              "toString": "PO Review",
+            },
+          ],
+        },
+        Object {
+          "category": "status",
+          "created": 2018-11-16T09:20:20.428Z,
+          "items": Array [
+            Object {
+              "field": "status",
+              "fromString": "PO Review",
+              "toString": "In Progress",
+            },
+          ],
+        },
+        Object {
+          "category": "status",
+          "created": 2018-11-14T08:31:13.256Z,
+          "items": Array [
+            Object {
+              "field": "status",
+              "fromString": "In Progress",
+              "toString": "PO Review",
+            },
+          ],
+        },
+        Object {
+          "category": "status",
+          "created": 2018-11-13T11:48:27.755Z,
+          "items": Array [
+            Object {
+              "field": "status",
+              "fromString": "Open",
+              "toString": "In Progress",
+            },
+          ],
+        },
+      ],
+    },
+    "key": "ORG-5785",
+    "labels": undefined,
+    "numberOfBugs": 1,
+    "numberOfComments": 0,
+    "projectName": "Project-Name",
+    "resolutionDate": 2018-11-16T15:51:59.839Z,
+    "sprint": null,
+    "statusName": "Done",
+    "storyPoints": 2,
+    "subtasks": Array [
+      Object {
+        "key": "ORG-5708",
+        "statusName": "Done",
+      },
+      Object {
+        "key": "ORG-5709",
+        "statusName": "Done",
+      },
+      Object {
+        "key": "ORG-5710",
+        "statusName": "Done",
+      },
+    ],
+    "teamName": "someTeamName",
+    "typeName": "Story",
+  },
+]
 `;
 
 exports[`JiraRepositoryImpl should get sprintData 1`] = `
@@ -563,7 +844,7 @@ Array [
         "statusName": "Done",
       },
     ],
-    "teamName": "TeamName",
+    "teamName": "someTeamName",
     "typeName": "Story",
   },
 ]

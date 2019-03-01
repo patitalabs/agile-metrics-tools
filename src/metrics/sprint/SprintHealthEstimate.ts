@@ -26,8 +26,8 @@ export class SprintHealthEstimate {
   }
 
   private lowerTimeBound(): number {
-    if (this.currentEstimateIndex() == 0) {
-      return 0;
+    if (this.currentEstimateIndex() === 0) {
+      return 1;
     }
     const previousEstimateIndex =
       this.estimationValues.indexOf(this.estimate) - 1;
@@ -40,7 +40,7 @@ export class SprintHealthEstimate {
   }
 
   private upperTimeBound(): number {
-    if (this.currentEstimateIndex() == this.estimationValues.length - 1) {
+    if (this.currentEstimateIndex() === this.estimationValues.length - 1) {
       return this.maxTime;
     }
     const nextEstimateIndex = this.estimationValues.indexOf(this.estimate + 1);
@@ -60,7 +60,7 @@ export class SprintHealthEstimate {
     if (isUnderEstimated) {
       result = this.actualTime - upperTimeBound;
     } else if (isOverEstimated) {
-      let difference = lowerTimeBound - this.actualTime;
+      const difference = lowerTimeBound - this.actualTime;
       result = -difference;
     }
 

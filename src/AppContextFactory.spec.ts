@@ -14,8 +14,8 @@ function givenAppConfig({ type, configFile }): AppConfig {
     indexPrefix: 'someIndexName',
     modules: [
       {
-        type: type,
-        configFile: configFile
+        type,
+        configFile
       }
     ]
   };

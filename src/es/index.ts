@@ -9,7 +9,7 @@ export { ElasticSearchService } from './Types';
 export class ElasticSearch {
   static esService(
     indexPrefix: string,
-    shouldReplaceEntry: boolean = false
+    shouldReplaceEntry = false
   ): ElasticSearchService {
     Utils.checkEnvVar('ES_HOST');
     const elasticSearchRepository = new ElasticSearchRepository({
@@ -22,7 +22,10 @@ export class ElasticSearch {
     );
   }
 
-  static justLogEsService(indexPrefix: string): ElasticSearchService {
+  static justLogEsService(
+    indexPrefix: string,
+    shouldReplaceEntry: boolean
+  ): ElasticSearchService {
     return new class implements ElasticSearchService {
       async push(payload): Promise<any> {
         console.log(JSON.stringify(payload));

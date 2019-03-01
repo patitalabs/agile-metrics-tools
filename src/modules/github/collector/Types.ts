@@ -14,15 +14,17 @@ export interface GithubMetricItem extends MetricItem {
 }
 
 export class GithubCollectorConfig implements CollectorConfig {
+  teamName: string;
   repositoryName: string;
   orgName: string;
   since: string;
   until?: string;
 
-  constructor({ repositoryName, orgName, since, until = undefined }) {
+  constructor({ repositoryName, orgName, since, until = undefined, teamName }) {
     this.repositoryName = repositoryName;
     this.orgName = orgName;
     this.since = since;
     this.until = until;
+    this.teamName = teamName;
   }
 }

@@ -6,7 +6,7 @@ import {
 } from './Types';
 
 export class ExternalServiceImpl implements ExternalService {
-  constructor(private externalRepository: ExternalRepository) {}
+  constructor(private readonly externalRepository: ExternalRepository) {}
 
   async fetchExternalInfo(
     externalConfig: ExternalConfig

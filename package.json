@@ -5,15 +5,14 @@
   "author": "ferzerkerx",
   "license": "MIT",
   "scripts": {
-    "start": "yarn install & node dist/",
+    "start": "yarn build && yarn prepare-web && node dist/api/server.js",
+    "prepare-web": "cp -R src/api/resources dist/ && cp -R src/api/template-configs/* dist/api/template-configs",
     "build": "yarn compile",
     "compile": "tsc",
     "dev": "tsc & nodemon dist",
     "test": "jest --coverage",
-    "typescript": "typescript",
     "prettier": "prettier --write --config=.prettierrc \"src/**/*.[tj]s\"",
     "tsc": "tsc",
-    "postinstall": "yarn compile",
     "precommit": "lint-staged"
   },
   "dependencies": {

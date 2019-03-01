@@ -1,13 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`JiraCollectorsService should fetch jiraMetrics 1`] = `
+exports[`JiraCollectorsService should fetch jiraMetrics for kanban 1`] = `
 Array [
   Object {
     "assignees": Array [
       "someone",
     ],
     "commentCount": 4,
-    "createdAt": 2018-12-02T00:00:00.000Z,
+    "created": 2018-12-02T00:00:00.000Z,
+    "createdAt": 2018-12-06T00:00:00.000Z,
+    "createdBy": "someone",
+    "dataType": "PTS",
+    "devTime": 2,
+    "estimateHealth": 0,
+    "finished": 2018-12-06T00:00:00.000Z,
+    "id": "42a10921377014ddde6befd7a8cb74b3e888ac53d78ff051f3ca83abf34a29b9",
+    "issueType": "Story",
+    "jiraProject": "someProject",
+    "key": "someKey-1",
+    "leadTime": 4,
+    "movedBackward": 0,
+    "movedForward": 1,
+    "numberOfBugs": 1,
+    "rawEstimateHealth": 0,
+    "storyPoints": 2,
+    "tags": Array [
+      "label1",
+      "label2",
+    ],
+    "teamName": "someTeam",
+  },
+]
+`;
+
+exports[`JiraCollectorsService should fetch jiraMetrics for sprint 1`] = `
+Array [
+  Object {
+    "assignees": Array [
+      "someone",
+    ],
+    "commentCount": 4,
+    "created": 2018-12-02T00:00:00.000Z,
+    "createdAt": 2018-12-06T00:00:00.000Z,
     "createdBy": "someone",
     "dataType": "PTS",
     "devTime": 2,

@@ -6,7 +6,7 @@ import {
 } from './Types';
 
 export class SonarServiceImpl implements SonarService {
-  constructor(private sonarRepository: SonarRepository) {}
+  constructor(private readonly sonarRepository: SonarRepository) {}
 
   projectMetrics(sonarConfig: SonarConfig): Promise<ProjectMetrics[]> {
     return this.sonarRepository.projectMetrics(sonarConfig);

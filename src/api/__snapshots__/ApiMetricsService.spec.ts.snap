@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApiMetricsService should construct default config 1`] = `
+Array [
+  Object {
+    "config": Array [
+      Object {
+        "estimateConfig": Object {
+          "estimationValues": Array [
+            1,
+          ],
+          "maxTime": 14,
+        },
+        "fields": Object {
+          "storyPoints": "customfield_10005",
+        },
+        "since": "2019-02-10",
+        "teamId": 123,
+        "teamName": "sprintteam",
+        "until": null,
+        "workFlowMap": Object {
+          "Closed": 8,
+          "Code Review": 5,
+          "Done": 9,
+          "In Progress": 4,
+          "On Hold": 2,
+          "Open": 1,
+          "Po Review": 6,
+          "Ready For Dev": 3,
+        },
+        "workFlowType": "sprint",
+      },
+    ],
+    "serviceName": "jira",
+    "shouldUpdateEntries": false,
+    "teamName": "sprintteam",
+  },
+  Object {
+    "config": Array [],
+    "serviceName": "github",
+    "shouldUpdateEntries": false,
+    "teamName": "sprintteam",
+  },
+  Object {
+    "config": Array [],
+    "serviceName": "sonar",
+    "shouldUpdateEntries": false,
+    "teamName": "sprintteam",
+  },
+  Object {
+    "config": Array [],
+    "serviceName": "jenkins",
+    "shouldUpdateEntries": false,
+    "teamName": "sprintteam",
+  },
+]
+`;
+
+exports[`ApiMetricsService should return existing unchanged config 1`] = `
+Array [
+  Object {
+    "config": Object {
+      "fake": "config",
+    },
+    "serviceName": "serviceName",
+    "shouldUpdateEntries": false,
+  },
+]
+`;

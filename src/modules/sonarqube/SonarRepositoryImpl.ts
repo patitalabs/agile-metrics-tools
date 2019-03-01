@@ -7,7 +7,7 @@ import {
 } from './Types';
 
 export class SonarRepositoryImpl implements SonarRepository {
-  constructor(private sonarClient: SonarClient) {}
+  constructor(private readonly sonarClient: SonarClient) {}
 
   async projectMetrics(sonarConfig: SonarConfig): Promise<ProjectMetrics[]> {
     //TODO pagination

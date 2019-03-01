@@ -29,7 +29,7 @@ export class JiraMetricConverter {
     return {
       id: Utils.toHash(`${task.projectName}-${task.key}`),
       dataType: 'PTS',
-      createdAt: task.created,
+      createdAt: task.resolutionDate,
       key: task.key,
       createdBy: task.createdBy,
       issueType: task.typeName,
@@ -38,14 +38,15 @@ export class JiraMetricConverter {
       storyPoints: task.storyPoints,
       assignees: this.taskAssignees(task),
       tags: task.labels,
+      created: task.created,
       finished: task.resolutionDate,
-      leadTime: leadTime,
-      devTime: devTime,
+      leadTime,
+      devTime,
       commentCount: task.numberOfComments,
       jiraProject: task.projectName,
       teamName: task.teamName,
       estimateHealth: Math.round(rawEstimateHealth),
-      rawEstimateHealth: rawEstimateHealth,
+      rawEstimateHealth,
       numberOfBugs: task.numberOfBugs
     };
   }
@@ -55,6 +56,9 @@ export class JiraMetricConverter {
     storyPoints: number,
     devTime
   ) {
+    if (jiraCollectorConfig.isKanban()) {
+      return 0;
+    }
     const defaultEstimateConfig = this.defaultEstimateConfig();
     const estimateConfig =
       jiraCollectorConfig.estimateConfig || defaultEstimateConfig;
@@ -79,11 +83,11 @@ export class JiraMetricConverter {
     const movedBackwardDates = [];
     const movedForwardDates = [];
 
-    let statusHistoryEntries = task.histories.status || [];
+    const statusHistoryEntries = task.histories.status || [];
 
-    for (let history of statusHistoryEntries) {
-      for (let historyItem of history.items) {
-        let taskWasMovedBackward =
+    for (const history of statusHistoryEntries) {
+      for (const historyItem of history.items) {
+        const taskWasMovedBackward =
           taskStatusMap[historyItem.fromString] >
           taskStatusMap[historyItem.toString];
         if (taskWasMovedBackward) {
@@ -94,19 +98,18 @@ export class JiraMetricConverter {
       }
     }
 
-    const movedToDev = SprintUtils.movedToDev(movedForwardDates);
     return {
       moveBackward: movedBackwardDates.length,
       moveForward: movedForwardDates.length,
-      movedToDev: movedToDev
+      movedToDev: SprintUtils.movedToDev(movedForwardDates)
     };
   }
 
   private static taskAssignees(task: Task): string[] {
     const assignees = new Set();
-    let assigneesHistoryEntries = task.histories.assignee || [];
-    for (let history of assigneesHistoryEntries) {
-      for (let historyItem of history.items) {
+    const assigneesHistoryEntries = task.histories.assignee || [];
+    for (const history of assigneesHistoryEntries) {
+      for (const historyItem of history.items) {
         if (historyItem.toString) {
           assignees.add(historyItem.toString);
         }
@@ -136,7 +139,7 @@ export class JiraMetricConverter {
 
   private static defaultEstimateConfig() {
     return {
-      maxTime: 8,
+      maxTime: 7,
       estimationValues: [1, 2, 3, 5, 8]
     };
   }

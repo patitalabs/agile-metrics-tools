@@ -1,5 +1,6 @@
 export class ProjectMetrics {
   createdAt: Date;
+  teamName: string;
   projectName: string;
   alertStatus: string;
   qualityGateDetails: string;
@@ -32,6 +33,7 @@ export class ProjectMetrics {
 
 export interface SonarConfig {
   projectName: string;
+  teamName: string;
   since: string;
   until?: string;
 }

@@ -5,7 +5,7 @@ import { ExternalConfig, ExternalService } from '../Types';
 
 export class ExternalCollectorService
   implements CollectorService<ExternalCollectorConfig, ExternalMetricItem> {
-  constructor(private externalService: ExternalService) {}
+  constructor(private readonly externalService: ExternalService) {}
 
   async fetch(
     externalCollectorConfig: ExternalCollectorConfig

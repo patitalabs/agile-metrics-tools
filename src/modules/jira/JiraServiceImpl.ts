@@ -1,7 +1,7 @@
 import { JiraConfig, JiraRepository, JiraService, Sprint, Task } from './Types';
 
 export class JiraServiceImpl implements JiraService {
-  constructor(private jiraRepository: JiraRepository) {}
+  constructor(private readonly jiraRepository: JiraRepository) {}
 
   completedSprintsSince(
     teamId: number,
@@ -12,6 +12,10 @@ export class JiraServiceImpl implements JiraService {
   }
 
   async sprintData(jiraConfig: JiraConfig, sprint: Sprint): Promise<Task[]> {
-    return await this.jiraRepository.sprintData(jiraConfig, sprint);
+    return this.jiraRepository.sprintData(jiraConfig, sprint);
+  }
+
+  async completedKanbanIssuesSince(jiraConfig: JiraConfig): Promise<Task[]> {
+    return this.jiraRepository.completedKanbanIssuesSince(jiraConfig);
   }
 }

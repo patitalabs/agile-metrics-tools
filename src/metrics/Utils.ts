@@ -1,4 +1,5 @@
 import * as crypto from 'crypto';
+
 const INIT_VECTOR = 'someSecret';
 
 export class Utils {
@@ -77,5 +78,9 @@ export class Utils {
     }
     const isInRangeFromStart = createdAt >= since;
     return isInRangeFromStart && isInRangeFromEnd;
+  }
+
+  static formatDate(theDate: Date) {
+    return theDate.toISOString().substring(0, 10);
   }
 }

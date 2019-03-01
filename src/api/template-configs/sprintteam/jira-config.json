@@ -1,0 +1,23 @@
+[
+  {
+    "teamId": 123,
+    "workFlowType": "sprint",
+    "workFlowMap": {
+      "Open": 1,
+      "On Hold": 2,
+      "Ready For Dev": 3,
+      "In Progress": 4,
+      "Code Review": 5,
+      "Po Review": 6,
+      "Closed": 8,
+      "Done": 9
+    },
+    "fields": {
+      "storyPoints": "customfield_10005"
+    },
+    "estimateConfig": {
+      "maxTime": 14,
+      "estimationValues": [1]
+    }
+  }
+]

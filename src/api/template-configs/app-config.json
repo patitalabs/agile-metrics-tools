@@ -1,0 +1,21 @@
+{
+  "indexPrefix": "myindex",
+  "modules": [
+    {
+      "type": "jira",
+      "configFile": "jira-config.json"
+    },
+    {
+      "type": "github",
+      "configFile": "github-config.json"
+    },
+    {
+      "type": "sonar",
+      "configFile": "sonar-config.json"
+    },
+    {
+      "type": "jenkins",
+      "configFile": "jenkins-config.json"
+    }
+  ]
+}

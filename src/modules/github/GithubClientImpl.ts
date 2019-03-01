@@ -1,5 +1,4 @@
 import * as Octokit from '@octokit/rest';
-import { ReposListCommitsParams } from '@octokit/rest';
 import { GithubClient, GithubConfig } from './Types';
 import Bottleneck from 'bottleneck';
 
@@ -13,7 +12,7 @@ const limiter = new Bottleneck({
 
 //TODO deal with pagination
 export class GithubClientImpl implements GithubClient {
-  private octokit: Octokit;
+  private readonly octokit: Octokit;
   private readonly token: string;
   constructor({ token }) {
     this.token = token;
@@ -24,13 +23,16 @@ export class GithubClientImpl implements GithubClient {
   }
 
   async commits(githubConfig: GithubConfig): Promise<string[]> {
-    const reposGetCommitsParams: ReposListCommitsParams = {
+    const reposGetCommitsParams: Octokit.ReposListCommitsParams = {
       owner: githubConfig.orgName,
       repo: githubConfig.repositoryName,
       since: githubConfig.since,
-      until: githubConfig.until,
       sha: 'master'
     };
+
+    if (githubConfig.until) {
+      reposGetCommitsParams.until = githubConfig.until;
+    }
 
     const { data: commitResponseItems } = await limiter.schedule(() => {
       return this.octokit.repos.listCommits(reposGetCommitsParams);
@@ -46,7 +48,7 @@ export class GithubClientImpl implements GithubClient {
     const commitConfig = {
       owner: orgName,
       repo: repositoryName,
-      sha: sha
+      sha
     };
     const { data } = await this.octokit.repos.getCommit(commitConfig);
     return data;
@@ -67,7 +69,7 @@ export class GithubClientImpl implements GithubClient {
 
     number
   }): Promise<any> {
-    const paramsConfig = { owner: owner, repo: repo, number: number };
+    const paramsConfig = { owner, repo, number };
     const { data } = await limiter.schedule(() => {
       return this.octokit.pulls.listComments(paramsConfig);
     });

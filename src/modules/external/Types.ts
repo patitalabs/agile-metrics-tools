@@ -3,11 +3,13 @@ export interface ExternalConfig {
   until?: Date;
   type: string;
   srcType: string;
-  srcPath: string;
+  srcPath?: string;
+  inlineData?: ExternalData[];
 }
 
 export class ExternalData {
   createdAt: Date;
+  teamName: string;
   [type: string]: any;
 }
 

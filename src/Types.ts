@@ -19,3 +19,18 @@ export interface AppContext {
   collectorConfigs: CollectorConfig[];
   collectorsServices: CollectorService<any, any>[];
 }
+
+export interface TeamMetricsRequest {
+  shouldUpdateEntries: boolean;
+}
+
+export interface TeamMetricsRequestByService extends TeamMetricsRequest {
+  serviceName: string;
+  config: any;
+}
+
+export interface TeamMetricsRequestByTeam extends TeamMetricsRequest {
+  teamName?: string;
+  since?: Date;
+  until?: Date;
+}

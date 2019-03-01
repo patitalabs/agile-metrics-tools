@@ -1,22 +1,22 @@
 import * as elasticsearch from 'elasticsearch';
 
 export class ElasticSearchRepository {
-  private client: any;
+  private readonly client: any;
   private readonly host: string;
 
   constructor({ host }) {
     this.host = host;
     this.client = new elasticsearch.Client({
       host: this.host,
-      log: 'trace'
+      log: 'error'
     });
   }
 
   async push({ indexName, type, id, payload }): Promise<any> {
     return this.client.index({
       index: indexName,
-      type: type,
-      id: id,
+      type,
+      id,
       body: {
         ...payload
       }
@@ -31,11 +31,11 @@ export class ElasticSearchRepository {
     const response = await this.client
       .search({
         index: indexName,
-        type: type,
+        type,
         body: {
           query: {
             match: {
-              id: id
+              id
             }
           }
         }

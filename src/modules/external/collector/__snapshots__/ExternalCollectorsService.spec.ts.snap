@@ -8,7 +8,8 @@ Array [
     "field1": "someAdditionalData",
     "field2": 4,
     "field3": 2018-12-07T00:00:00.000Z,
-    "id": "849a58cc9c1ef0094e94483ebf0b0fd601d4e7cfef66ad3bb0ba30d7df693832",
+    "id": "ef45cd18b51f62229eea7d9e66542631a1d34893af3cc0b0616d23e0db14ae8e",
+    "teamName": "someTeamName",
   },
 ]
 `;

@@ -1,7 +1,7 @@
 import { JenkinsJob, JenkinsRepository, JenkinsService } from './Types';
 
 export class JenkinsServiceImpl implements JenkinsService {
-  constructor(private jenkinsRepository: JenkinsRepository) {}
+  constructor(private readonly jenkinsRepository: JenkinsRepository) {}
 
   findData(
     orgName: string,

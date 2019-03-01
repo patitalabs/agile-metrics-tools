@@ -14,6 +14,7 @@ export class JenkinsMetricConverter {
         ),
         dataType: 'CI',
         createdAt: build.timestamp,
+        teamName: jenkinsConfig.teamName,
         jenkinsUrl: build.url,
         buildName: jenkinsJob.name,
         result: build.result,

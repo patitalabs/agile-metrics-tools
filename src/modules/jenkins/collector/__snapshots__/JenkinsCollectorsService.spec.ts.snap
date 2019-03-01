@@ -15,6 +15,7 @@ Array [
     "result": "SUCCESS",
     "revision": "someVersion",
     "revisionDescription": "some description",
+    "teamName": "someTeamName",
   },
 ]
 `;

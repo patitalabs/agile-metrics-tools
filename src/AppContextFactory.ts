@@ -39,7 +39,7 @@ export class AppContextFactory {
     return {
       appConfig: { indexPrefix: 'myindex', modules: [] },
       collectorsServices: [collectorService],
-      collectorConfigs: collectorConfigs
+      collectorConfigs
     };
   }
 
@@ -58,7 +58,7 @@ export class AppContextFactory {
       return moduleFactoryMapping[moduleName.type].collectorInstance();
     });
     return {
-      appConfig: appConfig,
+      appConfig,
       collectorsServices: collectorServices,
       collectorConfigs: collectorConfigurations
     };
@@ -125,7 +125,7 @@ export class AppContextFactory {
       if (!configContents) {
         return null;
       }
-      return { entries: configContents, moduleConfig: moduleConfig };
+      return { entries: configContents, moduleConfig };
     });
 
     const configurationContents = await Promise.all(configContentsPromises);

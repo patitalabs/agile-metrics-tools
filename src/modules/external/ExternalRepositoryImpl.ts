@@ -14,6 +14,11 @@ export class ExternalRepositoryImpl implements ExternalRepository {
         externalConfig
       );
       return this.relevantExternalData(externalConfig, externalConfigurations);
+    } else if (externalConfig.srcType === 'inline') {
+      return this.relevantExternalData(
+        externalConfig,
+        externalConfig.inlineData
+      );
     }
     return [];
   }

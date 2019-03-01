@@ -5,7 +5,7 @@ import { SonarService } from '../Types';
 
 export class SonarCollectorsService
   implements CollectorService<SonarCollectorConfig, SonarMetricItem> {
-  constructor(private sonarService: SonarService) {}
+  constructor(private readonly sonarService: SonarService) {}
 
   public async fetch(
     sonarCollectorConfig: SonarCollectorConfig
@@ -14,6 +14,7 @@ export class SonarCollectorsService
       return [];
     }
     const projectMetrics = await this.sonarService.projectMetrics({
+      teamName: sonarCollectorConfig.teamName,
       projectName: sonarCollectorConfig.projectName,
       since: sonarCollectorConfig.since
     });

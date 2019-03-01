@@ -10,9 +10,6 @@ export class SprintUtils {
         endLeadTime = resolutionDate;
       }
       devTime = Utils.daysBetween(movedToDev, endLeadTime);
-      if (devTime == 0) {
-        devTime = 1;
-      }
     }
     return devTime;
   }
@@ -25,7 +22,7 @@ export class SprintUtils {
         endLeadTime = resolutionDate;
       }
       leadTime = Utils.daysBetween(created, endLeadTime);
-      if (leadTime == 0.0) {
+      if (leadTime === 0.0) {
         leadTime = 1;
       }
     }
