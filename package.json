@@ -22,7 +22,7 @@
     "elasticsearch": "^15.2.0",
     "express": "^4.16.4",
     "node-env-file": "^0.1.8",
-    "node-fetch": "^2.3.0"
+    "node-fetch": "^2.6.0"
   },
   "engines": {
     "node": ">=8.9.0"
