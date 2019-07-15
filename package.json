@@ -38,7 +38,7 @@
     "ts-jest": "^23.10.4",
     "ts-loader": "^5.2.1",
     "ts-node": "^7.0.1",
-    "tslint": "^5.11.0",
+    "tslint": "^5.18.0",
     "typescript": "^3.1.6"
   },
   "lint-staged": {
