@@ -106,7 +106,7 @@ export class JiraMetricConverter {
   }
 
   private static taskAssignees(task: Task): string[] {
-    const assignees = new Set();
+    const assignees = new Set<string>();
     const assigneesHistoryEntries = task.histories.assignee || [];
     for (const history of assigneesHistoryEntries) {
       for (const historyItem of history.items) {
