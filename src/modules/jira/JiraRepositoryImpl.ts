@@ -22,9 +22,7 @@ export class JiraRepositoryImpl implements JiraRepository {
   }
 
   async sprintData(jiraConfig: JiraConfig, sprint: Sprint): Promise<Task[]> {
-    const url = `/rest/api/2/search?jql=Sprint=${
-      sprint.id
-    } AND NOT issuetype=Sub-task`;
+    const url = `/rest/api/2/search?jql=Sprint=${sprint.id} AND NOT issuetype=Sub-task`;
 
     const { issues: issuesResponse } = await this.jiraClient.getData(url);
 

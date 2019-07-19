@@ -12,29 +12,28 @@
     "dev": "tsc & nodemon dist",
     "test": "jest --coverage",
     "prettier": "prettier --write --config=.prettierrc \"src/**/*.[tj]s\"",
-    "tsc": "tsc",
-    "precommit": "lint-staged"
+    "tsc": "tsc"
   },
   "dependencies": {
-    "@octokit/rest": "^16.13.2",
+    "@octokit/rest": "^16.28.5",
     "bottleneck": "^2.15.3",
     "csvtojson": "^2.0.8",
-    "elasticsearch": "^15.2.0",
-    "express": "^4.16.4",
+    "elasticsearch": "^16.3.0",
+    "express": "^4.17.1",
     "node-env-file": "^0.1.8",
-    "node-fetch": "^2.3.0"
+    "node-fetch": "^2.6.0"
   },
   "engines": {
-    "node": ">=8.9.0"
+    "node": ">=8.15.0"
   },
   "devDependencies": {
     "@types/express": "^4.11.1",
-    "@types/jest": "^23.3.3",
-    "@types/node": "7.0.22",
-    "husky": "^0.14.3",
+    "@types/jest": "^24.0.15",
+    "@types/node": "12.6.8",
+    "husky": "^3.0.1",
     "jest": "^23.6.0",
-    "lint-staged": "^7.0.0",
-    "prettier": "^1.15.2",
+    "lint-staged": "^9.2.0",
+    "prettier": "^1.18.2",
     "ts-jest": "^23.10.4",
     "ts-loader": "^5.2.1",
     "ts-node": "^7.0.1",
@@ -51,5 +50,10 @@
     "coverageReporters": [
       "lcov"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }

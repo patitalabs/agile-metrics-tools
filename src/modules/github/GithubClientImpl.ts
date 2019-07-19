@@ -43,12 +43,12 @@ export class GithubClientImpl implements GithubClient {
   async getCommitDetails(
     repositoryName: string,
     orgName: string,
-    sha: string
+    ref: string
   ): Promise<any> {
     const commitConfig = {
       owner: orgName,
       repo: repositoryName,
-      sha
+      ref
     };
     const { data } = await this.octokit.repos.getCommit(commitConfig);
     return data;

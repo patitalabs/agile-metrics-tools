@@ -26,10 +26,10 @@ export class ElasticSearch {
     indexPrefix: string,
     shouldReplaceEntry: boolean
   ): ElasticSearchService {
-    return new class implements ElasticSearchService {
+    return new (class implements ElasticSearchService {
       async push(payload): Promise<any> {
         console.log(JSON.stringify(payload));
       }
-    }();
+    })();
   }
 }

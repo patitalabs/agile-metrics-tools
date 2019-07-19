@@ -7,11 +7,11 @@ export class DefaultConfiguration {
     defaultReferenceDate: Date
   ): Promise<any[]> {
     const configs = [];
-    const templateAppConfig = await import(`./template-configs/app-config.json`);
+    const templateAppConfig = await import(
+      `./template-configs/app-config.json`
+    );
     for (const moduleConfig of templateAppConfig.modules) {
-      const file = `./template-configs/${teamMetricsRequestByTeam.teamName}/${
-        moduleConfig.configFile
-      }`;
+      const file = `./template-configs/${teamMetricsRequestByTeam.teamName}/${moduleConfig.configFile}`;
       const serviceEntries = await import(`${file}`);
       for (const serviceEntry of serviceEntries) {
         const sinceDate = teamMetricsRequestByTeam.since
