@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@octokit/rest": "^16.28.5",
-    "bottleneck": "^2.15.3",
+    "bottleneck": "^2.19.5",
     "csvtojson": "^2.0.8",
     "elasticsearch": "^16.3.0",
     "express": "^4.17.1",
