@@ -17,7 +17,9 @@ describe('JiraModuleFactory', () => {
   });
 
   it('should fail to create collector', () => {
-    expect(jiraModuleFactory.collectorInstance).toThrowErrorMatchingSnapshot();
+    expect(() =>
+      jiraModuleFactory.collectorInstance()
+    ).toThrowErrorMatchingSnapshot();
   });
 
   it('should create collectorConfiguration', () => {

@@ -14,11 +14,9 @@ function testExternalData(): ExternalData {
 
 describe('ExternalCollectorsService', () => {
   const externalService: ExternalService = {
-    fetchExternalInfo: async (
+    fetchExternalInfo: (
       externalConfig: ExternalConfig
-    ): Promise<ExternalData[]> => {
-      return [testExternalData()];
-    }
+    ): Promise<ExternalData[]> => Promise.resolve([testExternalData()])
   };
 
   const externalCollectorService: ExternalCollectorService = new ExternalCollectorService(

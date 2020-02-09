@@ -6,13 +6,14 @@ import { JenkinsRepositoryImpl } from './JenkinsRepositoryImpl';
 
 describe('JenkinsRepository', () => {
   const jenkinsClient: JenkinsClient = {
-    getData: async (url): Promise<any> => {
+    getData: (url): Promise<any> => {
+      let result: any = projectListResponse;
       if (/.*job\/master\/\d+/.test(url)) {
-        return projectBuildDetailsResponse;
+        result = projectBuildDetailsResponse;
       } else if (/.*job\/master/.test(url)) {
-        return projectDetailsResponse;
+        result = projectDetailsResponse;
       }
-      return projectListResponse;
+      return Promise.resolve(result);
     }
   };
   const jenkinsRepository: JenkinsRepository = new JenkinsRepositoryImpl(

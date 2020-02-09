@@ -7,25 +7,23 @@ export class JenkinsMetricConverter {
     jenkinsJob: JenkinsJob,
     jenkinsConfig: JenkinsCollectorConfig
   ): JenkinsMetricItem[] {
-    return jenkinsJob.builds.map(build => {
-      return {
-        id: Utils.toHash(
-          `${jenkinsConfig.projectName}-${build.timestamp.getTime()}`
-        ),
-        dataType: 'CI',
-        createdAt: build.timestamp,
-        teamName: jenkinsConfig.teamName,
-        jenkinsUrl: build.url,
-        buildName: jenkinsJob.name,
-        result: build.result,
-        durationInSeconds: this.msToSeconds(build.durationInMs),
-        causedBy: build.causedBy,
-        revision: build.revision,
-        revisionDescription: build.revisionDescription,
-        buildNumber: build.buildNumber,
-        projectName: jenkinsConfig.projectName
-      };
-    });
+    return jenkinsJob.builds.map(build => ({
+      id: Utils.toHash(
+        `${jenkinsConfig.projectName}-${build.timestamp.getTime()}`
+      ),
+      dataType: 'CI',
+      createdAt: build.timestamp,
+      teamName: jenkinsConfig.teamName,
+      jenkinsUrl: build.url,
+      buildName: jenkinsJob.name,
+      result: build.result,
+      durationInSeconds: this.msToSeconds(build.durationInMs),
+      causedBy: build.causedBy,
+      revision: build.revision,
+      revisionDescription: build.revisionDescription,
+      buildNumber: build.buildNumber,
+      projectName: jenkinsConfig.projectName
+    }));
   }
 
   private static msToSeconds(ms) {

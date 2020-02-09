@@ -49,9 +49,9 @@ export class SprintUtils {
   static movedToDev(movedForwardDates: Date[]): Date {
     let movedToDev: Date = null;
     if (movedForwardDates.length > 0) {
-      movedToDev = movedForwardDates.reduce((dateOne, dateTwo) => {
-        return dateOne < dateTwo ? dateOne : dateTwo;
-      });
+      movedToDev = movedForwardDates.reduce((dateOne, dateTwo) =>
+        dateOne < dateTwo ? dateOne : dateTwo
+      );
     }
     return movedToDev;
   }

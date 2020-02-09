@@ -8,9 +8,10 @@ export class Utils {
     enrichers: Array<Function>
   ): Promise<Array<T>> {
     return new Promise((resolve, reject) => {
-      const itemPromises: Array<Promise<any>> = Utils.flatMap(item => {
-        return enrichers.map(enricher => enricher(item));
-      }, t);
+      const itemPromises: Array<Promise<any>> = Utils.flatMap(
+        item => enrichers.map(enricher => enricher(item)),
+        t
+      );
 
       Promise.all(itemPromises)
         .then(() => {
@@ -52,7 +53,7 @@ export class Utils {
   }
 
   static flatMap(func, arr) {
-    return arr.map(func).reduce(Utils.concat, []);
+    return arr.map(func).reduce((x, y) => Utils.concat(x, y), []);
   }
 
   static checkEnvVar(...theVariables: string[]) {

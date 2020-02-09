@@ -63,33 +63,24 @@ function testSprint(): Sprint {
 
 describe('JiraCollectorsService', () => {
   const jiraService: JiraService = {
-    completedSprintsSince: async (
+    completedSprintsSince: (
       teamId: number,
       referenceDate: Date
-    ): Promise<Sprint[]> => {
-      return [testSprint()];
-    },
+    ): Promise<Sprint[]> => Promise.resolve([testSprint()]),
 
-    sprintData: async (
-      jiraConfig: JiraConfig,
-      sprint: Sprint
-    ): Promise<Task[]> => {
-      return [testTask()];
-    },
+    sprintData: (jiraConfig: JiraConfig, sprint: Sprint): Promise<Task[]> =>
+      Promise.resolve([testTask()]),
 
-    completedKanbanIssuesSince: async (
-      jiraConfig: JiraConfig
-    ): Promise<Task[]> => {
-      return [testTask()];
-    }
+    completedKanbanIssuesSince: (jiraConfig: JiraConfig): Promise<Task[]> =>
+      Promise.resolve([testTask()])
   };
 
   const jiraCollectorsService: JiraCollectorsService = new JiraCollectorsService(
     jiraService
   );
 
-  const config = ({ workFlowType }): JiraCollectorConfig => {
-    return new JiraCollectorConfig({
+  const config = ({ workFlowType }): JiraCollectorConfig =>
+    new JiraCollectorConfig({
       teamId: 68,
       teamName: 'someTeamName',
       since: '2018-11-20',
@@ -98,7 +89,6 @@ describe('JiraCollectorsService', () => {
       fields: null,
       until: '2020-11-20'
     });
-  };
 
   it('should fetch jiraMetrics for sprint', async () => {
     const jiraCollectorConfig = config({ workFlowType: 'sprint' });

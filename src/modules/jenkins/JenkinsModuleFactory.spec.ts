@@ -19,8 +19,8 @@ describe('JenkinsModuleFactory', () => {
   });
 
   it('should fail to create collector', () => {
-    expect(
-      jenkinsModuleFactory.collectorInstance
+    expect(() =>
+      jenkinsModuleFactory.collectorInstance()
     ).toThrowErrorMatchingSnapshot();
   });
 

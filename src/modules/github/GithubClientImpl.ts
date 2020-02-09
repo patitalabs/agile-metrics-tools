@@ -10,7 +10,7 @@ const limiter = new Bottleneck({
   maxConcurrent: 1
 });
 
-//TODO deal with pagination
+// TODO deal with pagination
 export class GithubClientImpl implements GithubClient {
   private readonly octokit: Octokit;
   private readonly token: string;
@@ -34,9 +34,9 @@ export class GithubClientImpl implements GithubClient {
       reposGetCommitsParams.until = githubConfig.until;
     }
 
-    const { data: commitResponseItems } = await limiter.schedule(() => {
-      return this.octokit.repos.listCommits(reposGetCommitsParams);
-    });
+    const { data: commitResponseItems } = await limiter.schedule(() =>
+      this.octokit.repos.listCommits(reposGetCommitsParams)
+    );
     return commitResponseItems.map(commit => commit.sha);
   }
 
@@ -55,24 +55,19 @@ export class GithubClientImpl implements GithubClient {
   }
 
   async pullRequestForCommit(sha: string): Promise<any> {
-    const { data } = await limiter.schedule(() => {
-      return this.octokit.search.issuesAndPullRequests({
+    const { data } = await limiter.schedule(() =>
+      this.octokit.search.issuesAndPullRequests({
         q: `${sha} is:merged type:pr`
-      });
-    });
+      })
+    );
     return data;
   }
 
-  async pullRequestComments({
-    owner,
-    repo,
-
-    number
-  }): Promise<any> {
+  async pullRequestComments({ owner, repo, number }): Promise<any> {
     const paramsConfig = { owner, repo, number };
-    const { data } = await limiter.schedule(() => {
-      return this.octokit.pulls.listComments(paramsConfig);
-    });
+    const { data } = await limiter.schedule(() =>
+      this.octokit.pulls.listComments(paramsConfig)
+    );
     return data;
   }
 }

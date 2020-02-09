@@ -21,19 +21,17 @@ export class JenkinsRepositoryImpl implements JenkinsRepository {
     );
 
     const buildsPromises: Promise<JenkinsBuild>[] = jobDetails.builds.map(
-      jobBuild => {
-        return this.buildDetails(orgName, projectName, jobBuild.number);
-      }
+      jobBuild => this.buildDetails(orgName, projectName, jobBuild.number)
     );
 
     const builds = await Promise.all(buildsPromises);
-    const filteredBuilds = builds.filter(jobBuild => {
-      return Utils.isDateInRange({
+    const filteredBuilds = builds.filter(jobBuild =>
+      Utils.isDateInRange({
         createdAt: jobBuild.timestamp,
         since,
         until
-      });
-    });
+      })
+    );
     return Converters.toJenkinsJob(jobDetails, filteredBuilds);
   }
 

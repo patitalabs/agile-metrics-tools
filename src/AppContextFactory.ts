@@ -30,7 +30,7 @@ export class AppContextFactory {
       throw Error(`Unable to create module for service: ${serviceName}`);
     }
 
-    //TODO collectorInstance should be singleton
+    // TODO collectorInstance should be singleton
     const collectorService = moduleFactory.collectorInstance();
     const collectorConfigs = configs.map(config =>
       moduleFactory.collectorConfiguration(config)
@@ -54,9 +54,9 @@ export class AppContextFactory {
       moduleFactoryMapping,
       supportedConfigs
     );
-    const collectorServices = supportedConfigs.map(moduleName => {
-      return moduleFactoryMapping[moduleName.type].collectorInstance();
-    });
+    const collectorServices = supportedConfigs.map(moduleName =>
+      moduleFactoryMapping[moduleName.type].collectorInstance()
+    );
     return {
       appConfig,
       collectorsServices: collectorServices,
@@ -99,11 +99,11 @@ export class AppContextFactory {
         const entries = Array.isArray(configContent.entries)
           ? configContent.entries
           : [];
-        return entries.map(item => {
-          return moduleFactories[
+        return entries.map(item =>
+          moduleFactories[
             configContent.moduleConfig.type
-          ].collectorConfiguration(item);
-        });
+          ].collectorConfiguration(item)
+        );
       }
     );
 

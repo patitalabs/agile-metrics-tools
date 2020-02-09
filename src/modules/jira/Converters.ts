@@ -98,12 +98,11 @@ class IssueConverter {
 
   static numberOfBugs(details: any): number {
     const linkedIssues: any[] = details.fields.issuelinks || [];
-    const linkedBugs = linkedIssues.filter(issue => {
-      return (
+    const linkedBugs = linkedIssues.filter(
+      issue =>
         IssueConverter.isBug(issue.outwardIssue) ||
         IssueConverter.isBug(issue.inwardIssue)
-      );
-    });
+    );
 
     return linkedBugs.length;
   }
@@ -153,9 +152,9 @@ class IssueConverter {
 
   static toHistoryEntry(history): HistoryEntry {
     const createdDate = new Date(history.created);
-    const historyItems: HistoryItem[] = history.items.map(item => {
-      return IssueConverter.toHistoryItem(item);
-    });
+    const historyItems: HistoryItem[] = history.items.map(item =>
+      IssueConverter.toHistoryItem(item)
+    );
 
     return {
       created: createdDate,
