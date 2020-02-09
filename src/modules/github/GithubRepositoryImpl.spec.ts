@@ -7,26 +7,26 @@ import { GithubRepositoryImpl } from './GithubRepositoryImpl';
 
 describe('GithubRepository', () => {
   const githubClient: GithubClient = {
-    async commits(githubConfig: GithubConfig): Promise<any> {
-      return commitsFakeData;
+    commits(githubConfig: GithubConfig): Promise<any> {
+      return Promise.resolve(commitsFakeData);
     },
-    async getCommitDetails(
+    getCommitDetails(
       repositoryName: string,
       orgName: string,
       sha: string
     ): Promise<any> {
-      return commitDetailsFakeData;
+      return Promise.resolve(commitDetailsFakeData);
     },
-    async pullRequestForCommit(sha: string): Promise<any> {
-      return commitPrFakeData;
+    pullRequestForCommit(sha: string): Promise<any> {
+      return Promise.resolve(commitPrFakeData);
     },
-    async pullRequestComments({
+    pullRequestComments({
       owner,
       repo,
 
       number
     }): Promise<any> {
-      return commitPrReviewComentsFakeData;
+      return Promise.resolve(commitPrReviewComentsFakeData);
     }
   };
 

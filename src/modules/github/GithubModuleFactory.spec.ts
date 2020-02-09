@@ -15,8 +15,8 @@ describe('GithubModuleFactory', () => {
   });
 
   it('should fail to create collector', () => {
-    expect(
-      githubModuleFactory.collectorInstance
+    expect(() =>
+      githubModuleFactory.collectorInstance()
     ).toThrowErrorMatchingSnapshot();
   });
 

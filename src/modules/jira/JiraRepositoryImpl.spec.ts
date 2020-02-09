@@ -7,19 +7,20 @@ import { JiraRepositoryImpl } from './JiraRepositoryImpl';
 
 describe('JiraRepositoryImpl', () => {
   const jiraClient: JiraClient = {
-    getData: async (url): Promise<any> => {
+    getData: (url): Promise<any> => {
+      let result = {};
       if (/\/*\/?expand=changelog/.test(url)) {
-        return issueDetailsExpanded;
+        result = issueDetailsExpanded;
       } else if (/\/search\?jql=Sprint.*/.test(url)) {
-        return sprintFakeData;
+        result = sprintFakeData;
       } else if (/\/issue\?jql=.*/.test(url)) {
-        return boardIssuesFakeData;
+        result = boardIssuesFakeData;
       } else if (
         /\/rest\/agile\/.*\/board\/.*\/sprint\?state=closed/.test(url)
       ) {
-        return completedSprints;
+        result = completedSprints;
       }
-      return {};
+      return Promise.resolve(result);
     }
   };
   const jiraRepository: JiraRepository = new JiraRepositoryImpl(jiraClient);

@@ -10,7 +10,7 @@ export class SonarRepositoryImpl implements SonarRepository {
   constructor(private readonly sonarClient: SonarClient) {}
 
   async projectMetrics(sonarConfig: SonarConfig): Promise<ProjectMetrics[]> {
-    //TODO pagination
+    // TODO pagination
     const measures = await this.sonarClient.getData(
       SonarRepositoryImpl.searchHistoryUrl(sonarConfig)
     );

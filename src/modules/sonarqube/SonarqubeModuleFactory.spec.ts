@@ -15,8 +15,8 @@ describe('SonarqubeModuleFactory', () => {
   });
 
   it('should fail to create collector', () => {
-    expect(
-      sonarqubeModuleFactory.collectorInstance
+    expect(() =>
+      sonarqubeModuleFactory.collectorInstance()
     ).toThrowErrorMatchingSnapshot();
   });
 

@@ -11,19 +11,16 @@ describe('MetricsService', () => {
   };
 
   const fakeCollector: CollectorService<CollectorConfig, MetricItem> = {
-    fetch: async (config: CollectorConfig): Promise<MetricItem[]> => {
-      return [
+    fetch: (config: CollectorConfig): Promise<MetricItem[]> =>
+      Promise.resolve([
         {
           id: 'someId',
           dataType: 'someDataType',
           createdAt: new Date('2018-12-03'),
           teamName: 'someTeamName'
         }
-      ];
-    },
-    supports: (config: any): boolean => {
-      return true;
-    }
+      ]),
+    supports: (config: any): boolean => true
   };
 
   const collectors: CollectorService<CollectorConfig, MetricItem>[] = [

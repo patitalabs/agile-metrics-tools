@@ -16,7 +16,7 @@ export class Converters {
       const measureMapForDate = measureMapsPerDate.get(dateStr);
       const version = analysisMapsPerDate.get(dateStr);
 
-      const projectMetrics = this.toProjectMetric({
+      const projectMetrics: ProjectMetrics = this.toProjectMetric({
         sonarConfig,
         measureMapForDate,
         dateStr,

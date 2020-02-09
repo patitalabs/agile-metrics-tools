@@ -1,6 +1,6 @@
 import { CollectorConfig, MetricItem } from '../../../metrics';
 
-export interface ExternalMetricItem extends MetricItem {}
+export type ExternalMetricItem = MetricItem;
 
 export class ExternalCollectorConfig implements CollectorConfig {
   since: Date;

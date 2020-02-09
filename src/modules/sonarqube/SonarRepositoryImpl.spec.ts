@@ -5,13 +5,14 @@ import { SonarClient, SonarRepository } from './Types';
 
 describe('SonarRepositoryImpl', () => {
   const sonarClient: SonarClient = {
-    getData: async (url): Promise<any> => {
+    getData: (url): Promise<any> => {
+      let result = {};
       if (/.*api\/measures\/search_history/.test(url)) {
-        return searchHistoryFakeData;
+        result = searchHistoryFakeData;
       } else if (/.*api\/project_analyses\/search/.test(url)) {
-        return searchProjectFakeData;
+        result = searchProjectFakeData;
       }
-      return {};
+      return Promise.resolve(result);
     }
   };
   const sonarRepository: SonarRepository = new SonarRepositoryImpl(sonarClient);

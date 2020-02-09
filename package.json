@@ -11,7 +11,8 @@
     "compile": "tsc",
     "dev": "tsc & nodemon dist",
     "test": "jest --coverage",
-    "prettier": "prettier --write --config=.prettierrc \"src/**/*.[tj]s\"",
+    "lint": "eslint --quiet 'src/**/*.ts'",
+    "format": "prettier --write \"src/**/*.[tj]s\"",
     "tsc": "tsc"
   },
   "dependencies": {
@@ -30,6 +31,11 @@
     "@types/express": "^4.11.1",
     "@types/jest": "^24.0.25",
     "@types/node": "13.1.4",
+    "@typescript-eslint/eslint-plugin": "^2.18.0",
+    "@typescript-eslint/parser": "^2.18.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "husky": "^3.1.0",
     "jest": "^24.9.0",
     "lint-staged": "^9.5.0",
@@ -37,14 +43,21 @@
     "ts-jest": "^24.3.0",
     "ts-loader": "^6.2.1",
     "ts-node": "^8.5.4",
-    "tslint": "^5.11.0",
     "typescript": "^3.1.6"
   },
   "lint-staged": {
-    "./**/*.{ts,js,json}": [
-      "prettier --write",
+    "./**/*.{ts,js}": [
+      "yarn lint",
+      "yarn format",
+      "git add"
+    ],
+    "./**/*.{json}": [
+      "yarn format",
       "git add"
     ]
+  },
+  "prettier": {
+    "singleQuote": true
   },
   "jest": {
     "coverageReporters": [

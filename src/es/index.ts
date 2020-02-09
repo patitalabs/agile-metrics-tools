@@ -27,8 +27,9 @@ export class ElasticSearch {
     shouldReplaceEntry: boolean
   ): ElasticSearchService {
     return new (class implements ElasticSearchService {
-      async push(payload): Promise<any> {
+      push(payload): Promise<any> {
         console.log(JSON.stringify(payload));
+        return Promise.resolve({});
       }
     })();
   }

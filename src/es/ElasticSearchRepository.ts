@@ -13,7 +13,7 @@ export class ElasticSearchRepository {
   }
 
   async push({ indexName, type, id, payload }): Promise<any> {
-    return this.client.index({
+    return await this.client.index({
       index: indexName,
       type,
       id,
@@ -40,9 +40,7 @@ export class ElasticSearchRepository {
           }
         }
       })
-      .catch(ignored => {
-        return { hits: { hits: [] } };
-      });
+      .catch(ignored => ({ hits: { hits: [] } }));
 
     return response.hits.hits.length > 0;
   }

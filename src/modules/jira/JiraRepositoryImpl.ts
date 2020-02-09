@@ -28,9 +28,7 @@ export class JiraRepositoryImpl implements JiraRepository {
 
     const taskPromises: Promise<Task>[] = issuesResponse
       .filter(issue => issue.fields.issuetype.name !== 'Sub-task')
-      .map(async issue => {
-        return this.issueDetails(jiraConfig, issue, sprint);
-      })
+      .map(async issue => this.issueDetails(jiraConfig, issue, sprint))
       .filter(issue => Boolean(issue));
     return Promise.all(taskPromises);
   }
@@ -48,9 +46,7 @@ export class JiraRepositoryImpl implements JiraRepository {
         const completedDate: Date = new Date(sprintData.completeDate);
         return Utils.isDateInRange({ createdAt: completedDate, since, until });
       })
-      .map(sprintData => {
-        return Converters.toSprint(sprintData);
-      });
+      .map(sprintData => Converters.toSprint(sprintData));
   }
 
   async completedKanbanIssuesSince(jiraConfig: JiraConfig): Promise<Task[]> {
@@ -65,9 +61,7 @@ export class JiraRepositoryImpl implements JiraRepository {
     const kanbanDataResponse: any[] = await this.paginate(url, 'issues');
 
     const taskPromises: Promise<Task>[] = kanbanDataResponse
-      .map(issue => {
-        return this.issueDetails(jiraConfig, issue, null);
-      })
+      .map(issue => this.issueDetails(jiraConfig, issue, null))
       .filter(issue => Boolean(issue));
 
     return Promise.all(taskPromises);

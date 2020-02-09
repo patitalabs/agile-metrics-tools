@@ -15,9 +15,9 @@ export class JiraCollectorsService
     }
 
     const tasks: Task[] = await this.tasks(jiraConfig);
-    return tasks.map(task => {
-      return JiraMetricConverter.toMetricItem(jiraConfig, task);
-    });
+    return tasks.map(task =>
+      JiraMetricConverter.toMetricItem(jiraConfig, task)
+    );
   }
 
   private async tasks(jiraConfig: JiraCollectorConfig) {
@@ -39,9 +39,9 @@ export class JiraCollectorsService
       jiraConfig.until
     );
 
-    const taskPromises: Promise<Task[]>[] = sprints.map(sprint => {
-      return this.sprintDetails(jiraConfig, sprint);
-    });
+    const taskPromises: Promise<Task[]>[] = sprints.map(sprint =>
+      this.sprintDetails(jiraConfig, sprint)
+    );
 
     return Utils.flatMap(item => item, await Promise.all(taskPromises));
   }
