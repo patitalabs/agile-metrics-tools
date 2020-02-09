@@ -151,10 +151,10 @@ ES_HOST=
 ````
 
 ### To use a Dockerized ELK
-
+ES version 641
 Please refer to https://elk-docker.readthedocs.io/ , mainly the only thing needed is:
 ````
 sysctl -w vm.max_map_count=262144
-docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk sebp/elk
+docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk sebp/elk:641
  grep vm.max_map_count /etc/sysctl.conf
 ````
