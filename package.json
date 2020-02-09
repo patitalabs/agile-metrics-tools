@@ -43,7 +43,7 @@
     "ts-jest": "^24.3.0",
     "ts-loader": "^6.2.1",
     "ts-node": "^8.5.4",
-    "typescript": "^3.1.6"
+    "typescript": "^3.7.5"
   },
   "lint-staged": {
     "./**/*.{ts,js}": [
