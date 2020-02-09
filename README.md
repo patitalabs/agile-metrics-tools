@@ -1,5 +1,5 @@
 ## Agile Metrics Tools
-[![Build Status](https://travis-ci.org/ferzerkerx/agile-metrics-tools.svg?branch=master)](https://travis-ci.org/ferzerkerx/lego-work-stream-slack)
+[![Build Status](https://travis-ci.org/ferzerkerx/agile-metrics-tools.svg?branch=master)](https://travis-ci.org/ferzerkerx/agile-metrics-tools)
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=agile-metrics-tools&metric=alert_status)](https://sonarcloud.io/dashboard?id=agile-metrics-tools)
 
 Agile metrics tools allows you to track metrics from different sources in order to identify trends and patterns on how your team performance is affected by its environment Inspired by 'Agile Metrics in Action' book and https://github.com/cwhd/measurementor project
