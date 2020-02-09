@@ -59,7 +59,7 @@
   };
 
   const externalSampleBuilder = (
-    { metricType, rows: columns },
+    { metricType, columns },
     referenceDate = new Date()
   ) => {
     return {
