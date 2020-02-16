@@ -158,6 +158,11 @@ sudo sysctl -w vm.max_map_count=262144
 sudo grep vm.max_map_count /etc/sysctl.conf
 docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk sebp/elk:740
 ````
+Remove limits of space if unable to create index
+````
+curl -XPUT -H "Content-Type: application/json" http://localhost:9200/_cluster/settings -d '{ "transient": { "cluster.routing.allocation.disk.threshold_enabled": false } }'
+curl -XPUT -H "Content-Type: application/json" http://localhost:9200/_all/_settings -d '{"index.blocks.read_only_allow_delete": null}'
+````
 
 ## Test locally (Using Web)
 1. Start ELK stack and make sure ES is running on http://localhost:92000
