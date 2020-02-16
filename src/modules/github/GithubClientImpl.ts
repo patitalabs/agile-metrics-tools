@@ -1,4 +1,4 @@
-import * as Octokit from '@octokit/rest';
+import { Octokit } from '@octokit/rest';
 import { GithubClient, GithubConfig } from './Types';
 import Bottleneck from 'bottleneck';
 

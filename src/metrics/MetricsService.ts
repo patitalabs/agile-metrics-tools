@@ -29,6 +29,7 @@ export class MetricsService {
         `Finished collecting metrics for: ${JSON.stringify(collectorConfig)}`
       );
     } catch (error) {
+      console.warn(error);
       const errorMessage = `There was a problem collecting metrics for: ${JSON.stringify(
         collectorConfig
       )}, error:${JSON.stringify(error)}, message:${error.message}`;

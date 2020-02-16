@@ -1,19 +1,19 @@
-import { ReposGetCommitResponse } from '@octokit/rest';
+import { Octokit } from '@octokit/rest';
 import { GithubCommit, PullRequestStats } from './Types';
 import { Utils } from '../../metrics';
 
 export class Converters {
   static toGithubCommit(
-    data: ReposGetCommitResponse,
+    data: Octokit.GitGetCommitResponse,
     pullRequestStats: PullRequestStats
   ): GithubCommit {
     return {
       sha: data.sha,
-      createdAt: new Date(data.commit.committer.date),
-      linesAdded: data.stats.additions,
-      linesRemoved: data.stats.deletions,
-      author: data.author ? data.author.login : data.commit.committer.name,
-      message: data.commit.message,
+      createdAt: new Date(data.committer.date),
+      linesAdded: 0, // TODO data.stats.additions,
+      linesRemoved: 0, //TODO data.stats.deletions,
+      author: data.author ? data.author.email : data.committer.name, // TODO data.author.email vs data.author.login
+      message: data.message,
       pullRequest: pullRequestStats
     };
   }

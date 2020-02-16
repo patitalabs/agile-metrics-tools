@@ -3,10 +3,10 @@
 exports[`GithubRepository should get commits 1`] = `
 Array [
   Object {
-    "author": "someUser",
+    "author": "somUser@org",
     "createdAt": 2018-12-13T14:33:21.000Z,
-    "linesAdded": 17,
-    "linesRemoved": 21,
+    "linesAdded": 0,
+    "linesRemoved": 0,
     "message": "ORG-5917
 - some comment",
     "pullRequest": Object {
@@ -17,10 +17,10 @@ Array [
     "sha": "2a20a913d0159b1105e1be9f398d95a73e1a8129",
   },
   Object {
-    "author": "someUser",
+    "author": "somUser@org",
     "createdAt": 2018-12-13T14:33:21.000Z,
-    "linesAdded": 17,
-    "linesRemoved": 21,
+    "linesAdded": 0,
+    "linesRemoved": 0,
     "message": "ORG-5917
 - some comment",
     "pullRequest": Object {
@@ -31,10 +31,10 @@ Array [
     "sha": "2a20a913d0159b1105e1be9f398d95a73e1a8129",
   },
   Object {
-    "author": "someUser",
+    "author": "somUser@org",
     "createdAt": 2018-12-13T14:33:21.000Z,
-    "linesAdded": 17,
-    "linesRemoved": 21,
+    "linesAdded": 0,
+    "linesRemoved": 0,
     "message": "ORG-5917
 - some comment",
     "pullRequest": Object {
@@ -45,10 +45,10 @@ Array [
     "sha": "2a20a913d0159b1105e1be9f398d95a73e1a8129",
   },
   Object {
-    "author": "someUser",
+    "author": "somUser@org",
     "createdAt": 2018-12-13T14:33:21.000Z,
-    "linesAdded": 17,
-    "linesRemoved": 21,
+    "linesAdded": 0,
+    "linesRemoved": 0,
     "message": "ORG-5917
 - some comment",
     "pullRequest": Object {
@@ -59,10 +59,10 @@ Array [
     "sha": "2a20a913d0159b1105e1be9f398d95a73e1a8129",
   },
   Object {
-    "author": "someUser",
+    "author": "somUser@org",
     "createdAt": 2018-12-13T14:33:21.000Z,
-    "linesAdded": 17,
-    "linesRemoved": 21,
+    "linesAdded": 0,
+    "linesRemoved": 0,
     "message": "ORG-5917
 - some comment",
     "pullRequest": Object {

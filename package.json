@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn build && yarn prepare-web && node dist/api/server.js",
+    "start-local": "yarn build && yarn prepare-web && ES_HOST=http://localhost:9200 node dist/api/server.js",
     "prepare-web": "cp -R src/api/resources dist/ && cp -R src/api/template-configs/* dist/api/template-configs",
     "build": "yarn compile",
     "compile": "tsc",
@@ -16,10 +17,10 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "@octokit/rest": "^16.36.0",
+    "@octokit/rest": "^16.39.0",
     "bottleneck": "^2.19.5",
     "csvtojson": "^2.0.8",
-    "elasticsearch": "^16.3.0",
+    "elasticsearch": "^16.6.0",
     "express": "^4.17.1",
     "node-env-file": "^0.1.8",
     "node-fetch": "^2.6.0"
