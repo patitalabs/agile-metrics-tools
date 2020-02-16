@@ -3,7 +3,7 @@
 exports[`GithubRepository should get commits 1`] = `
 Array [
   Object {
-    "author": undefined,
+    "author": "someUser",
     "createdAt": 2018-12-13T14:33:21.000Z,
     "linesAdded": 17,
     "linesRemoved": 21,
@@ -17,7 +17,7 @@ Array [
     "sha": "2a20a913d0159b1105e1be9f398d95a73e1a8129",
   },
   Object {
-    "author": undefined,
+    "author": "someUser",
     "createdAt": 2018-12-13T14:33:21.000Z,
     "linesAdded": 17,
     "linesRemoved": 21,
@@ -31,7 +31,7 @@ Array [
     "sha": "2a20a913d0159b1105e1be9f398d95a73e1a8129",
   },
   Object {
-    "author": undefined,
+    "author": "someUser",
     "createdAt": 2018-12-13T14:33:21.000Z,
     "linesAdded": 17,
     "linesRemoved": 21,
@@ -45,7 +45,7 @@ Array [
     "sha": "2a20a913d0159b1105e1be9f398d95a73e1a8129",
   },
   Object {
-    "author": undefined,
+    "author": "someUser",
     "createdAt": 2018-12-13T14:33:21.000Z,
     "linesAdded": 17,
     "linesRemoved": 21,
@@ -59,7 +59,7 @@ Array [
     "sha": "2a20a913d0159b1105e1be9f398d95a73e1a8129",
   },
   Object {
-    "author": undefined,
+    "author": "someUser",
     "createdAt": 2018-12-13T14:33:21.000Z,
     "linesAdded": 17,
     "linesRemoved": 21,
