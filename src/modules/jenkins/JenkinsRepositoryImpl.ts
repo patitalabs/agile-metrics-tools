@@ -20,8 +20,10 @@ export class JenkinsRepositoryImpl implements JenkinsRepository {
       `job/${orgName}/job/${projectName}/job/master`
     );
 
-    const buildsPromises: Promise<JenkinsBuild>[] = jobDetails.builds.map(
-      jobBuild => this.buildDetails(orgName, projectName, jobBuild.number)
+    const buildsPromises: Promise<
+      JenkinsBuild
+    >[] = jobDetails.builds.map(jobBuild =>
+      this.buildDetails(orgName, projectName, jobBuild.number)
     );
 
     const builds = await Promise.all(buildsPromises);
