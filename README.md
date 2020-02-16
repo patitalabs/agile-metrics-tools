@@ -151,10 +151,30 @@ ES_HOST=
 ````
 
 ### To use a Dockerized ELK
-ES version 641
+ES version 740
 Please refer to https://elk-docker.readthedocs.io/ , mainly the only thing needed is:
 ````
-sysctl -w vm.max_map_count=262144
-docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk sebp/elk:641
- grep vm.max_map_count /etc/sysctl.conf
+sudo sysctl -w vm.max_map_count=262144
+sudo grep vm.max_map_count /etc/sysctl.conf
+docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk sebp/elk:740
 ````
+Remove limits of space if unable to create index
+````
+curl -XPUT -H "Content-Type: application/json" http://localhost:9200/_cluster/settings -d '{ "transient": { "cluster.routing.allocation.disk.threshold_enabled": false } }'
+curl -XPUT -H "Content-Type: application/json" http://localhost:9200/_all/_settings -d '{"index.blocks.read_only_allow_delete": null}'
+````
+
+## Test locally (Using Web)
+1.  Start ELK stack and make sure ES is running on <http://localhost:92000>
+2.  Run yarn start-local
+3.  Go to <http://localhost:3000> on a browser
+4.  Select by service
+5.  Select external service
+6.  Click on sample
+7.  Click on submit
+8.  Create an index pattern ``myindex-*`` on <http://localhost:5601/app/kibana#/management/kibana/index_pattern?_g=()> with ``createdAt`` as time filter
+
+## Test locally (Using CLI)
+1.  Start ELK stack and make sure ES is running on <http://localhost:92000>
+2.  Run node src/index-cli.ts
+3.  Create an index pattern ``myindex-*`` on <http://localhost:5601/app/kibana#/management/kibana/index_pattern?_g=()> with ``createdAt`` as time filter

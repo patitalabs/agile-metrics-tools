@@ -14,8 +14,10 @@ export class GithubRepositoryImpl implements GithubRepository {
     const { repositoryName, orgName } = githubConfig;
 
     const commitsSha: string[] = await this.githubClient.commits(githubConfig);
-    const commitsWithDetailsPromise: Promise<GithubCommit>[] = commitsSha.map(
-      commitSha => this.getCommitDetails(repositoryName, orgName, commitSha)
+    const commitsWithDetailsPromise: Promise<
+      GithubCommit
+    >[] = commitsSha.map(commitSha =>
+      this.getCommitDetails(repositoryName, orgName, commitSha)
     );
     return Promise.all(commitsWithDetailsPromise);
   }

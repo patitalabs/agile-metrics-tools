@@ -5,6 +5,7 @@ import { JiraModuleFactory } from './modules/jira';
 import { JenkinsModuleFactory } from './modules/jenkins';
 import { SonarqubeModuleFactory } from './modules/sonarqube';
 import { ExternalModuleFactory } from './modules/external';
+import { Logger } from './metrics/Logger';
 
 interface ModuleFactoryMappings {
   [type: string]: CollectorModuleFactory<any, any>;
@@ -71,14 +72,12 @@ export class AppContextFactory {
     return appConfig.modules
       .map(moduleConfig => {
         if (!moduleConfig) {
-          console.warn(`Unable to load ${moduleConfig}`);
+          Logger.warn(`Unable to load ${moduleConfig}`);
           return null;
         }
         const module = moduleFactories[moduleConfig.type];
         if (!module) {
-          console.warn(
-            `Unable to process config for type ${moduleConfig.type}`
-          );
+          Logger.warn(`Unable to process config for type ${moduleConfig.type}`);
           return null;
         }
         return moduleConfig;
@@ -120,7 +119,7 @@ export class AppContextFactory {
       try {
         configContents = await import(moduleConfig.configFile);
       } catch (error) {
-        console.warn(`Unable to load file ${moduleConfig.configFile}`);
+        Logger.warn(`Unable to load file ${moduleConfig.configFile}`);
       }
       if (!configContents) {
         return null;

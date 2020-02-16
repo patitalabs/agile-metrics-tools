@@ -5,6 +5,7 @@ import {
   TeamMetricsRequestByService,
   TeamMetricsRequestByTeam
 } from '../Types';
+import { Logger } from '../metrics/Logger';
 
 export class MetricsController {
   static postMetrics = async (req: Request, res: Response) => {
@@ -19,9 +20,9 @@ export class MetricsController {
     try {
       await this.collectMetrics(req);
       res.json({ status: 'Done!.' });
-      console.log('Done!');
+      Logger.info('Done!');
     } catch (error) {
-      console.error(error);
+      Logger.error(error);
       res.json({ error: 'Could not process request' });
     }
   }

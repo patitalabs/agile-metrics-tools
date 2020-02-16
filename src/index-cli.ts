@@ -1,5 +1,6 @@
 import { AppFactory } from './AppFactory';
 import { AppContext } from './Types';
+import { Logger } from './metrics/Logger';
 
 async function main(fileConfigPath: string): Promise<void> {
   const context: AppContext = await AppFactory.appContextFrom(fileConfigPath);
@@ -10,7 +11,7 @@ async function main(fileConfigPath: string): Promise<void> {
 }
 
 function printUsage() {
-  console.log(`Usage: node index.js your-app-config.json`);
+  Logger.info(`Usage: node index.js your-app-config.json`);
 }
 
 if (process.argv.length < 2) {
@@ -18,4 +19,4 @@ if (process.argv.length < 2) {
   throw Error('No config specified:');
 }
 const configFilePath = process.argv[2];
-main(configFilePath).then(() => console.log('Finished!'));
+main(configFilePath).then(() => Logger.info('Finished!'));

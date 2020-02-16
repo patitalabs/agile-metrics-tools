@@ -1,6 +1,7 @@
 import { ElasticSearchService } from '../es';
 import { MetricsConfig } from '../Types';
 import { CollectorConfig, CollectorService, MetricItem } from './Types';
+import { Logger } from './Logger';
 
 export class MetricsService {
   constructor(
@@ -25,14 +26,15 @@ export class MetricsService {
     try {
       const metricItems = await collector.fetch(collectorConfig);
       await this.processMetrics(metricItems);
-      console.log(
+      Logger.info(
         `Finished collecting metrics for: ${JSON.stringify(collectorConfig)}`
       );
     } catch (error) {
+      Logger.warn(error);
       const errorMessage = `There was a problem collecting metrics for: ${JSON.stringify(
         collectorConfig
       )}, error:${JSON.stringify(error)}, message:${error.message}`;
-      console.warn(`${errorMessage}`);
+      Logger.warn(`${errorMessage}`);
       throw errorMessage;
     }
   }

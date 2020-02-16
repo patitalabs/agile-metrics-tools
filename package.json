@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn build && yarn prepare-web && node dist/api/server.js",
+    "start-local": "yarn build && yarn prepare-web && ES_HOST=http://localhost:9200 node dist/api/server.js",
     "prepare-web": "cp -R src/api/resources dist/ && cp -R src/api/template-configs/* dist/api/template-configs",
     "build": "yarn compile",
     "compile": "tsc",
@@ -16,44 +17,43 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "@octokit/rest": "^16.36.0",
+    "@octokit/rest": "^16.43.1",
     "bottleneck": "^2.19.5",
     "csvtojson": "^2.0.8",
-    "elasticsearch": "^16.3.0",
+    "elasticsearch": "^16.6.0",
     "express": "^4.17.1",
     "node-env-file": "^0.1.8",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "winston": "^3.2.1"
   },
   "engines": {
     "node": ">=12.15.0"
   },
   "devDependencies": {
-    "@types/express": "^4.11.1",
-    "@types/jest": "^24.0.25",
-    "@types/node": "13.1.4",
+    "@types/express": "^4.17.2",
+    "@types/jest": "^25.1.2",
+    "@types/node": "13.7.1",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.18.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "husky": "^3.1.0",
+    "husky": "^4.2.3",
     "jest": "^24.9.0",
-    "lint-staged": "^9.5.0",
-    "prettier": "^1.18.2",
+    "lint-staged": "^10.0.7",
+    "prettier": "^1.19.1",
     "ts-jest": "^24.3.0",
     "ts-loader": "^6.2.1",
     "ts-node": "^8.5.4",
-    "typescript": "^3.1.6"
+    "typescript": "^3.7.5"
   },
   "lint-staged": {
     "./**/*.{ts,js}": [
       "yarn lint",
-      "yarn format",
-      "git add"
+      "yarn format"
     ],
     "./**/*.{json}": [
-      "yarn format",
-      "git add"
+      "yarn format"
     ]
   },
   "prettier": {

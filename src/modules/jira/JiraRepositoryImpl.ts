@@ -8,6 +8,7 @@ import {
 } from './Types';
 import { Converters } from './Converters';
 import { Utils } from '../../metrics';
+import { Logger } from '../../metrics/Logger';
 
 export class JiraRepositoryImpl implements JiraRepository {
   constructor(private readonly jiraClient: JiraClient) {}
@@ -84,7 +85,7 @@ export class JiraRepositoryImpl implements JiraRepository {
         issueDetailsWithChangelogResponse
       );
     } catch (error) {
-      console.error(`Skipping issue: ${issue.key}, error:${error.message}`);
+      Logger.error(`Skipping issue: ${issue.key}, error:${error.message}`);
     }
     return null;
   }

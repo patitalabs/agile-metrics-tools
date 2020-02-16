@@ -10,6 +10,7 @@ export class ExternalCollectorConfig implements CollectorConfig {
   srcType: string;
   srcPath: string;
   metricType: string;
+  inlineData?: [];
   constructor({
     since,
     until = null,
@@ -17,7 +18,8 @@ export class ExternalCollectorConfig implements CollectorConfig {
     srcType,
     srcPath,
     metricType,
-    teamName
+    teamName,
+    inlineData = null
   }) {
     this.since = since ? new Date(since) : null;
     this.until = until ? new Date(until) : null;
@@ -26,5 +28,6 @@ export class ExternalCollectorConfig implements CollectorConfig {
     this.srcPath = srcPath;
     this.metricType = metricType;
     this.teamName = teamName;
+    this.inlineData = inlineData;
   }
 }

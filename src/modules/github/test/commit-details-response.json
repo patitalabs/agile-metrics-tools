@@ -29,8 +29,6 @@
   "url": "https://api.github.com/repos/org/project-name/commits/2a20a913d0159b1105e1be9f398d95a73e1a8129",
   "html_url": "https://github.com/org/project-name/commit/2a20a913d0159b1105e1be9f398d95a73e1a8129",
   "comments_url": "https://api.github.com/repos/org/project-name/commits/2a20a913d0159b1105e1be9f398d95a73e1a8129/comments",
-  "author": null,
-  "committer": null,
   "parents": [
     {
       "sha": "f6d76b7b43c95d12f5045203a46650ac5b2a5c83",
