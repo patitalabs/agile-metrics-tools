@@ -1,6 +1,7 @@
 import { MetricItem } from '../metrics';
 import { ElasticSearchService } from './Types';
 import { ElasticSearchRepository } from './ElasticSearchRepository';
+import { Logger } from '../metrics/Logger';
 
 export class ElasticSearchServiceImpl implements ElasticSearchService {
   constructor(
@@ -22,7 +23,7 @@ export class ElasticSearchServiceImpl implements ElasticSearchService {
       );
 
       if (entryExists) {
-        console.info('Item already exists...' + JSON.stringify(metricItem));
+        Logger.info('Item already exists...' + JSON.stringify(metricItem));
         return Promise.resolve({});
       }
     }

@@ -165,16 +165,16 @@ curl -XPUT -H "Content-Type: application/json" http://localhost:9200/_all/_setti
 ````
 
 ## Test locally (Using Web)
-1. Start ELK stack and make sure ES is running on http://localhost:92000
-2. ``yarn start-local``
-3. Go to http://localhost:3000 on a browser
-4. Select By service
+1. Start ELK stack and make sure ES is running on <http://localhost:92000>
+2. Run yarn start-local
+3. Go to <http://localhost:3000> on a browser
+4. Select by service
 5. Select external service
 6. Click on sample
 7. Click on submit
-8. create an index pattern ``myindex-*`` on http://localhost:5601/app/kibana#/management/kibana/index_pattern?_g=() with ``createdAt`` as time filter
+8. create an index pattern ``myindex-*`` on <http://localhost:5601/app/kibana#/management/kibana/index_pattern?_g=()> with ``createdAt`` as time filter
 
 ## Test locally (Using CLI)
-1. Start ELK stack and make sure ES is running on http://localhost:92000
-2. run node src/index-cli.ts
-3. create an index pattern ``myindex-*`` on http://localhost:5601/app/kibana#/management/kibana/index_pattern?_g=() with ``createdAt`` as time filter
+1. Start ELK stack and make sure ES is running on <http://localhost:92000>
+2. Run node src/index-cli.ts
+3. create an index pattern ``myindex-*`` on <http://localhost:5601/app/kibana#/management/kibana/index_pattern?_g=()> with ``createdAt`` as time filter

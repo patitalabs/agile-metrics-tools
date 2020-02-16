@@ -2,6 +2,7 @@ import { ElasticSearchService } from './Types';
 import { ElasticSearchServiceImpl } from './ElasticSearchService';
 import { ElasticSearchRepository } from './ElasticSearchRepository';
 import { Utils } from '../metrics';
+import { Logger } from '../metrics/Logger';
 
 export { ElasticSearchServiceImpl } from './ElasticSearchService';
 export { ElasticSearchService } from './Types';
@@ -28,7 +29,7 @@ export class ElasticSearch {
   ): ElasticSearchService {
     return new (class implements ElasticSearchService {
       push(payload): Promise<any> {
-        console.log(JSON.stringify(payload));
+        Logger.info(JSON.stringify(payload));
         return Promise.resolve({});
       }
     })();

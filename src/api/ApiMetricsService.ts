@@ -2,18 +2,19 @@ import { AppContextFactory } from '../AppContextFactory';
 import { AppFactory } from '../AppFactory';
 import { DefaultConfiguration } from './DefaultConfiguration';
 import { TeamMetricsRequest } from '../Types';
+import { Logger } from '../metrics/Logger';
 
 export class ApiMetricsService {
   public static async metricsForRequest(
     teamMetricsRequest: TeamMetricsRequest
   ): Promise<void> {
     try {
-      console.log(`teamMetricsRequest: ${JSON.stringify(teamMetricsRequest)}`);
+      Logger.info(`teamMetricsRequest: ${JSON.stringify(teamMetricsRequest)}`);
       const configurationDescriptors = await ApiMetricsService.createConfigurationDescriptorsForRequest(
         teamMetricsRequest,
         ApiMetricsService.yesterday()
       );
-      console.log(
+      Logger.info(
         `created configurations: ${JSON.stringify(configurationDescriptors)}`
       );
       for (const configurationDescriptor of configurationDescriptors) {
@@ -23,9 +24,9 @@ export class ApiMetricsService {
           configurationDescriptor.shouldUpdateEntries
         );
       }
-      console.log('Done!');
+      Logger.info('Done!');
     } catch (error) {
-      console.error(error);
+      Logger.error(error);
     }
   }
 
