@@ -20,7 +20,7 @@
     "@octokit/rest": "^16.43.1",
     "bottleneck": "^2.19.5",
     "csvtojson": "^2.0.8",
-    "elasticsearch": "^16.6.0",
+    "elasticsearch": "^16.7.1",
     "express": "^4.17.1",
     "node-env-file": "^0.1.8",
     "node-fetch": "^2.6.0",
