@@ -17,7 +17,7 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "@octokit/rest": "^16.43.1",
+    "@octokit/rest": "^18.0.8",
     "bottleneck": "^2.19.5",
     "csvtojson": "^2.0.8",
     "elasticsearch": "^16.7.1",
