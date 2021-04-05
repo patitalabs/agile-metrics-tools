@@ -1,4 +1,4 @@
-import * as fetch from 'node-fetch';
+import fetch from 'node-fetch';
 import { SonarClient } from './Types';
 
 export class SonarClientImpl implements SonarClient {
