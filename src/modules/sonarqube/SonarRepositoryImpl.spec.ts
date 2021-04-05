@@ -13,7 +13,7 @@ describe('SonarRepositoryImpl', () => {
         result = searchProjectFakeData;
       }
       return Promise.resolve(result);
-    }
+    },
   };
   const sonarRepository: SonarRepository = new SonarRepositoryImpl(sonarClient);
 
@@ -21,7 +21,7 @@ describe('SonarRepositoryImpl', () => {
     const sonarConfig = {
       projectName: 'someProject',
       since: '2018-11-20',
-      teamName: 'someTeam'
+      teamName: 'someTeam',
     };
 
     const data = await sonarRepository.projectMetrics(sonarConfig);

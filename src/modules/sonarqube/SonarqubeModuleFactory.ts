@@ -12,7 +12,7 @@ export class SonarqubeModuleFactory
     Utils.checkEnvVar('SONAR_HOST');
 
     const sonarClient = new SonarClientImpl({
-      host: `${process.env.SONAR_HOST}`
+      host: `${process.env.SONAR_HOST}`,
     });
     const sonarRepository = new SonarRepositoryImpl(sonarClient);
     return new SonarServiceImpl(sonarRepository);

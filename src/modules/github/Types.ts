@@ -44,6 +44,6 @@ export interface GithubClient {
     owner,
     repo,
 
-    number
+    number,
   }): Promise<any>;
 }

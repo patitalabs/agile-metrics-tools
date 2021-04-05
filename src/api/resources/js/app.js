@@ -1,15 +1,15 @@
-(global => {
-  const formatDate = theDate => {
+((global) => {
+  const formatDate = (theDate) => {
     return theDate.toISOString().substring(0, 10);
   };
 
-  const defaultSampleSince = referenceDate => {
+  const defaultSampleSince = (referenceDate) => {
     const since = new Date(referenceDate.toISOString());
     since.setDate(since.getDate() - 1);
     return formatDate(since);
   };
 
-  const prettyJson = theObj => {
+  const prettyJson = (theObj) => {
     return JSON.stringify(theObj, null, 2);
   };
 
@@ -23,15 +23,15 @@
         'In Progress': 3,
         'Code Review': 4,
         'Po Review': 5,
-        Done: 7
+        Done: 7,
       },
       fields: {
-        storyPoints: 'customfield_10005'
+        storyPoints: 'customfield_10005',
       },
       estimateConfig: {
         maxTime: 7,
-        estimationValues: [1, 2, 3, 5, 8]
-      }
+        estimationValues: [1, 2, 3, 5, 8],
+      },
     };
   };
   const sampleGithub = (referenceDate = new Date()) => {
@@ -39,7 +39,7 @@
       repositoryName: 'your-repo',
       teamName: 'someTeam',
       orgName: 'someOrg',
-      since: defaultSampleSince(referenceDate)
+      since: defaultSampleSince(referenceDate),
     };
   };
   const sampleJenkins = (referenceDate = new Date()) => {
@@ -47,14 +47,14 @@
       orgName: 'someOrg',
       teamName: 'someTeam',
       projectName: 'your-project',
-      since: defaultSampleSince(referenceDate)
+      since: defaultSampleSince(referenceDate),
     };
   };
   const sampleSonar = (referenceDate = new Date()) => {
     return {
       projectName: 'your-project',
       teamName: 'someTeam',
-      since: defaultSampleSince(referenceDate)
+      since: defaultSampleSince(referenceDate),
     };
   };
 
@@ -71,9 +71,9 @@
         {
           createdAt: formatDate(referenceDate),
           teamName: 'someTeam',
-          ...columns
-        }
-      ]
+          ...columns,
+        },
+      ],
     };
   };
 
@@ -83,8 +83,8 @@
         metricType: 'METRIC-NAME',
         columns: {
           colOne: 0,
-          colTwo: 'value'
-        }
+          colTwo: 'value',
+        },
       },
       referenceDate
     );
@@ -108,7 +108,7 @@
   const submitButtonDom = document.getElementById('submitBtn');
   const sampleBtnDom = document.getElementById('sampleBtn');
 
-  const configurationFromText = configStr => {
+  const configurationFromText = (configStr) => {
     try {
       const configObj = JSON.parse(configStr);
 
@@ -119,7 +119,7 @@
     }
   };
 
-  const createRequest = form => {
+  const createRequest = (form) => {
     const startDate = form.startDate.valueAsDate || null;
     const endDate = form.endDate.valueAsDate || null;
     const teamName = form.teamName ? form.teamName.value || null : null;
@@ -156,22 +156,22 @@
       shouldUpdateEntries,
       teamName,
       serviceName,
-      config: config
+      config: config,
     };
   };
 
-  const sendRequest = request => {
+  const sendRequest = (request) => {
     const url = `/metrics/`;
     fetch(url, {
       method: request.shouldUpdateEntries ? 'PUT' : 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(request)
+      body: JSON.stringify(request),
     });
   };
 
-  const handleFormSubmit = e => {
+  const handleFormSubmit = (e) => {
     submitButtonDom.disabled = true;
     try {
       e.preventDefault();
@@ -192,7 +192,7 @@
     }
   };
 
-  const toggleModeType = e => {
+  const toggleModeType = (e) => {
     const searchType = e.target.value;
     if (searchType === 'byTeam') {
       formDom.teamName.disabled = false;
@@ -210,7 +210,7 @@
     editorContainerDom.classList.remove('hidden');
   };
 
-  const setSample = e => {
+  const setSample = (e) => {
     e.preventDefault();
     const selectedService = formDom.serviceName.value;
     const optionText =
@@ -222,7 +222,7 @@
     }
   };
 
-  const cleanup = modeRadios => {
+  const cleanup = (modeRadios) => {
     global.onunload = () => {
       formDom.removeEventListener('submit', handleFormSubmit);
       for (const radio of modeRadios) {

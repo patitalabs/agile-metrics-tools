@@ -12,7 +12,7 @@ export class JiraModuleFactory
     Utils.checkEnvVar('JIRA_HOST', 'JIRA_API_TOKEN');
     const jiraClient = new JiraClientImpl({
       host: `${process.env.JIRA_HOST}`,
-      apiToken: `${process.env.JIRA_API_TOKEN}`
+      apiToken: `${process.env.JIRA_API_TOKEN}`,
     });
     const jiraRepository = new JiraRepositoryImpl(jiraClient);
     return new JiraServiceImpl(jiraRepository);

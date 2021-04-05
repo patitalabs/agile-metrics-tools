@@ -24,10 +24,10 @@ describe('GithubRepository', () => {
       owner,
       repo,
 
-      number
+      number,
     }): Promise<any> {
       return Promise.resolve(commitPrReviewComentsFakeData);
-    }
+    },
   };
 
   const githubService: GithubRepository = new GithubRepositoryImpl(
@@ -38,7 +38,7 @@ describe('GithubRepository', () => {
     const githubConfig: GithubConfig = {
       repositoryName: 'someRepositoryName',
       orgName: 'someOrgName',
-      since: '2018-12-03'
+      since: '2018-12-03',
     };
     const data = await githubService.commits(githubConfig);
     expect(data).toMatchSnapshot();

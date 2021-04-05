@@ -2,7 +2,7 @@ import {
   GithubCommit,
   GithubConfig,
   GithubRepository,
-  GithubService
+  GithubService,
 } from './Types';
 
 export class GithubServiceImpl implements GithubService {

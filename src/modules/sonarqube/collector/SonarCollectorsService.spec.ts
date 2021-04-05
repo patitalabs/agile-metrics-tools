@@ -33,14 +33,14 @@ function testProjectMetric(): ProjectMetrics {
     ncloc: 40,
     nclocLanguageDistribution: 'lang distribution',
     newLines: 20,
-    version: '2.5'
+    version: '2.5',
   };
 }
 
 describe('SonarCollectorsService', () => {
   const sonarService: SonarService = {
     projectMetrics: (sonarConfig: SonarConfig): Promise<ProjectMetrics[]> =>
-      Promise.resolve([testProjectMetric()])
+      Promise.resolve([testProjectMetric()]),
   };
 
   const sonarCollectorsService: SonarCollectorsService = new SonarCollectorsService(
@@ -53,7 +53,7 @@ describe('SonarCollectorsService', () => {
         projectName: 'someProject',
         since: '2018-11-20',
         until: '2020-11-20',
-        teamName: 'someTeamName'
+        teamName: 'someTeamName',
       }
     );
 

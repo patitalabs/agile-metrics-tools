@@ -4,7 +4,7 @@ import {
   JiraService,
   Sprint,
   Subtask,
-  Task
+  Task,
 } from '../Types';
 import { JiraCollectorsService } from './JiraCollectorsService';
 import { JiraCollectorConfig } from './Types';
@@ -21,12 +21,12 @@ function testHistories(): { [type: string]: HistoryEntry[] } {
       {
         field: 'status',
         fromString: 'Open',
-        toString: 'Done'
-      }
-    ]
+        toString: 'Done',
+      },
+    ],
   };
   return {
-    status: [historyEntry]
+    status: [historyEntry],
   };
 }
 
@@ -48,7 +48,7 @@ function testTask(): Task {
     subtasks: testSubtasks(),
     histories: testHistories(),
     numberOfComments: 4,
-    numberOfBugs: 1
+    numberOfBugs: 1,
   };
 }
 
@@ -57,7 +57,7 @@ function testSprint(): Sprint {
     id: 45,
     name: 'sprint name',
     isoStartDate: new Date('2018-12-03'),
-    isoEndDate: new Date('2018-12-11')
+    isoEndDate: new Date('2018-12-11'),
   };
 }
 
@@ -72,7 +72,7 @@ describe('JiraCollectorsService', () => {
       Promise.resolve([testTask()]),
 
     completedKanbanIssuesSince: (jiraConfig: JiraConfig): Promise<Task[]> =>
-      Promise.resolve([testTask()])
+      Promise.resolve([testTask()]),
   };
 
   const jiraCollectorsService: JiraCollectorsService = new JiraCollectorsService(
@@ -87,7 +87,7 @@ describe('JiraCollectorsService', () => {
       workFlowMap: null,
       workFlowType,
       fields: null,
-      until: '2020-11-20'
+      until: '2020-11-20',
     });
 
   it('should fetch jiraMetrics for sprint', async () => {

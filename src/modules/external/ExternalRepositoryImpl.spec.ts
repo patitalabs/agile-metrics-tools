@@ -9,7 +9,7 @@ describe('ExternalRepositoryImpl', () => {
       since: new Date('2018-12-03'),
       type: 'csv',
       srcType: 'file',
-      srcPath: `${__dirname}/test/external-source.csv`
+      srcPath: `${__dirname}/test/external-source.csv`,
     };
 
     const externalData = await externalRepository.csv(externalConfig);
@@ -27,9 +27,9 @@ describe('ExternalRepositoryImpl', () => {
           teamName: 'someTeamName',
           header1: 2,
           header2: 3,
-          header3: 'someValue'
-        }
-      ]
+          header3: 'someValue',
+        },
+      ],
     };
 
     const externalData = await externalRepository.csv(externalConfig);

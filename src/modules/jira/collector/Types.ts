@@ -38,7 +38,7 @@ export class JiraCollectorConfig implements CollectorConfig {
     workFlowMap,
     fields,
     teamName,
-    workFlowType
+    workFlowType,
   }) {
     this.teamId = teamId;
     this.since = new Date(since);

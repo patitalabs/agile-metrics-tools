@@ -1,14 +1,14 @@
 import { ApiMetricsService } from './ApiMetricsService';
 import {
   TeamMetricsRequestByService,
-  TeamMetricsRequestByTeam
+  TeamMetricsRequestByTeam,
 } from '../Types';
 
 describe('ApiMetricsService', () => {
   it('should construct default config', async () => {
     const teamMetricsRequest: TeamMetricsRequestByTeam = {
       shouldUpdateEntries: false,
-      teamName: 'sprintteam'
+      teamName: 'sprintteam',
     };
     const referenceDate = new Date('2019-02-10');
     const generatedConfigs = await ApiMetricsService.createConfigurationDescriptorsForRequest(
@@ -22,7 +22,7 @@ describe('ApiMetricsService', () => {
     const teamMetricsRequest: TeamMetricsRequestByService = {
       serviceName: 'serviceName',
       shouldUpdateEntries: false,
-      config: { fake: 'config' }
+      config: { fake: 'config' },
     };
     const referenceDate = new Date('2019-02-09');
 
@@ -40,7 +40,7 @@ describe('ApiMetricsService', () => {
     const teamMetricsRequest: TeamMetricsRequestByService = {
       serviceName: 'serviceName',
       shouldUpdateEntries: false,
-      config: { fake: 'config' }
+      config: { fake: 'config' },
     };
     const referenceDate = new Date('2019-02-12');
     const generatedConfigs = await ApiMetricsService.createConfigurationDescriptorsForRequest(

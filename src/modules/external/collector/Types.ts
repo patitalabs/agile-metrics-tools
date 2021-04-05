@@ -19,7 +19,7 @@ export class ExternalCollectorConfig implements CollectorConfig {
     srcPath,
     metricType,
     teamName,
-    inlineData = null
+    inlineData = null,
   }) {
     this.since = since ? new Date(since) : null;
     this.until = until ? new Date(until) : null;

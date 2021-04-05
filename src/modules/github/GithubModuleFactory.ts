@@ -11,7 +11,7 @@ export class GithubModuleFactory
   private static githubService(): GithubService {
     Utils.checkEnvVar('GITHUB_TOKEN');
     const githubClient = new GithubClientImpl({
-      token: `${process.env.GITHUB_TOKEN}`
+      token: `${process.env.GITHUB_TOKEN}`,
     });
     const githubRepository = new GithubRepositoryImpl(githubClient);
     return new GithubServiceImpl(githubRepository);

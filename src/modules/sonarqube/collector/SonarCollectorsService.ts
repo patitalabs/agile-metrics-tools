@@ -16,10 +16,10 @@ export class SonarCollectorsService
     const projectMetrics = await this.sonarService.projectMetrics({
       teamName: sonarCollectorConfig.teamName,
       projectName: sonarCollectorConfig.projectName,
-      since: sonarCollectorConfig.since
+      since: sonarCollectorConfig.since,
     });
 
-    return projectMetrics.map(metricItem =>
+    return projectMetrics.map((metricItem) =>
       SonarMetricConverter.toMetricItem(metricItem)
     );
   }

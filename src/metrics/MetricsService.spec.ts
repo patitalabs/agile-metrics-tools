@@ -7,7 +7,7 @@ describe('MetricsService', () => {
   const elasticSearchService: ElasticSearchService = {
     push: (payload: MetricItem): Promise<any> => {
       return;
-    }
+    },
   };
 
   const fakeCollector: CollectorService<CollectorConfig, MetricItem> = {
@@ -17,14 +17,14 @@ describe('MetricsService', () => {
           id: 'someId',
           dataType: 'someDataType',
           createdAt: new Date('2018-12-03'),
-          teamName: 'someTeamName'
-        }
+          teamName: 'someTeamName',
+        },
       ]),
-    supports: (config: any): boolean => true
+    supports: (config: any): boolean => true,
   };
 
   const collectors: CollectorService<CollectorConfig, MetricItem>[] = [
-    fakeCollector
+    fakeCollector,
   ];
 
   it('should process metrics', async () => {
@@ -36,7 +36,7 @@ describe('MetricsService', () => {
     );
 
     const metricsConfig: MetricsConfig = {
-      collectorConfigs: [{ teamName: 'someTeamName' }]
+      collectorConfigs: [{ teamName: 'someTeamName' }],
     };
 
     await metricsService.start(metricsConfig);

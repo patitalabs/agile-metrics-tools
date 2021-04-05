@@ -6,12 +6,12 @@ export class GithubMetricConverter {
     githubCommits: GithubCommit[],
     githubConfig: GithubCollectorConfig
   ): GithubMetricItem[] {
-    return githubCommits.map(commit => ({
+    return githubCommits.map((commit) => ({
       id: commit.sha,
       dataType: 'SCM',
       repositoryName: githubConfig.repositoryName,
       teamName: githubConfig.teamName,
-      ...commit
+      ...commit,
     }));
   }
 }

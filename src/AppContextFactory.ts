@@ -18,7 +18,7 @@ export class AppContextFactory {
       jira: new JiraModuleFactory(),
       jenkins: new JenkinsModuleFactory(),
       sonar: new SonarqubeModuleFactory(),
-      external: new ExternalModuleFactory()
+      external: new ExternalModuleFactory(),
     };
   }
 
@@ -33,14 +33,14 @@ export class AppContextFactory {
 
     // TODO collectorInstance should be singleton
     const collectorService = moduleFactory.collectorInstance();
-    const collectorConfigs = configs.map(config =>
+    const collectorConfigs = configs.map((config) =>
       moduleFactory.collectorConfiguration(config)
     );
 
     return {
       appConfig: { indexPrefix: 'myindex', modules: [] },
       collectorsServices: [collectorService],
-      collectorConfigs
+      collectorConfigs,
     };
   }
 
@@ -55,13 +55,13 @@ export class AppContextFactory {
       moduleFactoryMapping,
       supportedConfigs
     );
-    const collectorServices = supportedConfigs.map(moduleName =>
+    const collectorServices = supportedConfigs.map((moduleName) =>
       moduleFactoryMapping[moduleName.type].collectorInstance()
     );
     return {
       appConfig,
       collectorsServices: collectorServices,
-      collectorConfigs: collectorConfigurations
+      collectorConfigs: collectorConfigurations,
     };
   }
 
@@ -70,7 +70,7 @@ export class AppContextFactory {
     moduleFactories: ModuleFactoryMappings
   ): ModuleConfig[] {
     return appConfig.modules
-      .map(moduleConfig => {
+      .map((moduleConfig) => {
         if (!moduleConfig) {
           Logger.warn(`Unable to load ${moduleConfig}`);
           return null;
@@ -82,7 +82,7 @@ export class AppContextFactory {
         }
         return moduleConfig;
       })
-      .filter(moduleConfig => moduleConfig != null);
+      .filter((moduleConfig) => moduleConfig != null);
   }
 
   private static async collectorConfigurations(
@@ -94,11 +94,11 @@ export class AppContextFactory {
     );
 
     const configsPerType: CollectorConfig[][] = configContents.map(
-      configContent => {
+      (configContent) => {
         const entries = Array.isArray(configContent.entries)
           ? configContent.entries
           : [];
-        return entries.map(item =>
+        return entries.map((item) =>
           moduleFactories[
             configContent.moduleConfig.type
           ].collectorConfiguration(item)
@@ -106,29 +106,29 @@ export class AppContextFactory {
       }
     );
 
-    return Utils.flatMap(item => item, configsPerType);
+    return Utils.flatMap((item) => item, configsPerType);
   }
 
   private static async configurationDetails(
     supportedConfigs: ModuleConfig[]
   ): Promise<ModuleConfigurationDetails[]> {
-    const configContentsPromises: Promise<
-      ModuleConfigurationDetails
-    >[] = supportedConfigs.map(async moduleConfig => {
-      let configContents = null;
-      try {
-        configContents = await import(moduleConfig.configFile);
-      } catch (error) {
-        Logger.warn(`Unable to load file ${moduleConfig.configFile}`);
+    const configContentsPromises: Promise<ModuleConfigurationDetails>[] = supportedConfigs.map(
+      async (moduleConfig) => {
+        let configContents = null;
+        try {
+          configContents = await import(moduleConfig.configFile);
+        } catch (error) {
+          Logger.warn(`Unable to load file ${moduleConfig.configFile}`);
+        }
+        if (!configContents) {
+          return null;
+        }
+        return { entries: configContents, moduleConfig };
       }
-      if (!configContents) {
-        return null;
-      }
-      return { entries: configContents, moduleConfig };
-    });
+    );
 
     const configurationContents = await Promise.all(configContentsPromises);
-    return configurationContents.filter(moduleConfig => moduleConfig != null);
+    return configurationContents.filter((moduleConfig) => moduleConfig != null);
   }
 }
 

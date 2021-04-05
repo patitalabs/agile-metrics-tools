@@ -13,7 +13,7 @@ export class JenkinsModuleFactory
     const jenkinsClient = new JenkinsClientImpl({
       host: `${process.env.JENKINS_HOST}`,
       apiToken: `${process.env.JENKINS_API_TOKEN}`,
-      apiUser: `${process.env.JENKINS_USER}`
+      apiUser: `${process.env.JENKINS_USER}`,
     });
     const jenkinsRepository = new JenkinsRepositoryImpl(jenkinsClient);
     return new JenkinsServiceImpl(jenkinsRepository);

@@ -16,7 +16,7 @@ export class JiraClientImpl implements JiraClient {
 
     const config = {
       method: 'get',
-      headers: { 'Content-Type': 'application/json', Authorization: authToken }
+      headers: { 'Content-Type': 'application/json', Authorization: authToken },
     };
     const response = await fetch(fullUrl, config);
 

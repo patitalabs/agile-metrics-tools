@@ -33,7 +33,7 @@ export class SprintUtils {
     estimate,
     actualTime,
     maxTime,
-    estimationValues
+    estimationValues,
   }): number {
     if (!estimationValues) {
       estimationValues = [1, 2, 3, 5, 8];
@@ -42,7 +42,7 @@ export class SprintUtils {
       maxTime,
       estimationValues,
       estimate,
-      actualTime
+      actualTime,
     }).calculateHealthFactor();
   }
 

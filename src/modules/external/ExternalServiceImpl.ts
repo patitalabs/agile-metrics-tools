@@ -2,7 +2,7 @@ import {
   ExternalConfig,
   ExternalData,
   ExternalRepository,
-  ExternalService
+  ExternalService,
 } from './Types';
 
 export class ExternalServiceImpl implements ExternalService {

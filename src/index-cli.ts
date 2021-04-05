@@ -6,7 +6,7 @@ async function main(fileConfigPath: string): Promise<void> {
   const context: AppContext = await AppFactory.appContextFrom(fileConfigPath);
   const metricsService = AppFactory.metricsService(context);
   await metricsService.start({
-    collectorConfigs: context.collectorConfigs
+    collectorConfigs: context.collectorConfigs,
   });
 }
 

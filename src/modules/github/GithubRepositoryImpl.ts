@@ -3,7 +3,7 @@ import {
   GithubCommit,
   GithubConfig,
   GithubRepository,
-  PullRequestStats
+  PullRequestStats,
 } from './Types';
 import { Converters } from './Converters';
 
@@ -14,10 +14,8 @@ export class GithubRepositoryImpl implements GithubRepository {
     const { repositoryName, orgName } = githubConfig;
 
     const commitsSha: string[] = await this.githubClient.commits(githubConfig);
-    const commitsWithDetailsPromise: Promise<
-      GithubCommit
-    >[] = commitsSha.map(commitSha =>
-      this.getCommitDetails(repositoryName, orgName, commitSha)
+    const commitsWithDetailsPromise: Promise<GithubCommit>[] = commitsSha.map(
+      (commitSha) => this.getCommitDetails(repositoryName, orgName, commitSha)
     );
     return Promise.all(commitsWithDetailsPromise);
   }
@@ -44,7 +42,7 @@ export class GithubRepositoryImpl implements GithubRepository {
       const prCommentsResponse = await this.githubClient.pullRequestComments({
         owner: orgName,
         repo: repositoryName,
-        number: linkedPr.number
+        number: linkedPr.number,
       });
 
       pullRequestStats = Converters.pullRequestStats(

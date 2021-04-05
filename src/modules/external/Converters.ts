@@ -7,7 +7,7 @@ export class Converters {
       : new Date();
 
     return {
-      ...jsonObj
+      ...jsonObj,
     };
   }
 }

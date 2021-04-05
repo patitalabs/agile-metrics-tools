@@ -69,7 +69,7 @@ export class ApiMetricsService {
       shouldUpdateEntries
     );
     return metricsService.start({
-      collectorConfigs: appContext.collectorConfigs
+      collectorConfigs: appContext.collectorConfigs,
     });
   }
 }

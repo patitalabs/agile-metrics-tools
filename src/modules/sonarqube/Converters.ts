@@ -20,7 +20,7 @@ export class Converters {
         sonarConfig,
         measureMapForDate,
         dateStr,
-        version
+        version,
       });
       result.push(projectMetrics);
     }
@@ -51,7 +51,7 @@ export class Converters {
     sonarConfig,
     measureMapForDate,
     dateStr,
-    version
+    version,
   }: {
     sonarConfig: SonarConfig;
     measureMapForDate: Map<string, string>;
@@ -124,7 +124,7 @@ export class Converters {
         'ncloc_language_distribution'
       ),
       newLines: this.numberValue(measureMapForDate, 'new_lines'),
-      version
+      version,
     };
   }
 
@@ -144,8 +144,8 @@ export class Converters {
     for (const analysis of analysisHistoryResponse.analyses || []) {
       const versions =
         analysis.events
-          .filter(event => event.category === 'VERSION')
-          .map(event => event.name) || [];
+          .filter((event) => event.category === 'VERSION')
+          .map((event) => event.name) || [];
 
       if (versions.length > 0) {
         analysisMap.set(analysis.date, versions[0]);

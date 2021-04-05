@@ -4,7 +4,7 @@ import {
   JiraConfig,
   JiraRepository,
   Sprint,
-  Task
+  Task,
 } from './Types';
 import { Converters } from './Converters';
 import { Utils } from '../../metrics';
@@ -28,9 +28,9 @@ export class JiraRepositoryImpl implements JiraRepository {
     const { issues: issuesResponse } = await this.jiraClient.getData(url);
 
     const taskPromises: Promise<Task>[] = issuesResponse
-      .filter(issue => issue.fields.issuetype.name !== 'Sub-task')
-      .map(async issue => this.issueDetails(jiraConfig, issue, sprint))
-      .filter(issue => Boolean(issue));
+      .filter((issue) => issue.fields.issuetype.name !== 'Sub-task')
+      .map(async (issue) => this.issueDetails(jiraConfig, issue, sprint))
+      .filter((issue) => Boolean(issue));
     return Promise.all(taskPromises);
   }
 
@@ -43,11 +43,11 @@ export class JiraRepositoryImpl implements JiraRepository {
     const sprintDataResponse: any[] = await this.paginate(url, 'values');
 
     return sprintDataResponse
-      .filter(sprintData => {
+      .filter((sprintData) => {
         const completedDate: Date = new Date(sprintData.completeDate);
         return Utils.isDateInRange({ createdAt: completedDate, since, until });
       })
-      .map(sprintData => Converters.toSprint(sprintData));
+      .map((sprintData) => Converters.toSprint(sprintData));
   }
 
   async completedKanbanIssuesSince(jiraConfig: JiraConfig): Promise<Task[]> {
@@ -62,8 +62,8 @@ export class JiraRepositoryImpl implements JiraRepository {
     const kanbanDataResponse: any[] = await this.paginate(url, 'issues');
 
     const taskPromises: Promise<Task>[] = kanbanDataResponse
-      .map(issue => this.issueDetails(jiraConfig, issue, null))
-      .filter(issue => Boolean(issue));
+      .map((issue) => this.issueDetails(jiraConfig, issue, null))
+      .filter((issue) => Boolean(issue));
 
     return Promise.all(taskPromises);
   }

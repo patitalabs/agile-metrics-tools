@@ -11,7 +11,7 @@ describe('Utils', () => {
 
   it('enrichWith', async () => {
     const someArray = [{}];
-    const testEnricher = item => {
+    const testEnricher = (item) => {
       item.name = 'enriched';
     };
     const result = await Utils.enrichWith(someArray, [testEnricher]);

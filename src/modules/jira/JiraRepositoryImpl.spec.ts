@@ -21,7 +21,7 @@ describe('JiraRepositoryImpl', () => {
         result = completedSprints;
       }
       return Promise.resolve(result);
-    }
+    },
   };
   const jiraRepository: JiraRepository = new JiraRepositoryImpl(jiraClient);
 
@@ -29,7 +29,7 @@ describe('JiraRepositoryImpl', () => {
     teamId: 1,
     teamName: 'someTeamName',
     since: new Date('2018-12-03'),
-    workFlowType: 'sprint'
+    workFlowType: 'sprint',
   };
 
   it('should get sprintData', async () => {
@@ -38,7 +38,7 @@ describe('JiraRepositoryImpl', () => {
       id: teamId,
       isoEndDate: new Date('2018-12-14'),
       isoStartDate: new Date('2018-12-21'),
-      name: 'some name'
+      name: 'some name',
     };
 
     const data = await jiraRepository.sprintData(jiraSprintConfig, sprint);
@@ -50,7 +50,7 @@ describe('JiraRepositoryImpl', () => {
       teamId: 1,
       teamName: 'someTeamName',
       since: new Date('2018-12-13'),
-      workFlowType: 'kanban'
+      workFlowType: 'kanban',
     };
 
     const data = await jiraRepository.completedKanbanIssuesSince(

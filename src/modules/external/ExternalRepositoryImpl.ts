@@ -32,12 +32,12 @@ export class ExternalRepositoryImpl implements ExternalRepository {
     externalConfigurations: ExternalData[]
   ): ExternalData[] {
     return externalConfigurations
-      .map(jsonObj => Converters.toExternalData(jsonObj))
-      .filter(item =>
+      .map((jsonObj) => Converters.toExternalData(jsonObj))
+      .filter((item) =>
         Utils.isDateInRange({
           createdAt: item.createdAt,
           until: externalConfig.until,
-          since: externalConfig.since
+          since: externalConfig.since,
         })
       );
   }

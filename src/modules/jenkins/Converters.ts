@@ -6,7 +6,7 @@ export class Converters {
     return {
       name: jobDetails.fullName,
       branch: jobDetails.name,
-      builds
+      builds,
     };
   }
 
@@ -23,19 +23,19 @@ export class Converters {
       revision: commitDetails.revision,
       revisionDescription: commitDetails.revisionDescription,
       buildNumber: jobDetails.number,
-      url: jobDetails.url
+      url: jobDetails.url,
     };
   }
 
   private static causedBy(jobDetails): string {
     const jenkinsCulprits = jobDetails.culprits || [];
-    const culprits = jenkinsCulprits.map(culprit => culprit.fullName);
+    const culprits = jenkinsCulprits.map((culprit) => culprit.fullName);
     return culprits.join('; ');
   }
 
   private static commitDetails(jobDetails): CommitDetails {
     const changeSetDetails = Utils.flatMap(
-      changeSet => changeSet.items,
+      (changeSet) => changeSet.items,
       jobDetails.changeSets || []
     );
     let revision = '';
@@ -47,7 +47,7 @@ export class Converters {
     }
     return {
       revision,
-      revisionDescription
+      revisionDescription,
     };
   }
 }

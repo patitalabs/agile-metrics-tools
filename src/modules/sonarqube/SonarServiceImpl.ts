@@ -2,7 +2,7 @@ import {
   ProjectMetrics,
   SonarConfig,
   SonarRepository,
-  SonarService
+  SonarService,
 } from './Types';
 
 export class SonarServiceImpl implements SonarService {

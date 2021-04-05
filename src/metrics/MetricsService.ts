@@ -42,7 +42,7 @@ export class MetricsService {
   private async processMetrics<T extends MetricItem>(
     metricItems: T[]
   ): Promise<void> {
-    const pushPromises = metricItems.map(metricItem =>
+    const pushPromises = metricItems.map((metricItem) =>
       this.elasticSearch.push(metricItem)
     );
     await Promise.all(pushPromises);

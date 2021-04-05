@@ -15,9 +15,9 @@ function testJenkinsJob(): JenkinsJob {
         revision: 'someVersion',
         revisionDescription: 'some description',
         buildNumber: '50',
-        url: 'someUrl'
-      }
-    ]
+        url: 'someUrl',
+      },
+    ],
   };
 }
 
@@ -27,7 +27,7 @@ describe('JenkinsCollectorsService', () => {
       orgName: string,
       projectName: string,
       since: Date
-    ): Promise<JenkinsJob> => Promise.resolve(testJenkinsJob())
+    ): Promise<JenkinsJob> => Promise.resolve(testJenkinsJob()),
   };
 
   const jenkinsCollectorsService: JenkinsCollectorsService = new JenkinsCollectorsService(
@@ -41,7 +41,7 @@ describe('JenkinsCollectorsService', () => {
         teamName: 'someTeamName',
         projectName: 'projectName',
         since: '2018-11-20',
-        until: '2020-11-20'
+        until: '2020-11-20',
       }
     );
 

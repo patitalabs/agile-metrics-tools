@@ -3,7 +3,7 @@ import {
   ProjectMetrics,
   SonarClient,
   SonarConfig,
-  SonarRepository
+  SonarRepository,
 } from './Types';
 
 export class SonarRepositoryImpl implements SonarRepository {

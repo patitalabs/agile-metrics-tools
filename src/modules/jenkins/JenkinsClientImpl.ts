@@ -21,8 +21,8 @@ export class JenkinsClientImpl implements JenkinsClient {
       method: 'get',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Basic ${authToken}`
-      }
+        Authorization: `Basic ${authToken}`,
+      },
     };
 
     const response = await fetch(fullUrl, config);

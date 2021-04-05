@@ -14,7 +14,7 @@ describe('JenkinsRepository', () => {
         result = projectDetailsResponse;
       }
       return Promise.resolve(result);
-    }
+    },
   };
   const jenkinsRepository: JenkinsRepository = new JenkinsRepositoryImpl(
     jenkinsClient

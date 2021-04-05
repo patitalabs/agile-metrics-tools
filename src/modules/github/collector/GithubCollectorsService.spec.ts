@@ -9,14 +9,14 @@ function testCommit(): GithubCommit {
     linesAdded: 30,
     linesRemoved: 6,
     author: 'someAuthor',
-    message: 'someMessage'
+    message: 'someMessage',
   };
 }
 
 describe('GithubCollectorsService', () => {
   const githubService: GithubService = {
     commits: (githubConfig: GithubConfig): Promise<GithubCommit[]> =>
-      Promise.resolve([testCommit()])
+      Promise.resolve([testCommit()]),
   };
 
   const githubCollectorsService: GithubCollectorService = new GithubCollectorService(
@@ -30,7 +30,7 @@ describe('GithubCollectorsService', () => {
         repositoryName: 'someRepoName',
         orgName: 'someOrgName',
         since: '2018-11-20',
-        until: '2020-11-20'
+        until: '2020-11-20',
       }
     );
 

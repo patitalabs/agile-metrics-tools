@@ -15,9 +15,9 @@ function givenAppConfig({ type, configFile }): AppConfig {
     modules: [
       {
         type,
-        configFile
-      }
-    ]
+        configFile,
+      },
+    ],
   };
 }
 
@@ -28,9 +28,9 @@ describe('AppContextFactory', () => {
       modules: [
         {
           type: 'external',
-          configFile: __dirname + '/test/test-external-config.json'
-        }
-      ]
+          configFile: __dirname + '/test/test-external-config.json',
+        },
+      ],
     };
     const appContext: AppContext = await AppContextFactory.appContext(
       appConfig
@@ -45,7 +45,7 @@ describe('AppContextFactory', () => {
   it('should create appContext without unsupported modules', async () => {
     const appConfig: AppConfig = givenAppConfig({
       type: 'some',
-      configFile: '/some/test-external-config.json'
+      configFile: '/some/test-external-config.json',
     });
     const appContext: AppContext = await AppContextFactory.appContext(
       appConfig
@@ -56,7 +56,7 @@ describe('AppContextFactory', () => {
   it('should create appContext without unsupported configs', async () => {
     const appConfig: AppConfig = givenAppConfig({
       type: 'external',
-      configFile: __dirname + '/test/test-invalid-external-config.json'
+      configFile: __dirname + '/test/test-invalid-external-config.json',
     });
     const appContext: AppContext = await AppContextFactory.appContext(
       appConfig
@@ -67,7 +67,7 @@ describe('AppContextFactory', () => {
   it('should create appContext with not existent files', async () => {
     const appConfig = givenAppConfig({
       type: 'external',
-      configFile: '/test/non-existent-file.json'
+      configFile: '/test/non-existent-file.json',
     });
     const appContext: AppContext = await AppContextFactory.appContext(
       appConfig

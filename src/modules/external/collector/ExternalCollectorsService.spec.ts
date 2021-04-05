@@ -8,7 +8,7 @@ function testExternalData(): ExternalData {
     teamName: 'someTeamName',
     field1: 'someAdditionalData',
     field2: 4,
-    field3: new Date('2018-12-07')
+    field3: new Date('2018-12-07'),
   };
 }
 
@@ -16,7 +16,7 @@ describe('ExternalCollectorsService', () => {
   const externalService: ExternalService = {
     fetchExternalInfo: (
       externalConfig: ExternalConfig
-    ): Promise<ExternalData[]> => Promise.resolve([testExternalData()])
+    ): Promise<ExternalData[]> => Promise.resolve([testExternalData()]),
   };
 
   const externalCollectorService: ExternalCollectorService = new ExternalCollectorService(
@@ -31,7 +31,7 @@ describe('ExternalCollectorsService', () => {
         srcType: 'file',
         srcPath: 'some/path',
         metricType: 'someType',
-        teamName: 'someTeamName'
+        teamName: 'someTeamName',
       }
     );
 

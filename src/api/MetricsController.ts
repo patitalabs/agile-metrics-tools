@@ -3,7 +3,7 @@ import { ApiMetricsService } from './ApiMetricsService';
 import {
   TeamMetricsRequest,
   TeamMetricsRequestByService,
-  TeamMetricsRequestByTeam
+  TeamMetricsRequestByTeam,
 } from '../Types';
 import { Logger } from '../metrics/Logger';
 
@@ -50,13 +50,13 @@ export class MetricsController {
         teamName,
         shouldUpdateEntries,
         since: startDate,
-        until: endDate
+        until: endDate,
       };
     } else {
       teamMetricRequest = {
         serviceName,
         config,
-        shouldUpdateEntries
+        shouldUpdateEntries,
       };
     }
     return teamMetricRequest;

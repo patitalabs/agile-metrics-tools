@@ -7,7 +7,7 @@ export class JenkinsMetricConverter {
     jenkinsJob: JenkinsJob,
     jenkinsConfig: JenkinsCollectorConfig
   ): JenkinsMetricItem[] {
-    return jenkinsJob.builds.map(build => ({
+    return jenkinsJob.builds.map((build) => ({
       id: Utils.toHash(
         `${jenkinsConfig.projectName}-${build.timestamp.getTime()}`
       ),
@@ -22,7 +22,7 @@ export class JenkinsMetricConverter {
       revision: build.revision,
       revisionDescription: build.revisionDescription,
       buildNumber: build.buildNumber,
-      projectName: jenkinsConfig.projectName
+      projectName: jenkinsConfig.projectName,
     }));
   }
 

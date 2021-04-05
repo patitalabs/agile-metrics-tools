@@ -10,7 +10,7 @@ export class SonarMetricConverter {
       ),
       dataType: 'SAT',
       createdAt: projectMetrics.createdAt,
-      ...projectMetrics
+      ...projectMetrics,
     };
   }
 }

@@ -7,7 +7,7 @@ const limiter = new Bottleneck({
   reservoirRefreshAmount: 30,
   reservoirRefreshInterval: 60 * 1000,
   minTime: 333,
-  maxConcurrent: 1
+  maxConcurrent: 1,
 });
 
 // TODO deal with pagination
@@ -18,7 +18,7 @@ export class GithubClientImpl implements GithubClient {
     this.token = token;
 
     this.octokit = new Octokit({
-      auth: `token ${token}`
+      auth: `token ${token}`,
     });
   }
 
@@ -27,7 +27,7 @@ export class GithubClientImpl implements GithubClient {
       owner: githubConfig.orgName,
       repo: githubConfig.repositoryName,
       since: githubConfig.since,
-      sha: 'master'
+      sha: 'master',
     };
 
     if (githubConfig.until) {
@@ -37,7 +37,7 @@ export class GithubClientImpl implements GithubClient {
     const { data: commitResponseItems } = await limiter.schedule(() =>
       this.octokit.repos.listCommits(reposGetCommitsParams)
     );
-    return commitResponseItems.map(commit => commit.sha);
+    return commitResponseItems.map((commit) => commit.sha);
   }
 
   async getCommitDetails(
@@ -48,7 +48,7 @@ export class GithubClientImpl implements GithubClient {
     const commitConfig = {
       owner: orgName,
       repo: repositoryName,
-      ref
+      ref,
     };
     const { data } = await this.octokit.repos.getCommit(commitConfig);
     return data;
@@ -57,7 +57,7 @@ export class GithubClientImpl implements GithubClient {
   async pullRequestForCommit(sha: string): Promise<any> {
     const { data } = await limiter.schedule(() =>
       this.octokit.search.issuesAndPullRequests({
-        q: `${sha} is:merged type:pr`
+        q: `${sha} is:merged type:pr`,
       })
     );
     return data;

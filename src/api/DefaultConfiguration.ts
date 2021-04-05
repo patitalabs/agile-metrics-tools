@@ -26,7 +26,7 @@ export class DefaultConfiguration {
       configs.push({
         ...teamMetricsRequestByTeam,
         config: serviceEntries,
-        serviceName: moduleConfig.type
+        serviceName: moduleConfig.type,
       });
     }
 

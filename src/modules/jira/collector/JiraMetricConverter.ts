@@ -14,7 +14,7 @@ export class JiraMetricConverter {
 
     const leadTime = SprintUtils.leadTime({
       created: task.created,
-      resolutionDate: task.resolutionDate
+      resolutionDate: task.resolutionDate,
     });
     const devTime = SprintUtils.devTime(
       statistics.movedToDev,
@@ -47,7 +47,7 @@ export class JiraMetricConverter {
       teamName: task.teamName,
       estimateHealth: Math.round(rawEstimateHealth),
       rawEstimateHealth,
-      numberOfBugs: task.numberOfBugs
+      numberOfBugs: task.numberOfBugs,
     };
   }
 
@@ -69,7 +69,7 @@ export class JiraMetricConverter {
       maxTime: estimateConfig.maxTime || defaultEstimateConfig.maxTime,
       estimationValues:
         estimateConfig.estimationValues ||
-        defaultEstimateConfig.estimationValues
+        defaultEstimateConfig.estimationValues,
     });
   }
 
@@ -101,7 +101,7 @@ export class JiraMetricConverter {
     return {
       moveBackward: movedBackwardDates.length,
       moveForward: movedForwardDates.length,
-      movedToDev: SprintUtils.movedToDev(movedForwardDates)
+      movedToDev: SprintUtils.movedToDev(movedForwardDates),
     };
   }
 
@@ -133,14 +133,14 @@ export class JiraMetricConverter {
       'Code Review': 4,
       'Po Review': 5,
       Closed: 6,
-      Done: 7
+      Done: 7,
     };
   }
 
   private static defaultEstimateConfig() {
     return {
       maxTime: 7,
-      estimationValues: [1, 2, 3, 5, 8]
+      estimationValues: [1, 2, 3, 5, 8],
     };
   }
 }

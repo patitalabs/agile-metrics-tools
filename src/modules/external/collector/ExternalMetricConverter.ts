@@ -7,13 +7,13 @@ export class ExternalMetricConverter {
     externalData: ExternalData[],
     externalCollectorConfig: ExternalCollectorConfig
   ): ExternalMetricItem[] {
-    return externalData.map(item => {
+    return externalData.map((item) => {
       const dataType = `EXT-${externalCollectorConfig.metricType}`;
       return {
         id: this.createId(item, dataType),
         teamName: externalCollectorConfig.teamName,
         dataType,
-        ...item
+        ...item,
       };
     });
   }
@@ -23,7 +23,7 @@ export class ExternalMetricConverter {
       JSON.stringify({
         createdAt: item.createdAt,
         dataType,
-        teamName: item.teamName
+        teamName: item.teamName,
       })
     );
   }

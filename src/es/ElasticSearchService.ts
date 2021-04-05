@@ -32,7 +32,7 @@ export class ElasticSearchServiceImpl implements ElasticSearchService {
       indexName,
       type,
       id,
-      payload: metricItem
+      payload: metricItem,
     });
   }
 }

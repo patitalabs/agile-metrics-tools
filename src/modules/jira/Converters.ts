@@ -5,7 +5,7 @@ import {
   JiraConfig,
   Sprint,
   Subtask,
-  Task
+  Task,
 } from './Types';
 import { Utils } from '../../metrics';
 
@@ -28,7 +28,7 @@ export class Converters {
         issueDetailsWithChangelogResponse.fields
       ),
       sprint,
-      ...issueDetails
+      ...issueDetails,
     };
   }
 
@@ -50,7 +50,7 @@ export class Converters {
       id: sprintData.id,
       name: sprintData.name,
       isoStartDate: new Date(sprintData.startDate),
-      isoEndDate: new Date(sprintData.completeDate)
+      isoEndDate: new Date(sprintData.completeDate),
     };
   }
 
@@ -66,7 +66,7 @@ export class Converters {
       projectName: details.fields.project.name,
       teamName: jiraConfig.teamName,
       numberOfComments: IssueConverter.numberOfComments(details),
-      numberOfBugs: IssueConverter.numberOfBugs(details)
+      numberOfBugs: IssueConverter.numberOfBugs(details),
     };
   }
 }
@@ -99,7 +99,7 @@ class IssueConverter {
   static numberOfBugs(details: any): number {
     const linkedIssues: any[] = details.fields.issuelinks || [];
     const linkedBugs = linkedIssues.filter(
-      issue =>
+      (issue) =>
         IssueConverter.isBug(issue.outwardIssue) ||
         IssueConverter.isBug(issue.inwardIssue)
     );
@@ -113,7 +113,7 @@ class IssueConverter {
       return [];
     }
     const subtasks = fields.subtasks || [];
-    return subtasks.map(item => IssueConverter.toSubtask(item));
+    return subtasks.map((item) => IssueConverter.toSubtask(item));
   }
 
   static histories(details): Map<string, HistoryEntry[]> {
@@ -146,27 +146,27 @@ class IssueConverter {
     return {
       field: item.field,
       fromString: item.fromString,
-      toString: item.toString
+      toString: item.toString,
     };
   }
 
   static toHistoryEntry(history): HistoryEntry {
     const createdDate = new Date(history.created);
-    const historyItems: HistoryItem[] = history.items.map(item =>
+    const historyItems: HistoryItem[] = history.items.map((item) =>
       IssueConverter.toHistoryItem(item)
     );
 
     return {
       created: createdDate,
       items: historyItems,
-      category: historyItems.length > 0 ? historyItems[0].field : null
+      category: historyItems.length > 0 ? historyItems[0].field : null,
     };
   }
 
   static toSubtask(issue: any): Subtask {
     return {
       key: issue.key,
-      statusName: issue.fields.status.name
+      statusName: issue.fields.status.name,
     };
   }
 }

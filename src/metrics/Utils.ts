@@ -9,7 +9,7 @@ export class Utils {
   ): Promise<Array<T>> {
     return new Promise((resolve, reject) => {
       const itemPromises: Array<Promise<any>> = Utils.flatMap(
-        item => enrichers.map(enricher => enricher(item)),
+        (item) => enrichers.map((enricher) => enricher(item)),
         t
       );
 
@@ -17,7 +17,7 @@ export class Utils {
         .then(() => {
           resolve(t);
         })
-        .catch(e => reject(e));
+        .catch((e) => reject(e));
     });
   }
 
@@ -57,7 +57,7 @@ export class Utils {
   }
 
   static checkEnvVar(...theVariables: string[]) {
-    theVariables.forEach(theVariable => {
+    theVariables.forEach((theVariable) => {
       if (!process.env[theVariable]) {
         throw Error(`env.${theVariable} not set!`);
       }
@@ -67,7 +67,7 @@ export class Utils {
   static isDateInRange({
     createdAt,
     since,
-    until
+    until,
   }: {
     createdAt: Date;
     since: Date;

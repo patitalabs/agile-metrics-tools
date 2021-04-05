@@ -8,7 +8,7 @@ export class ElasticSearchRepository {
     this.host = host;
     this.client = new elasticsearch.Client({
       host: this.host,
-      log: 'error'
+      log: 'error',
     });
   }
 
@@ -18,8 +18,8 @@ export class ElasticSearchRepository {
       type,
       id,
       body: {
-        ...payload
-      }
+        ...payload,
+      },
     });
   }
 
@@ -35,12 +35,12 @@ export class ElasticSearchRepository {
         body: {
           query: {
             match: {
-              id
-            }
-          }
-        }
+              id,
+            },
+          },
+        },
       })
-      .catch(ignored => ({ hits: { hits: [] } }));
+      .catch((ignored) => ({ hits: { hits: [] } }));
 
     return response.hits.hits.length > 0;
   }

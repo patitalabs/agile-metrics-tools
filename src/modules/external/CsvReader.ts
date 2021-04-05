@@ -7,10 +7,10 @@ export class CsvReader {
       csvtojson({ checkType: true })
         .fromFile(externalConfig.srcPath)
         .then(
-          jsonObjects => {
+          (jsonObjects) => {
             resolve(jsonObjects);
           },
-          reason => reject(reason)
+          (reason) => reject(reason)
         );
     });
   }

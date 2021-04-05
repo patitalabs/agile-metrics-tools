@@ -14,7 +14,7 @@ export class ElasticSearch {
   ): ElasticSearchService {
     Utils.checkEnvVar('ES_HOST');
     const elasticSearchRepository = new ElasticSearchRepository({
-      host: `${process.env.ES_HOST}`
+      host: `${process.env.ES_HOST}`,
     });
     return new ElasticSearchServiceImpl(
       elasticSearchRepository,

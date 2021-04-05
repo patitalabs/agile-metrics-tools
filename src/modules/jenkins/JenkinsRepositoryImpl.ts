@@ -2,7 +2,7 @@ import {
   JenkinsBuild,
   JenkinsClient,
   JenkinsJob,
-  JenkinsRepository
+  JenkinsRepository,
 } from './Types';
 import { Converters } from './Converters';
 import { Utils } from '../../metrics';
@@ -20,18 +20,16 @@ export class JenkinsRepositoryImpl implements JenkinsRepository {
       `job/${orgName}/job/${projectName}/job/master`
     );
 
-    const buildsPromises: Promise<
-      JenkinsBuild
-    >[] = jobDetails.builds.map(jobBuild =>
-      this.buildDetails(orgName, projectName, jobBuild.number)
+    const buildsPromises: Promise<JenkinsBuild>[] = jobDetails.builds.map(
+      (jobBuild) => this.buildDetails(orgName, projectName, jobBuild.number)
     );
 
     const builds = await Promise.all(buildsPromises);
-    const filteredBuilds = builds.filter(jobBuild =>
+    const filteredBuilds = builds.filter((jobBuild) =>
       Utils.isDateInRange({
         createdAt: jobBuild.timestamp,
         since,
-        until
+        until,
       })
     );
     return Converters.toJenkinsJob(jobDetails, filteredBuilds);

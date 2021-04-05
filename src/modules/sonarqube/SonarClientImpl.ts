@@ -12,7 +12,7 @@ export class SonarClientImpl implements SonarClient {
 
     const config = {
       method: 'get',
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
     };
     const data = await fetch(fullUrl, config);
     return data.json();
