@@ -23,7 +23,7 @@ export class GithubClientImpl implements GithubClient {
   }
 
   async commits(githubConfig: GithubConfig): Promise<string[]> {
-    const reposGetCommitsParams: Octokit.ReposListCommitsParams = {
+    const reposGetCommitsParams: any = {
       owner: githubConfig.orgName,
       repo: githubConfig.repositoryName,
       since: githubConfig.since,
@@ -64,9 +64,9 @@ export class GithubClientImpl implements GithubClient {
   }
 
   async pullRequestComments({ owner, repo, number }): Promise<any> {
-    const paramsConfig = { owner, repo, number };
+    const paramsConfig = { owner, repo, pull_number: number };
     const { data } = await limiter.schedule(() =>
-      this.octokit.pulls.listComments(paramsConfig)
+      this.octokit.pulls.listReviewComments(paramsConfig)
     );
     return data;
   }
