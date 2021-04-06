@@ -7,9 +7,9 @@
     "moduleResolution": "node",
     "allowJs": true,
     "resolveJsonModule": true,
-    "lib": ["es2016", "esnext.asynciterable"]
+    "lib": ["es2016", "esnext.asynciterable"],
+    "typeRoots": ["node_modules/@types"]
   },
-  "files": ["node_modules/@types/node/index.d.ts"],
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "coverage"]
 }
