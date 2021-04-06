@@ -1,10 +1,9 @@
-import { Octokit } from '@octokit/rest';
 import { GithubCommit, PullRequestStats } from './Types';
 import { Utils } from '../../metrics';
 
 export class Converters {
   static toGithubCommit(
-    data: Octokit.ReposGetCommitResponse,
+    data: any,
     pullRequestStats: PullRequestStats
   ): GithubCommit {
     return {
