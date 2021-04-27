@@ -5,7 +5,7 @@
   "author": "ferzerkerx",
   "license": "MIT",
   "scripts": {
-    "start": "yarn build && yarn prepare-web && node dist/api/server.js",
+    "start": "node dist/api/server.js",
     "start-local": "yarn build && yarn prepare-web && ES_HOST=http://localhost:9200 node dist/api/server.js",
     "prepare-web": "cp -R src/api/resources dist/ && cp -R src/api/template-configs/* dist/api/template-configs",
     "build": "yarn compile",
