@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  agile-metrics-service:
+    image: agile-metrics-tools
+    security_opt:
+      - seccomp:unconfined
+    depends_on:
+      - elk-service
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - JIRA_HOST=TBD_JIRA_HOST
+      - JIRA_API_TOKEN=TBD_JIRA_API_TOKEN
+      - SONAR_HOST=TBD_SONAR_HOST
+      - GITHUB_TOKEN=TBD_GITHUB_TOKEN
+      - JENKINS_HOST=TBD_JENKINS_HOST
+      - JENKINS_USER=TBD_JENKINS_USER
+      - JENKINS_API_TOKEN=TBD_JENKINS_API_TOKEN
+      - ES_HOST=http://elk-service:9200
+
+  elk-service:
+    image: sebp/elk:740
+    security_opt:
+      - seccomp:unconfined
+    ports:
+      - "5601:5601"
+      - "9200:9200"
+      - "5044:5044"

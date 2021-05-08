@@ -75,7 +75,7 @@ ES_HOST=
    {
     "metricType": "METRIC",
     "since": "2018-12-03T00:00:00Z",
-    "type: "csv",
+    "type": "csv",
     "srcType": "inline",
     "inlineData": [
       {
@@ -83,7 +83,7 @@ ES_HOST=
         "teamName": "someTeam",
         "header1": 2,
         "header2": 3,
-        "header3": 'someValue'
+        "header3": "someValue"
       }
     ]
   }
