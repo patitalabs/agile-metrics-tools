@@ -1,5 +1,10 @@
-import fetch from 'node-fetch';
 import { JiraClient } from './Types';
+import * as axios from 'axios';
+import * as https from 'https';
+import * as http from 'http';
+
+const httpsAgent = new https.Agent({ keepAlive: true });
+const httpAgent = new http.Agent({ keepAlive: true });
 
 export class JiraClientImpl implements JiraClient {
   private readonly host: string;
@@ -14,13 +19,12 @@ export class JiraClientImpl implements JiraClient {
     const fullUrl = `${this.host}${url}`;
     const authToken = `Basic ${this.apiToken}`;
 
-    const config = {
-      method: 'get',
+    const response = await axios.default.get(fullUrl, {
       headers: { 'Content-Type': 'application/json', Authorization: authToken },
-    };
-    const response = await fetch(fullUrl, config);
-
-    const json = await response.json();
+      httpsAgent,
+      httpAgent,
+    });
+    const json = response.data;
     if (json.errors) {
       throw new Error(...json.errors);
     }

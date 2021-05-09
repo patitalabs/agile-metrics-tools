@@ -46,7 +46,7 @@ export class JiraMetricConverter {
       jiraProject: task.projectName,
       teamName: task.teamName,
       estimateHealth: Math.round(rawEstimateHealth),
-      rawEstimateHealth,
+      rawEstimateHealth: rawEstimateHealth + 0.00001,
       numberOfBugs: task.numberOfBugs,
     };
   }
@@ -57,7 +57,7 @@ export class JiraMetricConverter {
     devTime
   ) {
     if (jiraCollectorConfig.isKanban()) {
-      return 0;
+      return 0.0;
     }
     const defaultEstimateConfig = this.defaultEstimateConfig();
     const estimateConfig =

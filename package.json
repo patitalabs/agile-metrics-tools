@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@octokit/rest": "^18.5.3",
+    "axios": "^0.21.1",
     "bottleneck": "^2.19.5",
     "csvtojson": "^2.0.8",
     "elasticsearch": "^16.7.2",
