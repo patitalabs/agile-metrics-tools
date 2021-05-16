@@ -22,7 +22,7 @@ Array [
     "movedBackward": 0,
     "movedForward": 1,
     "numberOfBugs": 1,
-    "rawEstimateHealth": 0,
+    "rawEstimateHealth": 0.00001,
     "storyPoints": 2,
     "tags": Array [
       "label1",
@@ -55,7 +55,7 @@ Array [
     "movedBackward": 0,
     "movedForward": 1,
     "numberOfBugs": 1,
-    "rawEstimateHealth": 0,
+    "rawEstimateHealth": 0.00001,
     "storyPoints": 2,
     "tags": Array [
       "label1",

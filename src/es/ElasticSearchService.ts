@@ -10,12 +10,12 @@ export class ElasticSearchServiceImpl implements ElasticSearchService {
     private readonly shouldReplaceEntry: boolean
   ) {}
 
-  async push(metricItem: MetricItem): Promise<any> {
+  async push(metricItem: MetricItem, shouldReplaceEntry = false): Promise<any> {
     const type = metricItem.dataType;
     const indexName = `${this.indexPrefix}-${type.toLowerCase()}`;
     const id = metricItem.id;
 
-    if (!this.shouldReplaceEntry) {
+    if (!this.shouldReplaceEntry && !shouldReplaceEntry) {
       const entryExists = await this.elasticSearchRepository.entryExists(
         indexName,
         type,

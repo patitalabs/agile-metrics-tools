@@ -6,6 +6,7 @@ import {
   TeamMetricsRequestByTeam,
 } from '../Types';
 import { Logger } from '../metrics/Logger';
+import { ElasticSearch } from '../es';
 
 export class MetricsController {
   static postMetrics = async (req: Request, res: Response) => {
@@ -15,6 +16,36 @@ export class MetricsController {
   static updateMetrics = async (req: Request, res: Response) => {
     await MetricsController.handleRequest(req, res);
   };
+
+  static postMetricsEntries = async (req: Request, res: Response) => {
+    await MetricsController.handleEntriesRequest(req, res);
+  };
+
+  static updateMetricsEntries = async (req: Request, res: Response) => {
+    await MetricsController.handleEntriesRequest(req, res);
+  };
+
+  private static async handleEntriesRequest(req: Request, res: Response) {
+    const body = req.body as any;
+    const entries = body.entries || [];
+    const shouldUpdateEntries = req.method === 'PUT';
+
+    const elasticSearchService = ElasticSearch.esService(
+      'myindex',
+      shouldUpdateEntries
+    );
+
+    try {
+    const pushPromises = entries.map((metricItem) =>
+      elasticSearchService.push(metricItem)
+    );
+    res.json({ status: 'Done!.' });
+    await Promise.all(pushPromises);
+    } catch (error) {
+      Logger.error(error);
+      res.json({ error: 'Could not process request' });
+    }
+  }
 
   private static async handleRequest(req: Request, res: Response) {
     try {
