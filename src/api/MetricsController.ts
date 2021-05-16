@@ -36,11 +36,11 @@ export class MetricsController {
     );
 
     try {
-    const pushPromises = entries.map((metricItem) =>
-      elasticSearchService.push(metricItem)
-    );
-    res.json({ status: 'Done!.' });
-    await Promise.all(pushPromises);
+      const pushPromises = entries.map((metricItem) =>
+        elasticSearchService.push(metricItem)
+      );
+      res.json({ status: 'Done!.' });
+      await Promise.all(pushPromises);
     } catch (error) {
       Logger.error(error);
       res.json({ error: 'Could not process request' });
