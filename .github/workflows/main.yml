@@ -54,6 +54,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectVersion=${ GITHUB_SHA }
 
       - name: CodeCov
         uses: codecov/codecov-action@v1
@@ -61,5 +64,3 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage/lcov.info
           verbose: true
-          args: >
-            -Dsonar.projectVersion=${ GITHUB_SHA }
