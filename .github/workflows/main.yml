@@ -62,4 +62,4 @@ jobs:
           files: coverage/lcov.info
           verbose: true
           args: >
-            -Dsonar.projectVersion=${{ github.GITHUB_SHA }}
+            -Dsonar.projectVersion=${{ github.sha }}
