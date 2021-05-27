@@ -1,0 +1,62 @@
+name: CI
+
+
+on:
+
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 14.x ]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+      - run: yarn test
+
+
+      - name: Login to Registry
+        uses: docker/login-action@v1
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.CR_PAT }}
+
+      - name: Build and push Docker images
+        if: ${{ github.ref == 'refs/heads/main' }}
+        uses: docker/build-push-action@v2.4.0
+        with:
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ghcr.io/${{ github.repository }}:latest
+
+      - name: Fix coverage paths
+        run: sed -i "s|SF:/.*/src/|SF:/github/workspace/src/|g" coverage/lcov.info
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: CodeCov
+        uses: codecov/codecov-action@v1
+        with:
+          files: coverage/lcov.info
+          verbose: true

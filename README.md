@@ -1,8 +1,5 @@
 ## Agile Metrics Tools
 
-[![Build Status](https://travis-ci.org/ferzerkerx/agile-metrics-tools.svg?branch=master)](https://travis-ci.org/ferzerkerx/agile-metrics-tools)
-[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=agile-metrics-tools&metric=alert_status)](https://sonarcloud.io/dashboard?id=agile-metrics-tools)
-
 Agile metrics tools allows you to track metrics from different sources in order to identify trends and patterns on how
 your team performance is affected by its environment Inspired by 'Agile Metrics in Action' book
 and https://github.com/cwhd/measurementor project
@@ -12,7 +9,7 @@ find patterns.
 
 Inspired by `Agile Metrics in Action` book and https://github.com/cwhd/measurementor project
 
-![alt tag](https://raw.githubusercontent.com/ferzerkerx/agile-metrics-tools/master/screenshots/agile-metrics-tools-1.png)
+![alt tag](https://raw.githubusercontent.com/ferzerkerx/agile-metrics-tools/main/screenshots/agile-metrics-tools-1.png)
 
 
 ### Env configurations
@@ -21,7 +18,7 @@ Please refer to docker-compose.yml file
 
 ### API Documentation
 
-[Swagger](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/patitalabs/agile-metrics-core/main/src/api/resources/agile-metrics-jira-open-api.yml)
+[Swagger](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/patitalabs/agile-metrics-core/main/src/api/resources/agile-metrics-core-open-api.yml)
 or in ```http://localhost:3000/ ```
 
 ### To use a Dockerized ELK
