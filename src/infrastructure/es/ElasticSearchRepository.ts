@@ -13,7 +13,7 @@ export class ElasticSearchRepository {
   }
 
   async push({ indexName, type, id, payload }): Promise<any> {
-    return await this.client.index({
+    return this.client.index({
       index: indexName,
       type,
       id,
