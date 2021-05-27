@@ -7,20 +7,17 @@
   "scripts": {
     "start": "node dist/api/server.js",
     "start-local": "yarn build && yarn prepare-web && ES_HOST=http://localhost:9200 node dist/api/server.js",
-    "prepare-web": "cp -R src/api/resources dist/ && cp -R src/api/template-configs/* dist/api/template-configs",
+    "prepare-web": "cp -R src/api/resources dist/",
     "build": "yarn compile",
     "compile": "tsc",
     "dev": "tsc & nodemon dist",
     "test": "jest --coverage",
-    "lint": "eslint --quiet 'src/**/*.ts'",
-    "format": "prettier --write \"src/**/*.[tj]s\"",
+    "lint": "eslint --fix 'src/**/*.ts'",
     "tsc": "tsc"
   },
   "dependencies": {
-    "@octokit/rest": "^18.5.3",
     "axios": "^0.21.1",
     "bottleneck": "^2.19.5",
-    "csvtojson": "^2.0.8",
     "elasticsearch": "^16.7.2",
     "express": "^4.17.1",
     "node-fetch": "^2.6.1",
@@ -50,11 +47,7 @@
   },
   "lint-staged": {
     "./**/*.{ts,js}": [
-      "yarn lint",
-      "yarn format"
-    ],
-    "./**/*.{json}": [
-      "yarn format"
+      "yarn lint"
     ]
   },
   "prettier": {

@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`GithubModuleFactory should fail to create collector 1`] = `"env.GITHUB_TOKEN not set!"`;

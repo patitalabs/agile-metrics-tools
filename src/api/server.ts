@@ -1,5 +1,5 @@
-import app from './app';
-import { Logger } from '../metrics/Logger';
+import app from '../config/app';
+import { Logger } from '../domain/metrics/Logger';
 
 const server = app.listen(app.get('port'), () => {
   Logger.info(

@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SonarqubeModuleFactory should fail to create collector 1`] = `"env.SONAR_HOST not set!"`;

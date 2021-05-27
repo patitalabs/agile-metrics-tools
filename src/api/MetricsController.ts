@@ -1,43 +1,47 @@
 import { Request, Response } from 'express';
-import { ApiMetricsService } from './ApiMetricsService';
-import {
-  TeamMetricsRequest,
-  TeamMetricsRequestByService,
-  TeamMetricsRequestByTeam,
-} from '../Types';
-import { Logger } from '../metrics/Logger';
-import { ElasticSearch } from '../es';
+import { TeamMetricsRequest } from '../domain/Types';
+import { Logger } from '../domain/metrics/Logger';
+import { appContext } from '../config/AppContext';
 
 export class MetricsController {
-  static postMetrics = async (req: Request, res: Response) => {
-    await MetricsController.handleRequest(req, res);
+  static postMetrics = (req: Request, res: Response): void => {
+    (async (): Promise<any> => {
+      await MetricsController.handleRequest(req, res);
+    })();
   };
 
-  static updateMetrics = async (req: Request, res: Response) => {
-    await MetricsController.handleRequest(req, res);
+  static updateMetrics = (req: Request, res: Response): void => {
+    (async (): Promise<any> => {
+      await MetricsController.handleRequest(req, res);
+    })();
   };
 
-  static postMetricsEntries = async (req: Request, res: Response) => {
-    await MetricsController.handleEntriesRequest(req, res);
+  static postMetricsEntries = (req: Request, res: Response): void => {
+    (async (): Promise<any> => {
+      await MetricsController.handleEntriesRequest(req, res);
+    })();
   };
 
-  static updateMetricsEntries = async (req: Request, res: Response) => {
-    await MetricsController.handleEntriesRequest(req, res);
+  static updateMetricsEntries = (req: Request, res: Response): void => {
+    (async (): Promise<any> => {
+      await MetricsController.handleEntriesRequest(req, res);
+    })();
   };
 
-  private static async handleEntriesRequest(req: Request, res: Response) {
-    const body = req.body as any;
+  private static async handleEntriesRequest(
+    req: Request,
+    res: Response
+  ): Promise<any> {
+    const body = req.body;
     const entries = body.entries || [];
     const shouldUpdateEntries = req.method === 'PUT';
 
-    const elasticSearchService = ElasticSearch.esService(
-      'myindex',
-      shouldUpdateEntries
-    );
-
     try {
       const pushPromises = entries.map((metricItem) =>
-        elasticSearchService.push(metricItem)
+        appContext.apiMetricsService.pushMetrics(
+          metricItem,
+          shouldUpdateEntries
+        )
       );
       res.json({ status: 'Done!.' });
       await Promise.all(pushPromises);
@@ -47,7 +51,10 @@ export class MetricsController {
     }
   }
 
-  private static async handleRequest(req: Request, res: Response) {
+  private static async handleRequest(
+    req: Request,
+    res: Response
+  ): Promise<any> {
     try {
       await this.collectMetrics(req);
       res.json({ status: 'Done!.' });
@@ -60,37 +67,23 @@ export class MetricsController {
 
   private static async collectMetrics(req: Request): Promise<void> {
     const teamMetricRequest = this.createRequest(req);
-    return ApiMetricsService.metricsForRequest(teamMetricRequest);
+    return appContext.apiMetricsService.metricsForRequest(teamMetricRequest);
   }
 
   private static createRequest(req: Request): TeamMetricsRequest {
-    const body = req.body as any;
-    const serviceName = body.serviceName || null;
-    const teamName = body.teamName || null;
-    const config = body.config || null;
+    const body = req.body;
     const method = req.method;
-    const startDate = body.startDate || null;
-    const endDate = body.endDate || null;
+    const since = body.since || null;
+    const until = body.until || null;
+    const config = body.config || null;
 
     const shouldUpdateEntries = method === 'PUT';
 
-    let teamMetricRequest:
-      | TeamMetricsRequestByTeam
-      | TeamMetricsRequestByService;
-    if (teamName) {
-      teamMetricRequest = {
-        teamName,
-        shouldUpdateEntries,
-        since: startDate,
-        until: endDate,
-      };
-    } else {
-      teamMetricRequest = {
-        serviceName,
-        config,
-        shouldUpdateEntries,
-      };
-    }
-    return teamMetricRequest;
+    return {
+      shouldUpdateEntries,
+      since,
+      until,
+      config,
+    };
   }
 }

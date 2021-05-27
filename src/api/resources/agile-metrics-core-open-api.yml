@@ -1,0 +1,99 @@
+openapi: 3.0.1
+info:
+  title: Agile Metrics core
+  description: ''
+  version: 1.0.0
+tags:
+  - name: metrics
+    description: Agile Metrics core
+paths:
+  /metrics/:
+    put:
+      tags:
+        - metrics
+      summary: Update existing metric entries pulled from request
+      operationId: updateMetrics
+      requestBody:
+        description: Update existing metric entries pulled from request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CoreConfigRequest'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        405:
+          description: Validation exception
+          content: { }
+    post:
+      tags:
+        - metrics
+      summary: Add metric entries pulled from request
+      operationId: addMetrics
+      requestBody:
+        description: Add metric entries pulled from request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/coreConfigRequest'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        405:
+          description: Invalid input
+          content: { }
+
+
+components:
+  schemas:
+    CoreConfigRequest:
+      type: object
+      properties:
+        config:
+          type: object
+          properties:
+            metricType:
+              type: string
+            since:
+              type: string
+              format: date
+            until:
+              type: string
+              format: date
+            type:
+              type: string
+              enum: csv
+            srcType:
+              type: string
+              enum: inline
+            inlineData:
+              type: array
+              items:
+                type: object
+                description: |
+                  The entry data
+                  {
+                   "createdAt": "2018-12-03T00:00:00Z",
+                   "teamName": "someTeam",
+                   "header1": 2,
+                   "header2": 3,
+                   "header3": "someValue"
+                  }
+
+
+
+    ApiResponse:
+      type: object
+      properties:
+        status:
+          type: string
