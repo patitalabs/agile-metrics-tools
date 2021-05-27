@@ -1,4 +1,4 @@
-FROM node:fermium-alpine3.13 as builder
+FROM node:14-alpine as builder
 WORKDIR /app
 COPY yarn.lock /app/
 COPY package.json /app/
@@ -10,7 +10,7 @@ RUN yarn install --frozen-lockfile  \
     && yarn prepare-web
 
 
-FROM node:fermium-alpine3.13
+FROM node:14-alpine
 WORKDIR /app
 COPY --from=builder /app/package.json /app/package.json
 RUN yarn install --frozen-lockfile --production
