@@ -56,7 +56,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectVersion=${ GITHUB_SHA }
+            -Dsonar.projectVersion=${{ github.SHA }}
 
       - name: CodeCov
         uses: codecov/codecov-action@v1
