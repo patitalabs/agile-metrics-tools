@@ -19,7 +19,10 @@ export class ElasticSearchServiceImpl implements ElasticSearchService {
     await Promise.all(pushPromises);
   }
 
-  async push(metricItem: MetricItem, shouldReplaceEntry = false): Promise<any> {
+  private async push(
+    metricItem: MetricItem,
+    shouldReplaceEntry = false
+  ): Promise<any> {
     const type = metricItem.dataType;
     const indexName = `${this.indexPrefix}-${type.toLowerCase()}`;
     const id = metricItem.id;

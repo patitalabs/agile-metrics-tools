@@ -19,18 +19,14 @@ function esService(indexPrefix = 'myindex'): ElasticSearchService {
 
 function justLogEsService(): ElasticSearchService {
   return new (class implements ElasticSearchService {
-    async push(payload): Promise<any> {
-      Logger.info(JSON.stringify(payload));
-      return Promise.resolve({});
-    }
-
     async pushMetrics<T extends MetricItem>(
       metricItems: T[],
       shouldReplaceEntry?: boolean
     ): Promise<void> {
-      const pushPromises = metricItems.map((metricItem) =>
-        this.push(metricItem)
-      );
+      const pushPromises = metricItems.map((metricItem) => {
+        Logger.info(JSON.stringify(metricItem));
+        return Promise.resolve({});
+      });
       await Promise.all(pushPromises);
     }
   })();

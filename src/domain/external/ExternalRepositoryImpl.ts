@@ -18,7 +18,7 @@ export class ExternalRepositoryImpl implements ExternalRepository {
 
   private relevantExternalData(
     externalConfig: ExternalConfig,
-    externalConfigurations: ExternalData[]
+    externalConfigurations: any[]
   ): ExternalData[] {
     return externalConfigurations
       .map((jsonObj) => Converters.toExternalData(jsonObj))

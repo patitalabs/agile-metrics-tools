@@ -25,7 +25,10 @@ export class ApiMetricsService {
         const metricItems = await this.collectorService.fetch(
           configurationDescriptor.config
         );
-        await this.pushMetrics(metricItems, configurationDescriptor.s);
+        await this.pushMetrics(
+          metricItems,
+          configurationDescriptor.shouldUpdateEntries
+        );
       }
       Logger.info('Done!');
     } catch (error) {

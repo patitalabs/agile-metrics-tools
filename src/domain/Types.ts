@@ -8,7 +8,6 @@ export interface TeamMetricsRequest {
 }
 
 export interface ElasticSearchService {
-  push(payload: MetricItem, shouldReplaceEntry?: boolean): Promise<any>;
   pushMetrics<T extends MetricItem>(
     metricItems: T[],
     shouldReplaceEntry?: boolean

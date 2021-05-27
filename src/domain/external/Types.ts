@@ -3,7 +3,7 @@ export interface ExternalConfig {
   until?: Date;
   type: string;
   srcType: string;
-  inlineData: ExternalData[];
+  inlineData: any[];
 }
 
 export class ExternalData {

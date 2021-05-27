@@ -1,7 +1,3 @@
-import { MetricItem } from '../../metrics';
-
-export type ExternalMetricItem = MetricItem;
-
 export class ExternalCollectorConfig {
   since: Date;
   until?: Date;

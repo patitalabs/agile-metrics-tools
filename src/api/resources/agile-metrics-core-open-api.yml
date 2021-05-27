@@ -40,7 +40,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/coreConfigRequest'
+              $ref: '#/components/schemas/CoreConfigRequest'
         required: true
       responses:
         200:
@@ -72,10 +72,10 @@ components:
               format: date
             type:
               type: string
-              enum: csv
+              enum: [csv]
             srcType:
               type: string
-              enum: inline
+              enum: [inline]
             inlineData:
               type: array
               items:

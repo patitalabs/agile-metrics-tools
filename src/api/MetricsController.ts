@@ -37,16 +37,13 @@ export class MetricsController {
     const shouldUpdateEntries = req.method === 'PUT';
 
     try {
-      const pushPromises = entries.map((metricItem) =>
-        appContext.apiMetricsService.pushMetrics(
-          metricItem,
-          shouldUpdateEntries
-        )
+      await appContext.apiMetricsService.pushMetrics(
+        entries,
+        shouldUpdateEntries
       );
       res.json({ status: 'Done!.' });
-      await Promise.all(pushPromises);
     } catch (error) {
-      Logger.error(error);
+      Logger.error(`message: ${error.message}, stack:${error.stack}`);
       res.json({ error: 'Could not process request' });
     }
   }
@@ -58,9 +55,8 @@ export class MetricsController {
     try {
       await this.collectMetrics(req);
       res.json({ status: 'Done!.' });
-      Logger.info('Done!');
     } catch (error) {
-      Logger.error(error);
+      Logger.error(`message: ${error.message}, stack:${error.stack}`);
       res.json({ error: 'Could not process request' });
     }
   }

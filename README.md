@@ -22,7 +22,7 @@ Please refer to docker-compose.yml file
 ### API Documentation
 
 [Swagger](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/patitalabs/agile-metrics-core/main/src/api/resources/agile-metrics-jira-open-api.yml)
-or in ```http://localhost:3001/ ```
+or in ```http://localhost:3000/ ```
 
 ### To use a Dockerized ELK
 
