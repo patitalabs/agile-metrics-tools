@@ -61,3 +61,5 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage/lcov.info
           verbose: true
+          args: >
+          -Dsonar.projectVersion=${GITHUB_SHA}
