@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`JenkinsModuleFactory should fail to create collector 1`] = `"env.JENKINS_HOST not set!"`;

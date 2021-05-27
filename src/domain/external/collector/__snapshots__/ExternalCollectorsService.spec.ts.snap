@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExternalCollectorsService should fetch inline metrics 1`] = `
+Array [
+  Object {
+    "createdAt": 2018-12-06T00:00:00.000Z,
+    "dataType": "EXT-someType",
+    "field1": "someAdditionalData",
+    "field2": 4,
+    "field3": 2018-12-07T00:00:00.000Z,
+    "id": "5c5ab5fc70c2518e50dba3bc08accbac86d8303dd39bbb689daa678c7fcd81f1bcf9122f841888ab5213209173518540a548bb25e5d0e76e5dddaf3b30a90137",
+    "teamName": "someTeamName",
+  },
+]
+`;

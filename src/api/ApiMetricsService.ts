@@ -1,26 +1,32 @@
-import { AppContextFactory } from '../AppContextFactory';
-import { AppFactory } from '../AppFactory';
-import { DefaultConfiguration } from './DefaultConfiguration';
-import { TeamMetricsRequest } from '../Types';
-import { Logger } from '../metrics/Logger';
+import { ElasticSearchService, TeamMetricsRequest } from '../domain/Types';
+import { Logger } from '../domain/metrics/Logger';
+import { MetricItem } from '../domain/metrics';
+import { ExternalCollectorService } from '../domain/external';
 
 export class ApiMetricsService {
-  public static async metricsForRequest(
+  constructor(
+    private readonly collectorService: ExternalCollectorService,
+    private readonly metricsService: ElasticSearchService
+  ) {}
+
+  public async metricsForRequest(
     teamMetricsRequest: TeamMetricsRequest
   ): Promise<void> {
     try {
       Logger.info(`teamMetricsRequest: ${JSON.stringify(teamMetricsRequest)}`);
-      const configurationDescriptors = await ApiMetricsService.createConfigurationDescriptorsForRequest(
-        teamMetricsRequest,
-        ApiMetricsService.yesterday()
-      );
+      const configurationDescriptors =
+        ApiMetricsService.createConfigurationDescriptorsForRequest(
+          teamMetricsRequest
+        );
       Logger.info(
         `created configurations: ${JSON.stringify(configurationDescriptors)}`
       );
       for (const configurationDescriptor of configurationDescriptors) {
-        await this.collectMetrics(
-          configurationDescriptor.serviceName,
-          configurationDescriptor.config,
+        const metricItems = await this.collectorService.fetch(
+          configurationDescriptor.config
+        );
+        await this.pushMetrics(
+          metricItems,
           configurationDescriptor.shouldUpdateEntries
         );
       }
@@ -30,21 +36,18 @@ export class ApiMetricsService {
     }
   }
 
-  private static yesterday() {
-    const yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-    return yesterday;
+  public async pushMetrics(
+    metricItems: MetricItem[],
+    shouldReplaceEntry?: boolean
+  ): Promise<void> {
+    await this.metricsService.pushMetrics(metricItems, shouldReplaceEntry);
   }
 
-  static async createConfigurationDescriptorsForRequest(
-    teamMetricsRequest: TeamMetricsRequest,
-    defaultReferenceDate = new Date()
-  ): Promise<any[]> {
-    if (teamMetricsRequest['config']) {
+  static createConfigurationDescriptorsForRequest(
+    teamMetricsRequest: TeamMetricsRequest
+  ): any[] {
+    if (teamMetricsRequest.config) {
       return [{ ...teamMetricsRequest }];
-    }
-    if (teamMetricsRequest['teamName']) {
-      return DefaultConfiguration.of(teamMetricsRequest, defaultReferenceDate);
     }
 
     throw Error(
@@ -52,24 +55,5 @@ export class ApiMetricsService {
         teamMetricsRequest
       )}`
     );
-  }
-
-  private static async collectMetrics(
-    serviceName: string,
-    config: any,
-    shouldUpdateEntries: boolean
-  ) {
-    const appContext = AppContextFactory.appContextForService(
-      serviceName,
-      config
-    );
-
-    const metricsService = AppFactory.metricsService(
-      appContext,
-      shouldUpdateEntries
-    );
-    return metricsService.start({
-      collectorConfigs: appContext.collectorConfigs,
-    });
   }
 }

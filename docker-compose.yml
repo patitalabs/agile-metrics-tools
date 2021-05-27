@@ -12,13 +12,6 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3000
-      - JIRA_HOST=TBD_JIRA_HOST
-      - JIRA_API_TOKEN=TBD_JIRA_API_TOKEN
-      - SONAR_HOST=TBD_SONAR_HOST
-      - GITHUB_TOKEN=TBD_GITHUB_TOKEN
-      - JENKINS_HOST=TBD_JENKINS_HOST
-      - JENKINS_USER=TBD_JENKINS_USER
-      - JENKINS_API_TOKEN=TBD_JENKINS_API_TOKEN
       - ES_HOST=http://elk-service:9200
 
   elk-service:
