@@ -4,7 +4,7 @@ import * as path from 'path';
 
 const app = express();
 app.disable('x-powered-by');
-app.use(express.json({limit: '10mb'}));
+app.use(express.json({ limit: '10mb' }));
 
 app.post('/metrics/', MetricsController.postMetrics);
 app.put('/metrics/', MetricsController.updateMetrics);
