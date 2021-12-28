@@ -19,7 +19,7 @@
     "axios": "^0.24.0",
     "bottleneck": "^2.19.5",
     "elasticsearch": "^16.7.2",
-    "express": "4.17.1",
+    "express": "4.17.2",
     "winston": "^3.3.3"
   },
   "engines": {
