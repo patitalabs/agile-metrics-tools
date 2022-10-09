@@ -17,7 +17,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 14.x ]
+        node-version: [ 18.x ]
 
     steps:
       - uses: actions/checkout@v2
@@ -32,7 +32,7 @@ jobs:
 
 
       - name: Login to Registry
-        uses: docker/login-action@v1
+        uses: docker/login-action@v2
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
           registry: ghcr.io
@@ -50,6 +50,7 @@ jobs:
         run: sed -i "s|SF:/.*/src/|SF:/github/workspace/src/|g" coverage/lcov.info
 
       - name: SonarCloud Scan
+        if: ${{ github.ref == 'refs/heads/main' }}
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
