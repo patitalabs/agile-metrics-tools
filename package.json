@@ -23,12 +23,12 @@
     "winston": "^3.3.3"
   },
   "engines": {
-    "node": ">=16.0.0 < 17"
+    "node": ">=18.0.0"
   },
   "devDependencies": {
     "@types/express": "4.17.13",
     "@types/jest": "27.0.3",
-    "@types/node": "16.11.12",
+    "@types/node": "18.8.3",
     "@typescript-eslint/eslint-plugin": "5.8.1",
     "@typescript-eslint/parser": "5.8.1",
     "eslint": "8.4.1",

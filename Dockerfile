@@ -1,4 +1,4 @@
-FROM node:16-alpine as builder
+FROM node:18-alpine as builder
 WORKDIR /app
 COPY yarn.lock /app/
 COPY package.json /app/
@@ -10,7 +10,7 @@ RUN yarn install --frozen-lockfile  \
     && yarn prepare-web
 
 
-FROM node:16-alpine
+FROM node:18-alpine
 WORKDIR /app
 COPY --from=builder /app/package.json /app/package.json
 RUN yarn install --frozen-lockfile --production
