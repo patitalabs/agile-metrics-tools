@@ -16,7 +16,7 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "axios": "^0.27.2",
+    "axios": "^1.6.3",
     "bottleneck": "^2.19.5",
     "elasticsearch": "^16.7.3",
     "express": "4.18.2",
