@@ -20,7 +20,7 @@
     "bottleneck": "^2.19.5",
     "elasticsearch": "^16.7.3",
     "express": "4.18.3",
-    "winston": "^3.11.0"
+    "winston": "^3.12.0"
   },
   "engines": {
     "node": ">=18.0.0"
