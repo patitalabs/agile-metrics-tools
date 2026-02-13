@@ -16,10 +16,10 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "axios": "^1.7.8",
+    "axios": "^1.13.5",
     "bottleneck": "^2.19.5",
     "elasticsearch": "^16.7.3",
-    "express": "4.21.2",
+    "express": "4.22.0",
     "winston": "^3.12.0"
   },
   "engines": {
